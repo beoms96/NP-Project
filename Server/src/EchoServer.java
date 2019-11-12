@@ -47,39 +47,7 @@ public class EchoServer {
         } // waiting new connect
 
     }
-    public static void main(String[] args) throws IOException {
-        /*Socket socket = null;   //Client와 통신하기 위한 Socket
-        ServerSocket serverSocket = null;   //서버 생성을 위한 ServerSocket
-        BufferedReader in = null;   //Client로부터 데이터를 읽어들이기 위한 입력스트림
-        PrintWriter out = null;     //Client로 데이터를 내보내기 위한 스트림
-
-        try {
-            serverSocket = new ServerSocket(8000);
-        }
-        catch (IOException e) {
-            System.out.println("Port is already opened");
-        }
-
-        try {
-            System.out.println("Open Server!");
-            socket = serverSocket.accept(); //서버 생성, Client 접속 대기
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));    //입력 스트림 생성
-            out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));    //출력스트림 생성
-
-            //Stream 통한 데이터 송수신
-            for (; ; ) {
-                String str = null;
-                str = in.readLine();    //Client로 부터 데이터를 읽어옴
-
-                System.out.println("From Client Msg: " + str);
-
-                out.write(str);
-                out.flush();
-                //socket.close();
-            }
-        }
-        catch(IOException e){}*/
-
+    /*public static void main(String[] args) throws IOException {
         new EchoServer(8000);
-    }
+    }*/
 }
