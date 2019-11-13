@@ -35,8 +35,8 @@ public class UnicastServer {
         }
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         new UnicastServer(8000);
-    }
+    }*/
 
 }

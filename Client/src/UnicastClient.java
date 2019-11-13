@@ -54,8 +54,8 @@ public class UnicastClient {
         return socket;
     }
 
-    public static void main(String[] args) throws IOException{
+    /*public static void main(String[] args) throws IOException{
         new UnicastClient("localhost", 8000);
-    }
+    }*/
 }
 
