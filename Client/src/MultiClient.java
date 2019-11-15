@@ -144,6 +144,6 @@ public class MultiClient implements ActionListener {
         jf.setResizable(false);
         jf.setVisible(true);
 
-        //jf.setDefaultCloseOperation(JFame.EXIT_ON_CLOSE);
+        //jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
