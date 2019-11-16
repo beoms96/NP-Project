@@ -12,6 +12,7 @@ import java.awt.event.WindowEvent;
 public class LoginGUI implements ActionListener {
     //Member
     private ClientDB cdb;
+    private ChatGUI cg;
 
     private JFrame jf;
     private JPanel idPanel, pwPanel, loginPanel;
@@ -36,17 +37,18 @@ public class LoginGUI implements ActionListener {
         String inputPW = new String(pwt.getPassword());
 
         if(obj == pwt || obj == loginBt) {
-            if(cdb.checkInfo(inputID, inputPW)==false) {
+            if(!cdb.checkInfo(inputID, inputPW)) {
                 JOptionPane.showMessageDialog(jf, "Wrong ID or PW", "Warning", JOptionPane.WARNING_MESSAGE);
             }
             else {
                 //Login Complete chatting GUI (chat service + FTP Button + Real Video Button)
                 JOptionPane.showMessageDialog(jf, "Login Complete", "Success", JOptionPane.INFORMATION_MESSAGE);
                 jf.setVisible(false);
+                cg = new ChatGUI(inputID, inputPW);
             }
         }
         else if(obj == signupBt) {
-            if(cdb.insertInfo(inputID, inputPW)==false) {
+            if(!cdb.insertInfo(inputID, inputPW)) {
                 JOptionPane.showMessageDialog(jf, "Sign Up Failed", "Warning", JOptionPane.WARNING_MESSAGE);
             }
             else {  //Stay Display
@@ -110,8 +112,4 @@ public class LoginGUI implements ActionListener {
         //jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public static void main(String[] args) {
-        JFrame.setDefaultLookAndFeelDecorated(true);
-        LoginGUI lg = new LoginGUI();
-    }
 }

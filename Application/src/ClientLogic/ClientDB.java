@@ -1,5 +1,7 @@
 package ClientLogic;
 
+import Crypto.RSAEncryption;
+
 import java.sql.*;
 
 public class ClientDB {
@@ -12,6 +14,8 @@ public class ClientDB {
     private String database = "user";   //MySQL DB name
     private String user_name = "root";  //MysQL Server ID
     private String password = "ky12091010";
+
+    private RSAEncryption rsa;
 
     public ClientDB() {
         // 1. Driver loading
@@ -28,7 +32,6 @@ public class ClientDB {
         try {
             con = DriverManager.getConnection("jdbc:mysql://" + server + "/" + database + "?serverTimezone = UTC & useSSL=false", user_name, password);
             System.out.println("Connect Successfully");
-
         } catch(SQLException e) {
             System.err.println("Connect Error: " + e.getMessage());
             e.printStackTrace();
@@ -55,7 +58,7 @@ public class ClientDB {
         try {   //공개키 여기서 만들어서 삽입. (id로 만들면 될 듯)
             state = con.createStatement();
             String sql = "";
-            sql = "INSERT into info(id,pw) values (iid, ipw)";
+            sql = "Insert into info(id, pw) values('" + iid + "', '" + ipw + "');";
             state.executeUpdate(sql);
             state.close();
             return true;
@@ -66,7 +69,7 @@ public class ClientDB {
         }
     }
 
-    public boolean checkInfo(String id, String pw) {    //check info and then if success, move next page
+    public boolean checkInfo(String iid, String ipw) {    //check info and then if success, move next page
         try {
             state = con.createStatement();
             String sql = "";
@@ -75,7 +78,7 @@ public class ClientDB {
             while (rs.next()) {
                 String getID = rs.getString("id");
                 String getPW = rs.getString("pw");
-                if (id.equals(getID) && pw.equals(getPW)) {
+                if (iid.equals(getID) && ipw.equals(getPW)) {
                     rs.close();
                     state.close();
                     con.close();
