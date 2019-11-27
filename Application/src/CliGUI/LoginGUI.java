@@ -25,8 +25,8 @@ public class LoginGUI implements ActionListener {
 
     //Constructor
     public LoginGUI() {
+        JFrame.setDefaultLookAndFeelDecorated(true);
         cdb = new ClientDB();
-        cdb.dbConnect();
         setForm();
     }
 
@@ -43,13 +43,25 @@ public class LoginGUI implements ActionListener {
             else {
                 //Login Complete chatting GUI (chat service + FTP Button + Real Video Button)
                 JOptionPane.showMessageDialog(jf, "Login Complete", "Success", JOptionPane.INFORMATION_MESSAGE);
+                String[] checks = {"Normal", "Crypto"};
+                int check = JOptionPane.showOptionDialog(jf, "Select Your Chatting Mode", "Check", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, checks, checks[0]);
+                String ip = JOptionPane.showInputDialog(jf, "Input IP", "127.0.0.1");
                 jf.setVisible(false);
-                cg = new ChatGUI(inputID, inputPW);
+                if(check == 0) {
+                    cg = new ChatGUI(inputID, check, ip);
+                }
+                else if(check == 1) {
+                    cg = new ChatGUI(inputID, check, ip, cdb.getPublicKey());
+                }
+                else if(check == JOptionPane.CLOSED_OPTION) {
+                    cdb.dbDisconnect();
+                    System.exit(0);
+                }
             }
         }
         else if(obj == signupBt) {
             if(!cdb.insertInfo(inputID, inputPW)) {
-                JOptionPane.showMessageDialog(jf, "Sign Up Failed", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(jf, "Sign Up Failed-ID Duplicate", "Warning", JOptionPane.WARNING_MESSAGE);
             }
             else {  //Stay Display
                 JOptionPane.showMessageDialog(jf,"Sign Up Complete", "Success", JOptionPane.INFORMATION_MESSAGE);

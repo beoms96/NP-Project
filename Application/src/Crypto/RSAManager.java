@@ -1,6 +1,5 @@
 package Crypto;
 import java.io.*;
-import java.nio.Buffer;
 import java.security.*;
 import java.security.spec.*;
 import javax.crypto.*;

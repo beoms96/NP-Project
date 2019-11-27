@@ -8,7 +8,7 @@ import java.util.Base64;
 import java.util.HashMap;
 
 public class RSAEx2 {
-    static final int KEY_SIZE = 2048;
+    static final int KEY_SIZE = 1024;
 
     public HashMap<String, String> createKeyPairAsString() {
         HashMap<String, String> stringKeyPair = new HashMap<>();
