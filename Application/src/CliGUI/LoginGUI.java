@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 
 public class LoginGUI implements ActionListener {
     //Member
@@ -48,10 +49,14 @@ public class LoginGUI implements ActionListener {
                 String ip = JOptionPane.showInputDialog(jf, "Input IP", "127.0.0.1");
                 jf.setVisible(false);
                 if(check == 0) {
-                    cg = new ChatGUI(inputID, check, ip);
+                    try{
+                        cg = new ChatGUI(inputID, check, ip);
+                    } catch(IOException ioe) {ioe.printStackTrace();}
                 }
                 else if(check == 1) {
-                    cg = new ChatGUI(inputID, check, ip, cdb.getPublicKey());
+                    try {
+                        cg = new ChatGUI(inputID, check, ip, cdb.getPublicKey());
+                    } catch(IOException ioe) {ioe.printStackTrace();}
                 }
                 else if(check == JOptionPane.CLOSED_OPTION) {
                     cdb.dbDisconnect();
@@ -121,7 +126,6 @@ public class LoginGUI implements ActionListener {
         jf.setResizable(false);
         jf.setVisible(true);
 
-        //jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
 }

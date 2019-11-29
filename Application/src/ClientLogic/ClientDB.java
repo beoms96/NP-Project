@@ -66,8 +66,8 @@ public class ClientDB {
         rsaKeyPair = crsa.createKeyPairAsString();
         String publicKey = rsaKeyPair.get("publicKey");
         try {
-            BufferedWriter bw1 = new BufferedWriter(new FileWriter("PrivateKey.txt"));
-            bw1.write(new String(iid + " " + rsaKeyPair.get("privateKey")));
+            BufferedWriter bw1 = new BufferedWriter(new FileWriter("PrivateKey.txt", true));
+            bw1.append(new String(iid + " " + rsaKeyPair.get("privateKey")));
             bw1.newLine();
             bw1.close();
         } catch(IOException e) {
