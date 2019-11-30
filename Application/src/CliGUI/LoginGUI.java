@@ -47,20 +47,22 @@ public class LoginGUI implements ActionListener {
                 String[] checks = {"Normal", "Crypto"};
                 int check = JOptionPane.showOptionDialog(jf, "Select Your Chatting Mode", "Check", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, checks, checks[0]);
                 String ip = JOptionPane.showInputDialog(jf, "Input IP", "127.0.0.1");
-                jf.setVisible(false);
-                if(check == 0) {
-                    try{
-                        cg = new ChatGUI(inputID, check, ip);
-                    } catch(IOException ioe) {ioe.printStackTrace();}
-                }
-                else if(check == 1) {
-                    try {
-                        cg = new ChatGUI(inputID, check, ip, cdb.getPublicKey());
-                    } catch(IOException ioe) {ioe.printStackTrace();}
-                }
-                else if(check == JOptionPane.CLOSED_OPTION) {
-                    cdb.dbDisconnect();
-                    System.exit(0);
+                if(ip!=null) {
+                    jf.setVisible(false);
+                    if(check == 0) {
+                        try{
+                            cg = new ChatGUI(inputID, check, ip);
+                        } catch(IOException ioe) {ioe.printStackTrace();}
+                    }
+                    else if(check == 1) {
+                        try {
+                            cg = new ChatGUI(inputID, check, ip, cdb.getPublicKey());
+                        } catch(IOException ioe) {ioe.printStackTrace();}
+                    }
+                    else if(check == JOptionPane.CLOSED_OPTION) {
+                        cdb.dbDisconnect();
+                        System.exit(0);
+                    }
                 }
             }
         }

@@ -10,6 +10,10 @@ import java.util.HashMap;
 public class CliRSA {
     static final int KEY_SIZE = 1024;
 
+    public CliRSA() {
+        System.out.println("Client RSA");
+    }
+
     public HashMap<String, String> createKeyPairAsString() {
         HashMap<String, String> stringKeyPair = new HashMap<>();
         try {

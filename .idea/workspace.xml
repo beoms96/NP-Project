@@ -7,29 +7,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e54382f3-bcc6-4623-b2b5-846cbbe22f6b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Application/src/ClientLogic/CryptoClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/src/ClientLogic/FileClientThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/FileServerThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/src/ClientLogic/CrypFileClientThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/src/ClientLogic/CrypMultiClientThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/src/Crypto/CliAES.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/ServerDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/src/CliGUI/ChatGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/CliGUI/ChatGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/src/CliGUI/LoginGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/CliGUI/LoginGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/ClientLogic/ClientDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/ClientLogic/ClientDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/src/ClientLogic/CryptoClient.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/src/ClientLogic/MultiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/ClientLogic/MultiClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/ClientLogic/MultiClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/ClientLogic/MultiClientThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/src/Crypto/AESEncryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/Crypto/AESEncryption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/src/Crypto/CliRSA.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/Crypto/CliRSA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/src/Crypto/CryptoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/Crypto/CryptoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PrivateKey.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PrivateKey.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/MultiServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/MultiServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/MultiServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/MultiServerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/UserData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/Server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Application_jar/Application.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Application_jar/Application.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Application/CliGUI/ChatGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/CliGUI/ChatGUI$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Application/CliGUI/ChatGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/CliGUI/ChatGUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Application/CliGUI/LoginGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/CliGUI/LoginGUI$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Application/CliGUI/LoginGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/CliGUI/LoginGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Application/ClientLogic/ClientDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/ClientLogic/ClientDB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Application/ClientLogic/CryptoClient.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Application/ClientLogic/MultiClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/ClientLogic/MultiClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Application/ClientLogic/MultiClientThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/ClientLogic/MultiClientThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Server/MultiServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/MultiServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Server/MultiServerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/MultiServerThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Server/UserData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Application/Crypto/AESEncryption.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/Crypto/AESEncryption.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Application/Crypto/CliRSA.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/Crypto/CliRSA.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Application/Crypto/CryptoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/Crypto/CryptoTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Application/META-INF/Application.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/META-INF/Application.kotlin_module" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +74,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15429688" />
     <property name="project.structure.side.proportion" value="0.2517321" />
   </component>
@@ -151,8 +153,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MGUI" />
-        <item itemvalue="Application.MultiClient" />
         <item itemvalue="Application.CryptoTest" />
+        <item itemvalue="Application.MultiClient" />
         <item itemvalue="Application.RSAManager" />
         <item itemvalue="Application.LoginGUI" />
       </list>
@@ -216,7 +218,9 @@
       <workItem from="1574956696647" duration="2182000" />
       <workItem from="1574999741729" duration="3743000" />
       <workItem from="1575005979941" duration="3367000" />
-      <workItem from="1575013189911" duration="4326000" />
+      <workItem from="1575013189911" duration="6255000" />
+      <workItem from="1575027779746" duration="4442000" />
+      <workItem from="1575106387283" duration="18835000" />
     </task>
     <task id="LOCAL-00001" summary="unicast">
       <created>1573544988285</created>
@@ -260,7 +264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574813955589</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="PlainChatting &amp; FTP Complete">
+      <created>1575017643529</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1575017643529</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,6 +298,49 @@
     <MESSAGE value="login complete &amp; AES cryptography Test" />
     <MESSAGE value="RSA CryptoTest" />
     <MESSAGE value="Chat GUI Complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Chat GUI Complete" />
+    <MESSAGE value="PlainChatting &amp; FTP Complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="PlainChatting &amp; FTP Complete" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="574" y="118" key="#com.intellij.ide.util.MemberChooser" timestamp="1575130459868">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="118" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1575130459868" />
+    <state x="883" y="161" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1575129186825">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="883" y="161" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1575129186825" />
+    <state x="499" y="169" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1575018559876">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="169" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1536.824@0.0.1536.824" timestamp="1575018559876" />
+    <state x="358" y="9" key="CommitChangelistDialog2" timestamp="1575017641744">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="358" y="9" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1575017641744" />
+    <state width="724" height="210" key="GridCell.Tab.0.bottom" timestamp="1575130925046">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="724" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1575130925046" />
+    <state width="724" height="210" key="GridCell.Tab.0.center" timestamp="1575130925046">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="724" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1575130925046" />
+    <state width="724" height="210" key="GridCell.Tab.0.left" timestamp="1575130925046">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="724" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1575130925046" />
+    <state width="724" height="210" key="GridCell.Tab.0.right" timestamp="1575130925046">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="724" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1575130925046" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1575018566154">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1575018566154" />
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1575017656273">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1575017656273" />
   </component>
 </project>

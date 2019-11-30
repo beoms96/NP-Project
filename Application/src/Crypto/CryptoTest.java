@@ -1,5 +1,9 @@
 package Crypto;
 
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
+
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -14,7 +18,7 @@ public class CryptoTest {   //암호 키 만드는 클래스에서 같은 객체
         String getPlain = aes.AESDecrypt(cipherText, key);
         System.out.println(getPlain);
 
-        System.out.println("RSA=================================================================");
+        /*System.out.println("RSA=================================================================");
 
         RSAEncryption rsaEx1 = new RSAEncryption();
         rsaEx1.generateKeyPair();
@@ -52,7 +56,7 @@ public class CryptoTest {   //암호 키 만드는 클래스에서 같은 객체
         UUID uid2 = new UUID(0xaaaa, 0xffff);
         System.out.println(uid2.toString());
         UUID one = UUID.randomUUID();
-        System.out.println("UUID One: " + one.toString());
+        System.out.println("UUID One: " + one.toString());*/
 
         /* UUID
          *1. 업로드된 파일명의 중복을 방지하기 위해 파일명을 변경할 때 사용.
@@ -71,8 +75,6 @@ public class CryptoTest {   //암호 키 만드는 클래스에서 같은 객체
 
         String decryptedText1 = rc4.decrypt(encryptedText1, key);
         System.out.println("복호화: " + decryptedText1);
-
-
 
     }
 

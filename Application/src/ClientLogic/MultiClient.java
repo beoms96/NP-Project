@@ -1,5 +1,8 @@
 package ClientLogic;
 
+import Crypto.CliAES;
+import Crypto.CliRSA;
+
 import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
@@ -15,6 +18,8 @@ public class MultiClient {
     private DataOutputStream dos;
     private MultiClientThread ct;
     private FileClientThread fct;
+    private CrypMultiClientThread cct;
+    private CrypFileClientThread cfct;
 
     private JFrame jf;
     private JTextArea jta;
@@ -23,29 +28,41 @@ public class MultiClient {
 
     private String id, pk;
     private String ip;
+    private int check;
     private ArrayList<String> idarr;
     private ArrayList<String> filearr;
+
+    private CliAES caes;
+    private CliRSA crsa;
 
     private ArrayList<String> publicKeyList;
     private String myPrivateKey;
 
     //Constructor
-    public MultiClient(String id, String ip) {
+    public MultiClient(String id, String ip, int check) {
         this.id = id;
         this.ip = ip;
+        this.check = check;
         idarr = new ArrayList<String>();
         filearr = new ArrayList<String>();
     }
 
-    public MultiClient(String id, String ip, String pk) {
+    public MultiClient(String id, String ip, String pk, int check) {
         this.id = id;
         this.ip = ip;
         this.pk = pk;
+        this.check = check;
         idarr = new ArrayList<String>();
         filearr = new ArrayList<String>();
+
+        caes = new CliAES();
+        crsa = new CliRSA();
+        publicKeyList = new ArrayList<String>();
+        publicKeyList.add(pk);
     }
 
     public void connect() throws IOException {
+        //일반채팅, 암호채팅 포트 나눌지는 고민
         socket = new Socket(ip, 8000);
         fileSocket = new Socket(ip, 9000);
         jta.setText("Connect Success" + System.getProperty("line.separator"));
@@ -53,12 +70,22 @@ public class MultiClient {
         ois = new ObjectInputStream(socket.getInputStream());
         dos = new DataOutputStream(fileSocket.getOutputStream());
         dis = new DataInputStream(fileSocket.getInputStream());
-        ct = new MultiClientThread(this);
-        fct = new FileClientThread(this);
-        Thread t = new Thread(ct);
-        t.start();
-        Thread fc = new Thread(fct);
-        fc.start();
+        if(check == 0) {
+            ct = new MultiClientThread(this);
+            fct = new FileClientThread(this);
+            Thread t = new Thread(ct);
+            t.start();
+            Thread fc = new Thread(fct);
+            fc.start();
+        }
+        else if(check==1) {
+            cct = new CrypMultiClientThread(this);
+            cfct = new CrypFileClientThread(this);
+            Thread t = new Thread(cct);
+            t.start();
+            Thread fc = new Thread(cfct);
+            fc.start();
+        }
         enter();
     }
 
@@ -93,6 +120,39 @@ public class MultiClient {
     }
 
     public void streamNormal() {
+
+    }
+
+    public void sendCrypto(String msg) {
+
+    }
+
+    public void uploadCrypto(File[] files, String path, String key) throws UnsupportedEncodingException{
+        caes.createKey(key);
+        int loadVersion = 0;
+        ArrayList<File> arr = new ArrayList<File>();
+        for (File f: files)
+            arr.add(f);
+        cfct.setFileList(arr);
+        cfct.setPath(path);
+        cfct.setLoadVersion(loadVersion);
+        cfct.setEncryptFile(new ArrayList<File>());
+        try {
+            dos.writeUTF("upload");
+        }catch(IOException ioe) { ioe.printStackTrace(); }
+    }
+
+    public void downloadCrypto(String filename, String key) throws UnsupportedEncodingException{
+        caes.createKey(key);
+        int loadVersion = 1;
+        cfct.setFileName(filename);
+        cfct.setLoadVersion(loadVersion);
+        try {
+            dos.writeUTF("download");
+        }catch(IOException ioe) { ioe.printStackTrace(); }
+    }
+
+    public void streamCrypto() {
 
     }
 
@@ -132,6 +192,10 @@ public class MultiClient {
     public ArrayList<String> getFilearr() { return filearr; }
 
     public ArrayList<String> getIdarr() { return idarr; }
+
+    public CliAES getCaes() { return caes; }
+
+    public CliRSA getCrsa() { return crsa; }
 
     public void setFilearr(ArrayList<String> filearr) { this.filearr = filearr; }
 

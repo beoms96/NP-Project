@@ -1,6 +1,5 @@
 package Crypto;
 
-import org.apache.commons.codec.CharEncoding;
 import org.apache.commons.codec.binary.Base64;
 
 import java.io.UnsupportedEncodingException;

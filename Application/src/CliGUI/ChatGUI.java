@@ -10,27 +10,28 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 public class ChatGUI implements ActionListener{
-        //Member
-        private MultiClient mc;
+    //Member
+    private MultiClient mc;
 
-        private JFrame jf;
-        private JPanel chatPanel, mediaPanel;
-        private JTextField msgField; //For Send Msg
-        private JTextArea chatArea;  //For Chatting Msg
-        private JTextArea idList, serverList;
-        private JButton sendBt, downloadBt, quitBt, streamBt, uploadBt;
-        private JLabel idLabel, ipLabel;
+    private JFrame jf;
+    private JPanel chatPanel, mediaPanel;
+    private JTextField msgField; //For Send Msg
+    private JTextArea chatArea;  //For Chatting Msg
+    private JTextArea idList, serverList;
+    private JButton sendBt, downloadBt, quitBt, streamBt, uploadBt;
+    private JLabel idLabel, ipLabel;
 
-        private String ip;
-        private String id;
-        private int check;
+    private String ip;
+    private String id;
+    private int check;
 
     //Constructor
     public ChatGUI(String iid, int check, String ip) throws IOException {
         JFrame.setDefaultLookAndFeelDecorated(true);
-        mc = new MultiClient(iid, ip);
+        mc = new MultiClient(iid, ip, check);
         id = iid;
         this.check = check;
         this.ip = ip;
@@ -44,7 +45,7 @@ public class ChatGUI implements ActionListener{
 
     public ChatGUI(String iid, int check, String ip, String ipk) throws IOException {
         JFrame.setDefaultLookAndFeelDecorated(true);
-        mc = new MultiClient(iid, ip, ipk);
+        mc = new MultiClient(iid, ip, ipk, check);
         id = iid;
         this.check = check;
         this.ip = ip;
@@ -65,61 +66,68 @@ public class ChatGUI implements ActionListener{
                 JOptionPane.showMessageDialog(jf, "Write the msg", "Warning", JOptionPane.WARNING_MESSAGE);
             }
             else {  //send msg
-                if(check == 0)
+                if (check == 0)
                     mc.sendNormal(msg);
-                else if(check == 1) {
-                    //Crypto
-                }
-                msgField.setText("");
-                msgField.requestFocus();
+                else if (check == 1)
+                    mc.sendCrypto(msg);
             }
+
+            msgField.setText("");
+            msgField.requestFocus();
         }
         else if(obj == uploadBt) {
-            if(check == 0) {
-                JFileChooser fc = new JFileChooser();
-                fc.setMultiSelectionEnabled(true);
-                fc.setAcceptAllFileFilterUsed(true);
-                int result = fc.showOpenDialog(jf);
-                if(result == JFileChooser.APPROVE_OPTION) {
-                    File[] f = fc.getSelectedFiles();
-                    String path = fc.getCurrentDirectory().getPath();
+            File[] f = null;
+            String path = null;
+            JFileChooser fc = new JFileChooser();
+            fc.setMultiSelectionEnabled(true);
+            fc.setAcceptAllFileFilterUsed(true);
+            int result = fc.showOpenDialog(jf);
+            if(result == JFileChooser.APPROVE_OPTION) {
+                f = fc.getSelectedFiles();
+                path = fc.getCurrentDirectory().getPath();
+                if(check == 0)
                     mc.uploadNormal(f, path);
+                else if(check == 1){
+                    String key = JOptionPane.showInputDialog(jf, "Input Key For Encrypted > 32","12345678901234567890123456789012345");
+                    try {
+                        mc.uploadCrypto(f, path, key);
+                    } catch(UnsupportedEncodingException u) { u.printStackTrace(); }
                 }
-            }
-            else if(check == 1){
-
             }
             msgField.requestFocus();
         }
         else if(obj == downloadBt) {
-            if(check == 0) {
-                String[] fileList = mc.getFilearr().toArray(new String[mc.getFilearr().size()]);
-                Object selected = JOptionPane.showInputDialog(jf, "What do yot want to download?", "download", JOptionPane.QUESTION_MESSAGE, null, fileList, fileList[0]);
-                if(selected == null)
-                    JOptionPane.showMessageDialog(jf, "Not Download!");
-                else {
-                    mc.downloadNormal((String)selected);
+            String[] fileList = mc.getFilearr().toArray(new String[mc.getFilearr().size()]);
+            Object selected = JOptionPane.showInputDialog(jf, "What do yot want to download?", "download", JOptionPane.QUESTION_MESSAGE, null, fileList, fileList[0]);
+            if(selected == null)
+                JOptionPane.showMessageDialog(jf, "Not Download!");
+            else {
+                if(check == 0)
+                    mc.downloadNormal((String) selected);
+                else if(check == 1) {
+                    String key = JOptionPane.showInputDialog(jf, "Input Key for Decrypted > 32","12345678901234567890123456789012345");
+                    if(key!=null) {
+                        try {
+                            mc.downloadCrypto((String) selected, key);
+                        } catch (UnsupportedEncodingException u) {
+                            u.printStackTrace();
+                        }
+                    }
                 }
-            }
-            else if(check == 1) {
-
             }
             msgField.requestFocus();
         }
         else if(obj == streamBt) {
             if(check == 0) {
-
+                mc.streamNormal();
             }
             else if(check == 1) {
-
+                mc.streamCrypto();
             }
             msgField.requestFocus();
         }
         else if(obj == quitBt) {    //push quit
-            if(check==0)
-                mc.exit();
-            else if(check ==1) {
-                mc.exit();            }
+            mc.exit();
         }
     }
 
