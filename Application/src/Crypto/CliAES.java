@@ -32,9 +32,6 @@ public class CliAES {    //For Movie Encryption, AES256 - 키가 256bit, 32바�
     private String key;
     private Cipher cipher;
 
-    public CliAES ()  {
-        System.out.println("Client AES");
-    }
 
     /*
      * 32자리의 키값 입력하여 객체 생성.
@@ -55,6 +52,19 @@ public class CliAES {    //For Movie Encryption, AES256 - 키가 256bit, 32바�
         this.keySpec = new SecretKeySpec(keyBytes, "AES");
     }
 
+    public String createRandomKey() {
+        try {
+            KeyGenerator generator = KeyGenerator.getInstance("AES");
+            SecureRandom random = new SecureRandom();
+            generator.init(128, random);
+            Key secureKey = generator.generateKey();
+            return Base64.encodeBase64String(secureKey.getEncoded());
+        } catch(NoSuchAlgorithmException nse) {
+            nse.printStackTrace();
+            return null;
+        }
+    }
+
     public void modeEncrypt() throws GeneralSecurityException{
         cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
         cipher.init(Cipher.ENCRYPT_MODE, keySpec, new IvParameterSpec(iv.getBytes()));
@@ -73,6 +83,27 @@ public class CliAES {    //For Movie Encryption, AES256 - 키가 256bit, 32바�
     public byte[] AESDecrypt(byte[] str, int len){
         byte[] decrpytBytes = cipher.update(str, 0, len);
         return decrpytBytes;
+    }
+
+    public String msgAESEncrypt(String msg) throws UnsupportedEncodingException{
+        byte[] encryptBytes = null;
+        String enStr = "";
+        try {
+            encryptBytes = cipher.doFinal(msg.getBytes("UTF-8"));
+            enStr = new String(Base64.encodeBase64(encryptBytes));
+        } catch(GeneralSecurityException gse) {
+            gse.printStackTrace();
+        }
+        return enStr;
+    }
+
+    public String msgAESDecrypt(String str) throws UnsupportedEncodingException{
+        try {
+            byte[] byteStr = Base64.decodeBase64(str.getBytes());
+            return new String(cipher.doFinal(byteStr), "UTF-8");
+        } catch(GeneralSecurityException gse) {
+            return null;
+        }
     }
 
     public Cipher getCipher() {

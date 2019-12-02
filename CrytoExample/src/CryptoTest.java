@@ -1,12 +1,3 @@
-package Crypto;
-
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
-
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.UUID;
-
 public class CryptoTest {   //암호 키 만드는 클래스에서 같은 객체로 계속 생성해주면 키 안겹칠듯
     public static void main(String[] args) throws Exception {
         System.out.println("AES=================================================================");

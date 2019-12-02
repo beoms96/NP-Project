@@ -6,6 +6,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ClientDB {
@@ -22,6 +23,7 @@ public class ClientDB {
     private CliRSA crsa;
     private HashMap<String, String> rsaKeyPair;
     private String publicKey;
+    private String[] publicKeyList;
 
     public ClientDB() {
         // 1. Driver loading
@@ -66,25 +68,25 @@ public class ClientDB {
         rsaKeyPair = crsa.createKeyPairAsString();
         String publicKey = rsaKeyPair.get("publicKey");
         try {
-            BufferedWriter bw1 = new BufferedWriter(new FileWriter("PrivateKey.txt", true));
-            bw1.append(new String(iid + " " + rsaKeyPair.get("privateKey")));
-            bw1.newLine();
-            bw1.close();
-        } catch(IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-
-        try {
             state = con.createStatement();
             String sql = "";
             sql = "Insert into info(id, pw, PK) values('" + iid + "', '" + ipw + "', '" + publicKey + "');";
             state.executeUpdate(sql);
             state.close();
             dbDisconnect();
-            return true;
         } catch (SQLException e) {
             dbDisconnect();
+            return false;
+        }
+
+        try {
+            BufferedWriter bw1 = new BufferedWriter(new FileWriter(iid + " " +"PrivateKey.txt"));
+            bw1.write(new String(rsaKeyPair.get("privateKey")));
+            bw1.newLine();
+            bw1.close();
+            return true;
+        } catch(IOException e) {
+            e.printStackTrace();
             return false;
         }
     }
@@ -121,5 +123,58 @@ public class ClientDB {
 
     public String getPublicKey() {
         return publicKey;
+    }
+
+    public String[] getPublicKeyList(String[] id) {
+        dbConnect();
+        ArrayList<String> arr = new ArrayList<String>();
+        try {
+            state = con.createStatement();
+            String sql = "";
+            String str = "";
+            for (int i=0;i<id.length;i++) {
+                if(i != id.length-1)
+                    str = str.concat("'" + id[i] + "', ");
+                else
+                    str = str.concat("'" + id[i] + "'");
+            }
+            sql = "SELECT PK FROM info Where id in (" + str + ")";
+            ResultSet rs = state.executeQuery(sql);
+            while(rs.next()) {
+                String getPK = rs.getString("pk");
+                arr.add(getPK);
+            }
+            rs.close();
+            state.close();
+            dbDisconnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            dbDisconnect();
+        }
+        publicKeyList = arr.toArray(new String[arr.size()]);
+        return publicKeyList;
+    }
+
+    public String getFUPublicKey(String firstUser) {
+        dbConnect();
+        String result = "";
+        try {
+            state = con.createStatement();
+            String sql = "";
+            sql = "SELECT PK FROM info Where id = '" + firstUser + "'";
+            ResultSet rs = state.executeQuery(sql);
+            while(rs.next()) {
+                String getPK = rs.getString("pk");
+                result = getPK;
+            }
+            rs.close();
+            state.close();
+            dbDisconnect();
+        } catch(SQLException e) {
+            e.printStackTrace();
+            dbDisconnect();
+            result = null;
+        }
+        return result;
     }
 }

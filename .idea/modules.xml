@@ -3,9 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Application/Application.iml" filepath="$PROJECT_DIR$/Application/Application.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Client/Client.iml" filepath="$PROJECT_DIR$/Client/Client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ClientExample/ClientExample.iml" filepath="$PROJECT_DIR$/ClientExample/ClientExample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CrytoExample/CrytoExample.iml" filepath="$PROJECT_DIR$/CrytoExample/CrytoExample.iml" />
       <module fileurl="file://$PROJECT_DIR$/NP-Project.iml" filepath="$PROJECT_DIR$/NP-Project.iml" />
       <module fileurl="file://$PROJECT_DIR$/Server/Server.iml" filepath="$PROJECT_DIR$/Server/Server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ServerExample/ServerExample.iml" filepath="$PROJECT_DIR$/ServerExample/ServerExample.iml" />
     </modules>
   </component>
 </project>

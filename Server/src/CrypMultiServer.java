@@ -2,22 +2,24 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-public class MultiServer implements Runnable{
+public class CrypMultiServer implements Runnable{
     //Member
     private Socket socket;
     private Socket fileSocket;
-    private ArrayList<MultiServerThread> list;
-    private ArrayList<FileServerThread> fstList;
+    private ArrayList<CrypMultiServerThread> list;
+    private ArrayList<CrypFileServerThread> fstList;
     private ArrayList<String> idList;
     private ArrayList<String> fileList;
     private ServerSocket ss;
     private ServerSocket fss;
 
-    //Constructor
-    public MultiServer() {
-        System.out.println("Normal Server Start");
-        list = new ArrayList<MultiServerThread>();
-        fstList = new ArrayList<FileServerThread>();
+    private String encryptedKey;
+    private String firstID;
+
+    public CrypMultiServer() {
+        System.out.println("Crypto Server Start");
+        list = new ArrayList<CrypMultiServerThread>();
+        fstList = new ArrayList<CrypFileServerThread>();
         idList = new ArrayList<String>();
         fileList = findFileList();
     }
@@ -26,16 +28,16 @@ public class MultiServer implements Runnable{
     public void run() {
         boolean isStop = false;
         try {
-            ServerSocket ss = new ServerSocket(8000);   //---1
-            ServerSocket fss = new ServerSocket(9000);
-            MultiServerThread mst = null;
-            FileServerThread fst = null;
+            ServerSocket ss = new ServerSocket(10000);   //---1
+            ServerSocket fss = new ServerSocket(11000);
+            CrypMultiServerThread mst = null;
+            CrypFileServerThread fst = null;
             while(!isStop) {
-                System.out.println("Normal Server Read...");
+                System.out.println("Crypto Server Read...");
                 socket = ss.accept();   //Waiting Connect---2
                 fileSocket = fss.accept();
-                mst = new MultiServerThread(this);
-                fst = new FileServerThread(this);
+                mst = new CrypMultiServerThread(this);
+                fst = new CrypFileServerThread(this);
                 list.add(mst);  //---3
                 fstList.add(fst);
                 Thread t = new Thread(mst);
@@ -46,7 +48,6 @@ public class MultiServer implements Runnable{
         } catch(IOException ioe) { ioe.printStackTrace(); }
     }
 
-    //Method
     public ArrayList<String> findFileList() {
         ArrayList<String> result = new ArrayList<String>();
         String path = System.getProperty("user.dir");
@@ -61,13 +62,21 @@ public class MultiServer implements Runnable{
 
     public Socket getFileSocket() { return fileSocket; }
 
-    public ArrayList<MultiServerThread> getList() { return list; }
+    public ArrayList<CrypMultiServerThread> getList() { return list; }
 
-    public ArrayList<FileServerThread> getFstList() { return fstList; }
+    public ArrayList<CrypFileServerThread> getFstList() { return fstList; }
 
     public ArrayList<String> getIdList() { return idList; }
 
     public ArrayList<String> getFileList() { return fileList; }
+
+    public String getEncryptedKey() { return encryptedKey; }
+
+    public void setEncryptedKey(String encryptedKey) { this.encryptedKey = encryptedKey; }
+
+    public String getFirstID() { return firstID; }
+
+    public void setFirstID(String firstID) { this.firstID = firstID; }
 
     public void setFileList(ArrayList<String> fileList) { this.fileList = fileList; }
 }

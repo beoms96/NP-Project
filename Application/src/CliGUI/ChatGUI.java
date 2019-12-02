@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
+
 public class ChatGUI implements ActionListener{
     //Member
     private MultiClient mc;
@@ -68,8 +69,12 @@ public class ChatGUI implements ActionListener{
             else {  //send msg
                 if (check == 0)
                     mc.sendNormal(msg);
-                else if (check == 1)
-                    mc.sendCrypto(msg);
+                else if (check == 1) {
+                    try {
+                        mc.sendCrypto(msg);
+                    }
+                    catch(Exception exc) { exc.printStackTrace();}
+                }
             }
 
             msgField.setText("");
@@ -134,7 +139,7 @@ public class ChatGUI implements ActionListener{
     public void setForm() {
         jf = new JFrame("Chatting");
         jf.setLayout(null);
-        jf.setSize(1420,750);
+        jf.setSize(820,550);
         jf.setBackground(Color.white);
         chatPanel = new JPanel();
         mediaPanel = new JPanel();
@@ -181,21 +186,21 @@ public class ChatGUI implements ActionListener{
         jf.add(mediaPanel);
 
         //jf
-        chatPanel.setBounds(10,10, 1400,450);
-        mediaPanel.setBounds(10,460,1400,250);
+        chatPanel.setBounds(5,10, 800,300);
+        mediaPanel.setBounds(5,310,800,200);
         //chatPanel
-        idLabel.setBounds(0,0,500,15);
-        ipLabel.setBounds(500,0,500,15);
-        chatsp.setBounds(0,15,1000,400);
-        msgField.setBounds(0,415,1000,30);
-        idsp.setBounds(1000,15,400,235);
-        sendBt.setBounds(1000,250,400,100);
-        quitBt.setBounds(1000,350,400,100);
+        idLabel.setBounds(0,0,250,15);
+        ipLabel.setBounds(250,0,250,15);
+        chatsp.setBounds(0,15,500,265);
+        msgField.setBounds(0,280,500,20);
+        idsp.setBounds(500,15,300,185);
+        sendBt.setBounds(500,200,300,50);
+        quitBt.setBounds(500,250,300,50);
         //MediaPanel
-        serversp.setBounds(0,0,800,250);
-        uploadBt.setBounds(800,0,100,250);
-        downloadBt.setBounds(900,0,100,250);
-        streamBt.setBounds(1000,0,400,250);
+        serversp.setBounds(0,0,300,200);
+        uploadBt.setBounds(300,0,100,200);
+        downloadBt.setBounds(400,0,100,200);
+        streamBt.setBounds(500,0,300,200);
 
         msgField.addActionListener(this);
         sendBt.addActionListener(this);

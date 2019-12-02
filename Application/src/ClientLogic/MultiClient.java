@@ -6,7 +6,9 @@ import Crypto.CliRSA;
 import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
+import java.security.GeneralSecurityException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MultiClient {
     //Member
@@ -35,8 +37,11 @@ public class MultiClient {
     private CliAES caes;
     private CliRSA crsa;
 
-    private ArrayList<String> publicKeyList;
-    private String myPrivateKey;
+    private ClientDB cdb;
+    private String chatAESKey;
+    private String firstUser;
+    private HashMap<String, String> publicKeyList;
+
 
     //Constructor
     public MultiClient(String id, String ip, int check) {
@@ -54,17 +59,23 @@ public class MultiClient {
         this.check = check;
         idarr = new ArrayList<String>();
         filearr = new ArrayList<String>();
+        this.firstUser = "";
 
         caes = new CliAES();
         crsa = new CliRSA();
-        publicKeyList = new ArrayList<String>();
-        publicKeyList.add(pk);
+        cdb = new ClientDB();
+        publicKeyList = new HashMap<>();
     }
 
     public void connect() throws IOException {
-        //일반채팅, 암호채팅 포트 나눌지는 고민
-        socket = new Socket(ip, 8000);
-        fileSocket = new Socket(ip, 9000);
+        if(check==0) {
+            socket = new Socket(ip, 8000);
+            fileSocket = new Socket(ip, 9000);
+        }
+        else if(check==1) {
+            socket = new Socket(ip, 10000);
+            fileSocket = new Socket(ip, 11000);
+        }
         jta.setText("Connect Success" + System.getProperty("line.separator"));
         oos = new ObjectOutputStream(socket.getOutputStream());
         ois = new ObjectInputStream(socket.getInputStream());
@@ -123,8 +134,16 @@ public class MultiClient {
 
     }
 
-    public void sendCrypto(String msg) {
-
+    public void sendCrypto(String msg) throws UnsupportedEncodingException, GeneralSecurityException{
+        caes.createKey(chatAESKey);
+        caes.modeEncrypt();
+        String result = caes.msgAESEncrypt(msg);
+        System.out.println(result);
+        try {
+            oos.writeObject(id + "#" + result);
+        } catch(IOException ioe) {
+            ioe.printStackTrace();
+        }
     }
 
     public void uploadCrypto(File[] files, String path, String key) throws UnsupportedEncodingException{
@@ -169,8 +188,24 @@ public class MultiClient {
             oos.writeObject(id+"#quit");
             dos.writeUTF("quit");
         } catch(IOException ioe) { ioe.printStackTrace(); }
-        jf.setVisible(false);
-        System.exit(0);
+    }
+
+    public String getPrivateKey() {
+        String sPrivateKey = null;
+        BufferedReader brPrivateKey = null;
+        try{
+            brPrivateKey = new BufferedReader(new FileReader(id + " " + "PrivateKey.txt"));
+            sPrivateKey = brPrivateKey.readLine();
+        } catch(IOException ioe) {
+            ioe.printStackTrace();
+        }
+        finally {
+            try{
+                if(brPrivateKey != null)
+                    brPrivateKey.close();
+            } catch (IOException ioe) { ioe.printStackTrace(); }
+        }
+        return sPrivateKey;
     }
 
     public void useJf(JFrame jf) { this.jf = jf;}
@@ -183,6 +218,8 @@ public class MultiClient {
 
     public String getId() { return id; }
 
+    public ObjectOutputStream getOos() { return oos; }
+
     public ObjectInputStream getOis() { return ois; }
 
     public DataInputStream getDis() { return dis; }
@@ -193,13 +230,25 @@ public class MultiClient {
 
     public ArrayList<String> getIdarr() { return idarr; }
 
+    public HashMap<String, String> getPublicKeyList() { return publicKeyList; }
+
+    public String getChatAESKey() { return chatAESKey; }
+
+    public String getFirstUser() { return firstUser; }
+
     public CliAES getCaes() { return caes; }
 
     public CliRSA getCrsa() { return crsa; }
 
+    public ClientDB getCdb() { return cdb; }
+
+    public void setFirstUser(String firstUser) { this.firstUser = firstUser; }
+
     public void setFilearr(ArrayList<String> filearr) { this.filearr = filearr; }
 
     public void setIdarr(ArrayList<String> idarr) { this.idarr = idarr; }
+
+    public void setChatAESKey(String chatAESKey) { this.chatAESKey = chatAESKey; }
 
     public JFrame getJf() { return jf; }
 

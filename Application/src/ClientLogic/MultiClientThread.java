@@ -28,8 +28,10 @@ public class MultiClientThread implements Runnable {
                 isStop = true;
             }
             if(receive[1].equals("quit")) { //quit msg
-                if(receive[0].equals(mc.getId()))
-                    mc.exit();
+                if(receive[0].equals(mc.getId())) {
+                    mc.getJf().setVisible(false);
+                    System.exit(0);
+                }
                 else {
                     mc.getJta().append("Client " + receive[0] +" terminates" + System.getProperty("line.separator"));
                     mc.getJta().setCaretPosition(mc.getJta().getDocument().getLength());

@@ -1,16 +1,16 @@
 import java.io.*;
 import java.net.*;
 
-public class MultiServerThread implements Runnable {
+public class CrypMultiServerThread implements Runnable {
     //Member
-    private MultiServer ms;
+    private CrypMultiServer ms;
     private ObjectInputStream ois;
     private ObjectOutputStream oos;
 
     private Socket socket;
 
     //Constructor
-    public MultiServerThread(MultiServer ms) {
+    public CrypMultiServerThread(CrypMultiServer ms) {
         this.ms = ms;
         socket = ms.getSocket();
         try {
@@ -27,6 +27,7 @@ public class MultiServerThread implements Runnable {
             String msg = null;
             while(!isStop) {
                 msg = (String)ois.readObject(); //Input ---5
+                System.out.println(msg);
                 String[] str = msg.split("#");
                 if(str[1].equals("quit")) {
                     broadCasting(msg);
@@ -36,6 +37,16 @@ public class MultiServerThread implements Runnable {
                 else if(str[1].equals("Enter")) {
                     broadCasting(msg);
                     ms.getIdList().add(str[0]);
+                    if(ms.getIdList().size() == 1) {
+                        String idAndKey = (String)ois.readObject();
+                        String[] idKey = idAndKey.split("#");
+                        ms.setFirstID(idKey[0]);        //First User -> Public Key
+                        ms.setEncryptedKey(idKey[1]);   //RSA Encrypt AES Key
+                    }
+                    else {
+                        String idAndKey = ms.getFirstID() + "#" + ms.getEncryptedKey();
+                        oos.writeObject(idAndKey);
+                    }
                 }
                 else {
                     broadCasting(msg);
@@ -43,17 +54,17 @@ public class MultiServerThread implements Runnable {
             }   //end while
             ms.getList().remove(this);
             System.out.println(socket.getInetAddress() + " Normally Terminate.");
-            System.out.println("Current Normal Client: " + ms.getList().size());
+            System.out.println("Current Crypto Client: " + ms.getList().size());
         }
         catch(Exception e) {
             ms.getList().remove(this);
             System.out.println(socket.getInetAddress() + " Abnormally Terminate.");
-            System.out.println("Current Normal Client: " + ms.getList().size());
+            System.out.println("Current Crypto Client: " + ms.getList().size());
         }
     }   //end run
     public void broadCasting(String msg) throws IOException {
         //Send Msg To all Client
-        for (MultiServerThread mt: ms.getList()) {
+        for (CrypMultiServerThread mt: ms.getList()) {
             mt.send(msg);
         }
     }
@@ -61,3 +72,4 @@ public class MultiServerThread implements Runnable {
         oos.writeObject(msg);   //---6 Send Real Msg
     }
 }
+
