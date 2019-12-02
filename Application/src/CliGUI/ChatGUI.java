@@ -3,6 +3,7 @@ package CliGUI;
 import ClientLogic.MultiClient;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,20 +34,6 @@ public class ChatGUI implements ActionListener{
     public ChatGUI(String iid, int check, String ip) throws IOException {
         JFrame.setDefaultLookAndFeelDecorated(true);
         mc = new MultiClient(iid, ip, check);
-        id = iid;
-        this.check = check;
-        this.ip = ip;
-        setForm();
-        mc.useJf(jf);
-        mc.useJta(chatArea);
-        mc.useIdList(idList);
-        mc.useServerList(serverList);
-        mc.connect();
-    }
-
-    public ChatGUI(String iid, int check, String ip, String ipk) throws IOException {
-        JFrame.setDefaultLookAndFeelDecorated(true);
-        mc = new MultiClient(iid, ip, ipk, check);
         id = iid;
         this.check = check;
         this.ip = ip;
@@ -102,32 +89,67 @@ public class ChatGUI implements ActionListener{
             msgField.requestFocus();
         }
         else if(obj == downloadBt) {
-            String[] fileList = mc.getFilearr().toArray(new String[mc.getFilearr().size()]);
-            Object selected = JOptionPane.showInputDialog(jf, "What do yot want to download?", "download", JOptionPane.QUESTION_MESSAGE, null, fileList, fileList[0]);
-            if(selected == null)
-                JOptionPane.showMessageDialog(jf, "Not Download!");
-            else {
-                if(check == 0)
+            if(check == 0) {
+                String[] fileList = mc.getFilearr().toArray(new String[mc.getFilearr().size()]);
+                Object selected = JOptionPane.showInputDialog(jf, "What do yot want to download?", "download", JOptionPane.QUESTION_MESSAGE, null, fileList, fileList[0]);
+                if(selected == null)
+                    JOptionPane.showMessageDialog(jf, "Not Download!");
+                else {
                     mc.downloadNormal((String) selected);
-                else if(check == 1) {
-                    String key = JOptionPane.showInputDialog(jf, "Input Key for Decrypted > 32","12345678901234567890123456789012345");
-                    if(key!=null) {
-                        try {
-                            mc.downloadCrypto((String) selected, key);
-                        } catch (UnsupportedEncodingException u) {
-                            u.printStackTrace();
+                }
+            }
+            else if(check == 1) {
+                if(mc.getCryptFiles().size() != 0) {
+                    String[] fileList = mc.getCryptFiles().toArray(new String[mc.getCryptFiles().size()]);
+                    Object selected = JOptionPane.showInputDialog(jf, "What do yot want to download?", "download", JOptionPane.QUESTION_MESSAGE, null, fileList, fileList[0]);
+                    if(selected == null)
+                        JOptionPane.showMessageDialog(jf, "Not Download!");
+                    else {
+                        String key = JOptionPane.showInputDialog(jf, "Input Key for Decrypted > 32","12345678901234567890123456789012345");
+                        if(key!=null) {
+                            try {
+                                mc.downloadCrypto((String) selected, key);
+                            } catch (UnsupportedEncodingException u) {
+                                u.printStackTrace();
+                            }
                         }
                     }
+                }
+                else {
+                    JOptionPane.showMessageDialog(jf, "No .cipher file!");
                 }
             }
             msgField.requestFocus();
         }
         else if(obj == streamBt) {
-            if(check == 0) {
-                mc.streamNormal();
-            }
-            else if(check == 1) {
-                mc.streamCrypto();
+            String[] streamOption = {"Video", "Camera"};
+            int select = JOptionPane.showOptionDialog(jf, "Select Your Chatting Mode", "Check", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, streamOption, streamOption[0]);
+            if(select != JOptionPane.CLOSED_OPTION) {
+                JOptionPane.showMessageDialog(jf, "Streaming ->" + streamOption[select]);
+                if(select == 0) {   //Video File Streaming
+                    File f = null;
+                    String path = null;
+                    JFileChooser fc = new JFileChooser();
+                    FileNameExtensionFilter filter = new FileNameExtensionFilter(" ", "mp4");
+                    fc.setFileFilter(filter);
+                    int result = fc.showOpenDialog(jf);
+                    if(result == JFileChooser.APPROVE_OPTION) {
+                        f = fc.getSelectedFile();
+                        path = fc.getCurrentDirectory().getPath();
+                        if(check == 0)
+                            mc.streamVideoNormal(f, path);
+                        else if(check == 1){
+                            mc.streamVideoCrypto();
+                        }
+                    }
+                }
+                else if(select==1) {    //WebCam Streaming
+                    if(check == 0)
+                        mc.streamWebCamNormal();
+                    else if(check == 1){
+                        mc.streamWebCamCrypto();
+                    }
+                }
             }
             msgField.requestFocus();
         }

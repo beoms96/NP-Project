@@ -2,6 +2,8 @@ package ClientLogic;
 
 import Crypto.CliAES;
 import Crypto.CliRSA;
+import Streaming.MyWebCam;
+import Streaming.ReceiveWebCam;
 
 import javax.swing.*;
 import java.io.*;
@@ -14,10 +16,16 @@ public class MultiClient {
     //Member
     private Socket socket;
     private Socket fileSocket;
+    private Socket videoSocket;
+    private Socket rcvSocket;
     private ObjectInputStream ois;
     private ObjectOutputStream oos;
     private DataInputStream dis;
     private DataOutputStream dos;
+    private DataInputStream streamis;
+    private DataOutputStream streamos;
+    private DataInputStream rcvstreamis;
+
     private MultiClientThread ct;
     private FileClientThread fct;
     private CrypMultiClientThread cct;
@@ -28,7 +36,7 @@ public class MultiClient {
     private JTextArea idList;
     private JTextArea serverList;
 
-    private String id, pk;
+    private String id;
     private String ip;
     private int check;
     private ArrayList<String> idarr;
@@ -42,6 +50,9 @@ public class MultiClient {
     private String firstUser;
     private HashMap<String, String> publicKeyList;
 
+    private String streamUser;
+    private boolean isStop;
+
 
     //Constructor
     public MultiClient(String id, String ip, int check) {
@@ -50,17 +61,10 @@ public class MultiClient {
         this.check = check;
         idarr = new ArrayList<String>();
         filearr = new ArrayList<String>();
-    }
+        streamUser = "";
+        isStop = false;
 
-    public MultiClient(String id, String ip, String pk, int check) {
-        this.id = id;
-        this.ip = ip;
-        this.pk = pk;
-        this.check = check;
-        idarr = new ArrayList<String>();
-        filearr = new ArrayList<String>();
         this.firstUser = "";
-
         caes = new CliAES();
         crsa = new CliRSA();
         cdb = new ClientDB();
@@ -71,16 +75,24 @@ public class MultiClient {
         if(check==0) {
             socket = new Socket(ip, 8000);
             fileSocket = new Socket(ip, 9000);
+            videoSocket = new Socket(ip, 12000);
+            rcvSocket = new Socket(ip, 14000);
         }
         else if(check==1) {
             socket = new Socket(ip, 10000);
             fileSocket = new Socket(ip, 11000);
+            videoSocket = new Socket(ip, 13000);
+            rcvSocket = new Socket(ip, 15000);
         }
         jta.setText("Connect Success" + System.getProperty("line.separator"));
         oos = new ObjectOutputStream(socket.getOutputStream());
         ois = new ObjectInputStream(socket.getInputStream());
         dos = new DataOutputStream(fileSocket.getOutputStream());
         dis = new DataInputStream(fileSocket.getInputStream());
+        streamos = new DataOutputStream(videoSocket.getOutputStream());
+        streamis = new DataInputStream(videoSocket.getInputStream());
+        rcvstreamis = new DataInputStream(rcvSocket.getInputStream());
+
         if(check == 0) {
             ct = new MultiClientThread(this);
             fct = new FileClientThread(this);
@@ -130,15 +142,36 @@ public class MultiClient {
         }catch(IOException ioe) { ioe.printStackTrace(); }
     }
 
-    public void streamNormal() {
+    public void streamVideoNormal(File f, String path) {
 
+    }
+
+    public void streamWebCamNormal() {
+        try {
+            streamos.writeUTF("Enter");
+            streamUser = streamis.readUTF();
+            if(streamUser.equals("")) { //become Streaming Owner
+                streamUser = id;
+                streamos.writeUTF(streamUser);
+                MyWebCam mwc = new MyWebCam(this);
+                Thread mwct = new Thread(mwc);
+                mwct.start();
+            }
+            else {  //become Streaming Client
+                streamUser = streamis.readUTF();
+            }
+
+            ReceiveWebCam rwc = new ReceiveWebCam(this);
+            Thread rwct = new Thread(rwc);
+            rwct.start();
+
+        }catch(IOException ioe) { ioe.printStackTrace(); }
     }
 
     public void sendCrypto(String msg) throws UnsupportedEncodingException, GeneralSecurityException{
         caes.createKey(chatAESKey);
         caes.modeEncrypt();
         String result = caes.msgAESEncrypt(msg);
-        System.out.println(result);
         try {
             oos.writeObject(id + "#" + result);
         } catch(IOException ioe) {
@@ -171,8 +204,31 @@ public class MultiClient {
         }catch(IOException ioe) { ioe.printStackTrace(); }
     }
 
-    public void streamCrypto() {
+    public void streamVideoCrypto() {
 
+    }
+
+    public void streamWebCamCrypto() {
+        try {
+            isStop = false;
+            streamos.writeUTF("Enter");
+            streamUser = streamis.readUTF();
+            if(streamUser.equals("")) { //become Streaming Owner
+                streamUser = id;
+                streamos.writeUTF(streamUser);
+                MyWebCam mwc = new MyWebCam(this);
+                Thread mwct = new Thread(mwc);
+                mwct.start();
+            }
+            else {  //become Streaming Client
+                streamUser = streamis.readUTF();
+            }
+
+            ReceiveWebCam rwc = new ReceiveWebCam(this);
+            Thread rwct = new Thread(rwc);
+            rwct.start();
+
+        }catch(IOException ioe) { ioe.printStackTrace(); }
     }
 
     public void enter() {
@@ -208,6 +264,15 @@ public class MultiClient {
         return sPrivateKey;
     }
 
+    public ArrayList<String> getCryptFiles() {
+        ArrayList<String> cryptFiles = new ArrayList<String>();
+        for(String fname: filearr) {
+            if(fname.contains(".cipher")) {
+                cryptFiles.add(fname);
+            }
+        }
+        return cryptFiles;
+    }
     public void useJf(JFrame jf) { this.jf = jf;}
 
     public void useJta(JTextArea jta) { this.jta = jta; }
@@ -226,6 +291,12 @@ public class MultiClient {
 
     public DataOutputStream getDos() { return dos; }
 
+    public DataInputStream getStreamis() { return streamis; }
+
+    public DataOutputStream getStreamos() { return streamos; }
+
+    public DataInputStream getRcvstreamis() { return rcvstreamis; }
+
     public ArrayList<String> getFilearr() { return filearr; }
 
     public ArrayList<String> getIdarr() { return idarr; }
@@ -235,6 +306,8 @@ public class MultiClient {
     public String getChatAESKey() { return chatAESKey; }
 
     public String getFirstUser() { return firstUser; }
+
+    public boolean getIsStop() { return isStop; }
 
     public CliAES getCaes() { return caes; }
 
@@ -249,6 +322,8 @@ public class MultiClient {
     public void setIdarr(ArrayList<String> idarr) { this.idarr = idarr; }
 
     public void setChatAESKey(String chatAESKey) { this.chatAESKey = chatAESKey; }
+
+    public void setIsStop(boolean isStop) { this.isStop = isStop; }
 
     public JFrame getJf() { return jf; }
 

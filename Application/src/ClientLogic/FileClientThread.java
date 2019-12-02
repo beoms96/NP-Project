@@ -122,8 +122,12 @@ public class FileClientThread implements Runnable{
             result = "DOWNLOAD ERROR";
             ioe.printStackTrace();
         } finally{
-            try{ bos.close(); } catch(IOException ioe) {ioe.printStackTrace();}
-            try{ fos.close(); } catch(IOException ioe) {ioe.printStackTrace();}
+            try {
+                bos.close();
+                fos.close();
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
         }
         return result;
     }

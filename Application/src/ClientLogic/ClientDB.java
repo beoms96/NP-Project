@@ -121,10 +121,6 @@ public class ClientDB {
         }
     }
 
-    public String getPublicKey() {
-        return publicKey;
-    }
-
     public String[] getPublicKeyList(String[] id) {
         dbConnect();
         ArrayList<String> arr = new ArrayList<String>();

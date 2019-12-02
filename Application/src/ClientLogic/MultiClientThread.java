@@ -1,5 +1,6 @@
 package ClientLogic;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MultiClientThread implements Runnable {
@@ -15,6 +16,7 @@ public class MultiClientThread implements Runnable {
     }
 
     //Method
+    @Override
     public void run() {
         String msg = null;
         String[] receive = null;
@@ -30,6 +32,14 @@ public class MultiClientThread implements Runnable {
             if(receive[1].equals("quit")) { //quit msg
                 if(receive[0].equals(mc.getId())) {
                     mc.getJf().setVisible(false);
+                    try {
+                        mc.getDis().close();
+                        mc.getDos().close();
+                        mc.getOis().close();
+                        mc.getOos().close();
+                        mc.getStreamis().close();
+                        mc.getStreamos().close();
+                    } catch(IOException ioe) { ioe.printStackTrace(); }
                     System.exit(0);
                 }
                 else {

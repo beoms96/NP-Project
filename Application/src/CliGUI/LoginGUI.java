@@ -13,7 +13,6 @@ import java.io.IOException;
 public class LoginGUI implements ActionListener {
     //Member
     private ClientDB cdb;
-    private ChatGUI cg;
 
     private JFrame jf;
     private JPanel idPanel, pwPanel, loginPanel;
@@ -49,15 +48,10 @@ public class LoginGUI implements ActionListener {
                 String ip = JOptionPane.showInputDialog(jf, "Input IP", "127.0.0.1");
                 if(ip!=null) {
                     jf.setVisible(false);
-                    if(check == 0) {
-                        try{
-                            cg = new ChatGUI(inputID, check, ip);
-                        } catch(IOException ioe) {ioe.printStackTrace();}
-                    }
-                    else if(check == 1) {
+                    if(check == 0 || check == 1) {
                         try {
-                            cg = new ChatGUI(inputID, check, ip, cdb.getPublicKey());
-                        } catch(IOException ioe) {ioe.printStackTrace();}
+                            new ChatGUI(inputID, check, ip);
+                        } catch(IOException ioe) { ioe.printStackTrace(); }
                     }
                     else if(check == JOptionPane.CLOSED_OPTION) {
                         cdb.dbDisconnect();

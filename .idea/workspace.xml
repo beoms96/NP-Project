@@ -7,56 +7,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e54382f3-bcc6-4623-b2b5-846cbbe22f6b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Server/src/CrypFileServerThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/CrypMultiServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/CrypMultiServerThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/OneServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/src/Streaming/MyPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/src/Streaming/MyWebCam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/src/Streaming/ReceiveWebCam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/CrypStreamServerThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/StreamServerThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StreamingExample/StreamingExample.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Application/Streaming/MyPanel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Application/Streaming/MyWebCam.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Application/Streaming/ReceiveWebCam$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Application/Streaming/ReceiveWebCam.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Server/CrypStreamServerThread.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Server/StreamServerThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/src/CliGUI/ChatGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/CliGUI/ChatGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/src/CliGUI/LoginGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/CliGUI/LoginGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/src/ClientLogic/ClientDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/ClientLogic/ClientDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/src/ClientLogic/CrypMultiClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/ClientLogic/CrypMultiClientThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/src/ClientLogic/FileClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/ClientLogic/FileClientThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/src/ClientLogic/MultiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/ClientLogic/MultiClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/src/ClientLogic/MultiClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/ClientLogic/MultiClientThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/Crypto/AESEncryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrytoExample/src/AESEncryption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/Crypto/CliAES.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/Crypto/CliAES.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/Crypto/CliRSA.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/Crypto/CliRSA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/Crypto/CryptoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrytoExample/src/CryptoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/Crypto/RC4Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrytoExample/src/RC4Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/Crypto/RSAEncryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrytoExample/src/RSAEncryption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/Crypto/RSAEx2.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrytoExample/src/RSAEx2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/Crypto/RSAManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrytoExample/src/RSAManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/Client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ClientExample/ClientExample.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/EchoClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/ClientExample/src/EchoClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/MultiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/ClientExample/src/MultiClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/MultiClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/ClientExample/src/MultiClientThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/UnicastClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/ClientExample/src/UnicastClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PrivateKey.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/EchoServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/ServerExample/src/EchoServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/src/ProcessMedia/ProcMedia.java" beforeDir="false" afterPath="$PROJECT_DIR$/StreamingExample/src/ProcMedia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/CrypFileServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/CrypFileServerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/CrypMultiServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/CrypMultiServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/CrypMultiServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/CrypMultiServerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/FileServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/FileServerThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/MultiServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/MultiServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/MultiServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/MultiServerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/ServerDB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/UnicastServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/ServerExample/src/UnicastServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/UnicastServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/ServerExample/src/UnicastServerThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Application_jar/Application.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Application_jar/Application.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Application_jar/PrivateKey.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Application/CliGUI/ChatGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/CliGUI/ChatGUI$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Application/CliGUI/ChatGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/CliGUI/ChatGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Application/CliGUI/LoginGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/CliGUI/LoginGUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Application/CliGUI/LoginGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/CliGUI/LoginGUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Application/ClientLogic/ClientDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/ClientLogic/ClientDB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Application/ClientLogic/CrypMultiClientThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/ClientLogic/CrypMultiClientThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Application/ClientLogic/FileClientThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/ClientLogic/FileClientThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Application/ClientLogic/MultiClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/ClientLogic/MultiClient.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Application/ClientLogic/MultiClientThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/ClientLogic/MultiClientThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Application/Crypto/AESEncryption.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Application/Crypto/CliRSA.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/Crypto/CliRSA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Application/Crypto/CryptoTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Application/Crypto/RC4Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Application/Crypto/RSAEncryption.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Application/Crypto/RSAEx2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Application/Crypto/RSAManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Server/EchoServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Application/ProcessMedia/ProcMedia.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Server/CrypFileServerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/CrypFileServerThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Server/CrypMultiServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/CrypMultiServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Server/CrypMultiServerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/CrypMultiServerThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Server/FileServerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/FileServerThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Server/MultiServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/MultiServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Server/MultiServerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/MultiServerThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Server/UnicastServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Server/UnicastServerThread.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,14 +88,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/CrytoExample/src" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/out/production/Application" />
+    <property name="last_opened_file_path" value="C:/Program Files/opencv/build/java/opencv-411.jar!/" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15429688" />
     <property name="project.structure.side.proportion" value="0.2517321" />
   </component>
@@ -111,7 +106,7 @@
       <recent name="ClientLogic" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CryptoTest">
+  <component name="RunManager" selected="Application.MGUI">
     <configuration name="CryptoTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="CryptoTest" />
       <module name="CrytoExample" />
@@ -138,9 +133,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MultiClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MultiClient" />
-      <module name="ClientExample" />
+    <configuration name="MyWebCam" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Streaming.MyWebCam" />
+      <module name="Application" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Streaming.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -152,9 +153,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RSAManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="RSAManager" />
-      <module name="CrytoExample" />
+    <configuration name="ProcMedia" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ProcMedia" />
+      <module name="StreamingExample" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value=".*" />
@@ -168,17 +169,17 @@
     <list>
       <item itemvalue="Application.MGUI" />
       <item itemvalue="Application.CryptoTest" />
-      <item itemvalue="Application.RSAManager" />
-      <item itemvalue="Application.MultiClient" />
       <item itemvalue="Application.OneServer" />
+      <item itemvalue="Application.ProcMedia" />
+      <item itemvalue="Application.MyWebCam" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MGUI" />
+        <item itemvalue="Application.MyWebCam" />
+        <item itemvalue="Application.ProcMedia" />
         <item itemvalue="Application.CryptoTest" />
         <item itemvalue="Application.OneServer" />
-        <item itemvalue="Application.MGUI" />
-        <item itemvalue="Application.MultiClient" />
-        <item itemvalue="Application.RSAManager" />
       </list>
     </recent_temporary>
   </component>
@@ -250,6 +251,9 @@
       <workItem from="1575245545407" duration="16000" />
       <workItem from="1575246099455" duration="1923000" />
       <workItem from="1575248049884" duration="3059000" />
+      <workItem from="1575253238347" duration="70000" />
+      <workItem from="1575266749589" duration="14791000" />
+      <workItem from="1575290040296" duration="11332000" />
     </task>
     <task id="LOCAL-00001" summary="unicast">
       <created>1573544988285</created>
@@ -307,7 +311,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575131175246</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Crypto Chatting Complete">
+      <created>1575253289664</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1575253289664</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,61 +347,94 @@
     <MESSAGE value="Chat GUI Complete" />
     <MESSAGE value="PlainChatting &amp; FTP Complete" />
     <MESSAGE value="Crypto FTP Complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Crypto FTP Complete" />
+    <MESSAGE value="Crypto Chatting Complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="Crypto Chatting Complete" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="73" key="#Project_Structure" timestamp="1575188440416">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="73" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1575188440416" />
-    <state x="574" y="118" key="#com.intellij.ide.util.MemberChooser" timestamp="1575199258273">
+    <state x="447" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1575271739027">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="118" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1575199258273" />
+    <state x="447" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1575271739027" />
+    <state x="263" y="119" key="#com.intellij.ide.util.MemberChooser" timestamp="1575292301919">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="263" y="119" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1575292301919" />
     <state x="499" y="195" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1575188770757">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="195" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1575188770757" />
-    <state x="565" y="278" width="405" height="274" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1575188887960">
+    <state x="654" y="201" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1575298830791">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="565" y="278" width="405" height="274" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1575188887960" />
+    <state x="654" y="201" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1575298830791" />
+    <state x="646" y="121" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1575271266491">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="646" y="121" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1536.824@0.0.1536.824" timestamp="1575271266491" />
+    <state x="565" y="278" width="405" height="274" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1575269038926">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="565" y="278" width="405" height="274" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1575269038926" />
     <state x="883" y="161" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1575129186825">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="883" y="161" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1575129186825" />
-    <state x="499" y="169" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1575195887696">
+    <state x="499" y="169" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1575269218140">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="169" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1536.824@0.0.1536.824" timestamp="1575195887696" />
-    <state x="358" y="9" key="CommitChangelistDialog2" timestamp="1575131173191">
+    <state x="499" y="169" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1536.824@0.0.1536.824" timestamp="1575269218140" />
+    <state x="358" y="9" key="CommitChangelistDialog2" timestamp="1575301416858">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="358" y="9" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1575131173191" />
-    <state width="1493" height="241" key="GridCell.Tab.0.bottom" timestamp="1575247975175">
+    <state x="358" y="9" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1575301416858" />
+    <state x="928" y="171" key="FileChooserDialogImpl" timestamp="1575271545590">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="241" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1575247975175" />
-    <state width="1493" height="241" key="GridCell.Tab.0.center" timestamp="1575247975175">
+    <state x="928" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1575271545590" />
+    <state width="723" height="240" key="GridCell.Tab.0.bottom" timestamp="1575273467436">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="241" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1575247975175" />
-    <state width="1493" height="241" key="GridCell.Tab.0.left" timestamp="1575247975174">
+    <state width="723" height="240" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1575273467436" />
+    <state width="723" height="240" key="GridCell.Tab.0.center" timestamp="1575273467436">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="241" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1575247975174" />
-    <state width="1493" height="241" key="GridCell.Tab.0.right" timestamp="1575247975175">
+    <state width="723" height="240" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1575273467436" />
+    <state width="723" height="240" key="GridCell.Tab.0.left" timestamp="1575273467436">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="241" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1575247975175" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1575195895876">
+    <state width="723" height="240" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1575273467436" />
+    <state width="723" height="240" key="GridCell.Tab.0.right" timestamp="1575273467436">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1575195895876" />
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1575131237695">
+    <state width="723" height="240" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1575273467436" />
+    <state width="1493" height="260" key="GridCell.Tab.1.bottom" timestamp="1575273254247">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1575131237695" />
+    <state width="1493" height="260" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1575273254247" />
+    <state width="1493" height="260" key="GridCell.Tab.1.center" timestamp="1575273254247">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="260" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1575273254247" />
+    <state width="1493" height="260" key="GridCell.Tab.1.left" timestamp="1575273254247">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="260" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1575273254247" />
+    <state width="1493" height="260" key="GridCell.Tab.1.right" timestamp="1575273254247">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="260" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1575273254247" />
+    <state x="404" y="0" key="SettingsEditor" timestamp="1575298837239">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="404" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1575298837239" />
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1575253297242">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1575253297242" />
     <state x="571" y="195" key="chooseDestDirectoryDialog" timestamp="1575188835629">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -399,10 +443,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="572" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1575198114211" />
-    <state x="180" y="55" key="new project wizard" timestamp="1575188811978">
+    <state x="180" y="55" key="new project wizard" timestamp="1575269001320">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="180" y="55" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1575188811978" />
+    <state x="180" y="55" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1575269001320" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1575190988639">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
