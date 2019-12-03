@@ -66,7 +66,7 @@ public class MultiServer implements Runnable{
         ArrayList<String> result = new ArrayList<String>();
         String path = System.getProperty("user.dir");
         File dir = new File(path);
-        String files[]  = dir.list();
+        String[] files  = dir.list();
         for (String fn: files)
             result.add(fn);
         return result;

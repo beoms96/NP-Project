@@ -12,6 +12,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import static org.opencv.highgui.HighGui.toBufferedImage;
+import static org.opencv.videoio.Videoio.CAP_DSHOW;
 
 public class MyWebCam implements Runnable{
     static{System.loadLibrary(Core.NATIVE_LIBRARY_NAME);}
@@ -25,7 +26,7 @@ public class MyWebCam implements Runnable{
 
     @Override
     public void run() {
-        VideoCapture cap = new VideoCapture(0);
+        VideoCapture cap = new VideoCapture(0, CAP_DSHOW);
 
         if(!cap.isOpened()) {
             System.exit(-1);
@@ -48,6 +49,7 @@ public class MyWebCam implements Runnable{
         } catch(Exception e) {
             e.printStackTrace();
         }
+        cap.release();
     }
 
     public void sendImage(Mat image) {

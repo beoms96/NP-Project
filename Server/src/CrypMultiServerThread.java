@@ -47,16 +47,13 @@ public class CrypMultiServerThread implements Runnable {
                         String idAndKey = ms.getFirstID() + "#" + ms.getEncryptedKey();
                         oos.writeObject(idAndKey);
                     }
+                    System.out.println(ms.getEncryptedKey());
                 }
                 else {
                     broadCasting(msg);
                 }
             }   //end while
-            int index = ms.getList().indexOf(this);
-            System.out.println("index: " + index);
             ms.getList().remove(this);
-            ms.getFstList().remove(index);
-            ms.getSstList().remove(index);
             System.out.println(socket.getInetAddress() + " Normally Terminate.");
             System.out.println("Current Crypto Client: " + ms.getList().size());
             if(ms.getList().size()==0) {
@@ -64,6 +61,7 @@ public class CrypMultiServerThread implements Runnable {
             }
         }
         catch(Exception e) {
+            e.printStackTrace();
             ms.getList().remove(this);
             System.out.println(socket.getInetAddress() + " Abnormally Terminate.");
             System.out.println("Current Crypto Client: " + ms.getList().size());

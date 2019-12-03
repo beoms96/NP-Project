@@ -60,7 +60,10 @@ public class FileServerThread implements Runnable{
                 }
             }
             ms.getFstList().remove(this);
-        } catch(IOException ioe) { ioe.printStackTrace(); }
+        } catch(IOException ioe) {
+            ms.getFstList().remove(this);
+            ioe.printStackTrace();
+        }
     }
 
     public String fileRead(DataOutputStream dos, String fileName) {

@@ -89,9 +89,6 @@ public class MultiClient {
         ois = new ObjectInputStream(socket.getInputStream());
         dos = new DataOutputStream(fileSocket.getOutputStream());
         dis = new DataInputStream(fileSocket.getInputStream());
-        streamos = new DataOutputStream(videoSocket.getOutputStream());
-        streamis = new DataInputStream(videoSocket.getInputStream());
-        rcvstreamis = new DataInputStream(rcvSocket.getInputStream());
 
         if(check == 0) {
             ct = new MultiClientThread(this);
@@ -148,6 +145,9 @@ public class MultiClient {
 
     public void streamWebCamNormal() {
         try {
+            streamos = new DataOutputStream(videoSocket.getOutputStream());
+            streamis = new DataInputStream(videoSocket.getInputStream());
+            isStop = false;
             streamos.writeUTF("Enter");
             streamUser = streamis.readUTF();
             if(streamUser.equals("")) { //become Streaming Owner
@@ -160,7 +160,7 @@ public class MultiClient {
             else {  //become Streaming Client
                 streamUser = streamis.readUTF();
             }
-
+            rcvstreamis = new DataInputStream(rcvSocket.getInputStream());
             ReceiveWebCam rwc = new ReceiveWebCam(this);
             Thread rwct = new Thread(rwc);
             rwct.start();
@@ -210,6 +210,8 @@ public class MultiClient {
 
     public void streamWebCamCrypto() {
         try {
+            streamos = new DataOutputStream(videoSocket.getOutputStream());
+            streamis = new DataInputStream(videoSocket.getInputStream());
             isStop = false;
             streamos.writeUTF("Enter");
             streamUser = streamis.readUTF();
@@ -223,7 +225,7 @@ public class MultiClient {
             else {  //become Streaming Client
                 streamUser = streamis.readUTF();
             }
-
+            rcvstreamis = new DataInputStream(rcvSocket.getInputStream());
             ReceiveWebCam rwc = new ReceiveWebCam(this);
             Thread rwct = new Thread(rwc);
             rwct.start();
@@ -243,6 +245,7 @@ public class MultiClient {
         try {
             oos.writeObject(id+"#quit");
             dos.writeUTF("quit");
+            streamos.writeUTF(id+"#quit");
         } catch(IOException ioe) { ioe.printStackTrace(); }
     }
 
@@ -309,6 +312,8 @@ public class MultiClient {
 
     public boolean getIsStop() { return isStop; }
 
+    public String getStreamUser() { return streamUser; }
+
     public CliAES getCaes() { return caes; }
 
     public CliRSA getCrsa() { return crsa; }
@@ -324,6 +329,8 @@ public class MultiClient {
     public void setChatAESKey(String chatAESKey) { this.chatAESKey = chatAESKey; }
 
     public void setIsStop(boolean isStop) { this.isStop = isStop; }
+
+    public void setRcvstreamis(DataInputStream rcvstreamis) { this.rcvstreamis = rcvstreamis; }
 
     public JFrame getJf() { return jf; }
 

@@ -11,7 +11,7 @@ import java.awt.image.DataBufferByte;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
@@ -27,20 +27,26 @@ public class ReceiveWebCam implements Runnable{
     private final MyPanel panel;
 
     public ReceiveWebCam(MultiClient mc) {
-        System.out.println(mc.getId() + "Receiving Start");
+        System.out.println(mc.getId() + " Receiving Start");
         this.mc = mc;
 
-        frame = new JFrame("Camera Streaming");
+        frame = new JFrame(mc.getId() + ": " + mc.getStreamUser() + " is Camera Streaming");
         frame.getContentPane().setLayout(new FlowLayout());
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 frame.setVisible(false);
-                setStop(true);
-                try {
-                    mc.getStreamos().writeUTF(mc.getId() + "#Quit");
-                } catch(IOException ioe) { ioe.printStackTrace(); }
-
+                if(mc.getStreamUser().equals(mc.getId())) { //Owner
+                    try {
+                        mc.getStreamos().writeUTF("OwnerQuit");
+                        mc.getStreamos().writeInt(0);
+                    }catch(IOException ioe) { ioe.printStackTrace(); }
+                }
+                else {
+                    try {
+                        mc.getStreamos().writeUTF("ClientQuit");
+                    } catch(IOException ioe) { ioe.printStackTrace(); }
+                }
             }
         });
 
@@ -59,13 +65,19 @@ public class ReceiveWebCam implements Runnable{
             while(!mc.getIsStop()) {
                 //Read current camera frame into matrix
                 image = receiveCam();
-                if(!image.empty()) {
-                    render(image);
+                if(image == null) {
+                    JOptionPane.showMessageDialog(mc.getJf(), "Terminate Streaming");
                 }
                 else {
-                    System.out.println("No captured frame -- camera disconnected");
+                    if(!image.empty()) {
+                        render(image);
+                    }
+                    else {
+                        System.out.println("No captured frame -- camera disconnected");
+                    }
                 }
             }
+            frame.setVisible(false);
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -78,10 +90,6 @@ public class ReceiveWebCam implements Runnable{
         frame.pack();
     }
 
-    public void setStop(boolean stop) {
-        mc.setIsStop(stop);
-    }
-
     public Mat receiveCam() {
         Mat image = new Mat();
         try {
@@ -92,8 +100,8 @@ public class ReceiveWebCam implements Runnable{
                 mc.getRcvstreamis().readFully(data, 0, data.length);
             }
             else if(length == 0) {
-                frame.setVisible(false);
-                setStop(true);
+                mc.setIsStop(true);
+                return null;
             }
             ByteArrayInputStream bais = new ByteArrayInputStream(data);
             BufferedImage imag = ImageIO.read(bais);
