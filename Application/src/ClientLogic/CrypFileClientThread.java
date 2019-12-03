@@ -152,14 +152,10 @@ public class CrypFileClientThread implements Runnable {
                 if(decryptData != null) {
                     bos.write(decryptData);
                 }
-            } catch(GeneralSecurityException gse) { gse.printStackTrace(); }
-
-            if(decryptData == null) {
+                result = "DOWNLOAD SUCCESS";
+            } catch(GeneralSecurityException gse) {
                 JOptionPane.showMessageDialog(mc.getJf(), "Not Matched Key");
                 result = "DOWNLOAD ERROR";
-            }
-            else {
-                result = "DOWNLOAD SUCCESS";
             }
 
         } catch (IOException ioe) {
@@ -204,7 +200,7 @@ public class CrypFileClientThread implements Runnable {
             fos = new FileOutputStream(Efile);
             bos = new BufferedOutputStream(fos);
 
-            int len, Elen = 0;
+            int len = 0;
             int size = 1024;
             int totalSize = 0;
             Long fileSize = fileList.get(i).length();

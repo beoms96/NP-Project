@@ -32,14 +32,6 @@ public class MultiClientThread implements Runnable {
             if(receive[1].equals("quit")) { //quit msg
                 if(receive[0].equals(mc.getId())) {
                     mc.getJf().setVisible(false);
-                    try {
-                        mc.getDis().close();
-                        mc.getDos().close();
-                        mc.getOis().close();
-                        mc.getOos().close();
-                        mc.getStreamis().close();
-                        mc.getStreamos().close();
-                    } catch(IOException ioe) { ioe.printStackTrace(); }
                     System.exit(0);
                 }
                 else {

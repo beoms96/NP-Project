@@ -2,6 +2,8 @@ package ClientLogic;
 
 import Crypto.CliAES;
 import Crypto.CliRSA;
+import Streaming.CrypRcvWebCam;
+import Streaming.CrypWebCam;
 import Streaming.MyWebCam;
 import Streaming.ReceiveWebCam;
 
@@ -89,6 +91,7 @@ public class MultiClient {
         ois = new ObjectInputStream(socket.getInputStream());
         dos = new DataOutputStream(fileSocket.getOutputStream());
         dis = new DataInputStream(fileSocket.getInputStream());
+        streamos = new DataOutputStream(videoSocket.getOutputStream());
 
         if(check == 0) {
             ct = new MultiClientThread(this);
@@ -145,7 +148,6 @@ public class MultiClient {
 
     public void streamWebCamNormal() {
         try {
-            streamos = new DataOutputStream(videoSocket.getOutputStream());
             streamis = new DataInputStream(videoSocket.getInputStream());
             isStop = false;
             streamos.writeUTF("Enter");
@@ -204,13 +206,12 @@ public class MultiClient {
         }catch(IOException ioe) { ioe.printStackTrace(); }
     }
 
-    public void streamVideoCrypto() {
+    public void streamVideoCrypto(File f, String path) {
 
     }
 
-    public void streamWebCamCrypto() {
+    public void streamWebCamCrypto(String key) {
         try {
-            streamos = new DataOutputStream(videoSocket.getOutputStream());
             streamis = new DataInputStream(videoSocket.getInputStream());
             isStop = false;
             streamos.writeUTF("Enter");
@@ -218,7 +219,7 @@ public class MultiClient {
             if(streamUser.equals("")) { //become Streaming Owner
                 streamUser = id;
                 streamos.writeUTF(streamUser);
-                MyWebCam mwc = new MyWebCam(this);
+                CrypWebCam mwc = new CrypWebCam(this, key);
                 Thread mwct = new Thread(mwc);
                 mwct.start();
             }
@@ -226,7 +227,7 @@ public class MultiClient {
                 streamUser = streamis.readUTF();
             }
             rcvstreamis = new DataInputStream(rcvSocket.getInputStream());
-            ReceiveWebCam rwc = new ReceiveWebCam(this);
+            CrypRcvWebCam rwc = new CrypRcvWebCam(this, key);
             Thread rwct = new Thread(rwc);
             rwct.start();
 

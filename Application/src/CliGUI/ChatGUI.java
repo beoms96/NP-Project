@@ -80,9 +80,16 @@ public class ChatGUI implements ActionListener{
                 if(check == 0)
                     mc.uploadNormal(f, path);
                 else if(check == 1){
-                    String key = JOptionPane.showInputDialog(jf, "Input Key For Encrypted > 32","12345678901234567890123456789012345");
+                    String key = JOptionPane.showInputDialog(jf, "Input Key For Encrypted > 32","12345678901234567890123456789012");
                     try {
-                        mc.uploadCrypto(f, path, key);
+                        if (key != null) {
+                            if(key.length()<32) {
+                                JOptionPane.showMessageDialog(jf, "Not Proper Key Size");
+                            }
+                            else {
+                                mc.uploadCrypto(f, path, key);
+                            }
+                        }
                     } catch(UnsupportedEncodingException u) { u.printStackTrace(); }
                 }
             }
@@ -105,12 +112,17 @@ public class ChatGUI implements ActionListener{
                     if(selected == null)
                         JOptionPane.showMessageDialog(jf, "Not Download!");
                     else {
-                        String key = JOptionPane.showInputDialog(jf, "Input Key for Decrypted > 32","12345678901234567890123456789012345");
+                        String key = JOptionPane.showInputDialog(jf, "Input Key for Decrypted > 32","12345678901234567890123456789012");
                         if(key!=null) {
-                            try {
-                                mc.downloadCrypto((String) selected, key);
-                            } catch (UnsupportedEncodingException u) {
-                                u.printStackTrace();
+                            if(key.length()<32) {
+                                JOptionPane.showMessageDialog(jf, "Not Proper Key Size");
+                            }
+                            else {
+                                try {
+                                    mc.downloadCrypto((String) selected, key);
+                                } catch (UnsupportedEncodingException u) {
+                                    u.printStackTrace();
+                                }
                             }
                         }
                     }
@@ -139,7 +151,7 @@ public class ChatGUI implements ActionListener{
                         if(check == 0)
                             mc.streamVideoNormal(f, path);
                         else if(check == 1){
-                            mc.streamVideoCrypto();
+                            mc.streamVideoCrypto(f, path);
                         }
                     }
                 }
@@ -147,7 +159,15 @@ public class ChatGUI implements ActionListener{
                     if(check == 0)
                         mc.streamWebCamNormal();
                     else if(check == 1){
-                        mc.streamWebCamCrypto();
+                        String key = JOptionPane.showInputDialog(jf, "Input Key > 32","12345678901234567890123456789012");
+                        if(key!=null) {
+                            if(key.length()<32) {
+                                JOptionPane.showMessageDialog(jf, "Not Proper Key Size");
+                            }
+                            else {
+                                mc.streamWebCamCrypto(key);
+                            }
+                        }
                     }
                 }
             }
