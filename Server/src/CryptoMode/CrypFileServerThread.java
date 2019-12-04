@@ -1,3 +1,5 @@
+package CryptoMode;
+
 import java.io.*;
 import java.net.Socket;
 

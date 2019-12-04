@@ -1,30 +1,29 @@
+package NormalMode;
+
 import java.io.*;
 import java.net.*;
 import java.util.*;
 
-public class CrypMultiServer implements Runnable{
+public class MultiServer implements Runnable{
     //Member
     private Socket socket;
     private Socket fileSocket;
     private Socket videoSocket;
     private Socket rcvSocket;
-    private ArrayList<CrypMultiServerThread> list;
-    private ArrayList<CrypFileServerThread> fstList;
-    private ArrayList<CrypStreamServerThread> sstList;
+    private ArrayList<MultiServerThread> list;
+    private ArrayList<FileServerThread> fstList;
+    private ArrayList<StreamServerThread> sstList;
     private ArrayList<String> idList;
     private ArrayList<String> fileList;
-
-    private String encryptedKey;
-    private String firstID;
 
     private String streamUser;
 
     //Constructor
-    public CrypMultiServer() {
-        System.out.println("Crypto Server Start");
-        list = new ArrayList<CrypMultiServerThread>();
-        fstList = new ArrayList<CrypFileServerThread>();
-        sstList = new ArrayList<CrypStreamServerThread>();
+    public MultiServer() {
+        System.out.println("Normal Server Start");
+        list = new ArrayList<MultiServerThread>();
+        fstList = new ArrayList<FileServerThread>();
+        sstList = new ArrayList<StreamServerThread>();
         idList = new ArrayList<String>();
         fileList = findFileList();
         streamUser = "";
@@ -35,22 +34,22 @@ public class CrypMultiServer implements Runnable{
     public void run() {
         boolean isStop = false;
         try {
-            ServerSocket ss = new ServerSocket(10000);   //---1
-            ServerSocket fss = new ServerSocket(11000);
-            ServerSocket vss = new ServerSocket(13000);
-            ServerSocket rss = new ServerSocket(15000);
-            CrypMultiServerThread mst = null;
-            CrypFileServerThread fst = null;
-            CrypStreamServerThread sst = null;
+            ServerSocket ss = new ServerSocket(8000);   //---1
+            ServerSocket fss = new ServerSocket(9000);
+            ServerSocket vss = new ServerSocket(12000);
+            ServerSocket rss = new ServerSocket(14000);
+            MultiServerThread mst = null;
+            FileServerThread fst = null;
+            StreamServerThread sst = null;
             while(!isStop) {
-                System.out.println("Crypto Server Read...");
+                System.out.println("Normal Server Read...");
                 socket = ss.accept();   //Waiting Connect---2
                 fileSocket = fss.accept();
                 videoSocket = vss.accept();
                 rcvSocket = rss.accept();
-                mst = new CrypMultiServerThread(this);
-                fst = new CrypFileServerThread(this);
-                sst = new CrypStreamServerThread(this);
+                mst = new MultiServerThread(this);
+                fst = new FileServerThread(this);
+                sst = new StreamServerThread(this);
                 list.add(mst);  //---3
                 fstList.add(fst);
                 sstList.add(sst);
@@ -64,13 +63,16 @@ public class CrypMultiServer implements Runnable{
         } catch(IOException ioe) { ioe.printStackTrace(); }
     }
 
+    //Method
     public ArrayList<String> findFileList() {
         ArrayList<String> result = new ArrayList<String>();
         String path = System.getProperty("user.dir");
         File dir = new File(path);
-        String[] files  = dir.list();
-        for (String fn: files)
-            result.add(fn);
+        File[] files = dir.listFiles();
+        for (File fn: files) {
+            if(fn.isFile())
+                result.add(fn.getName());
+        }
         return result;
     }
 
@@ -82,27 +84,19 @@ public class CrypMultiServer implements Runnable{
 
     public Socket getRcvSocket() { return rcvSocket; }
 
-    public ArrayList<CrypStreamServerThread> getSstList() { return sstList; }
+    public ArrayList<StreamServerThread> getSstList() { return sstList; }
 
-    public ArrayList<CrypMultiServerThread> getList() { return list; }
+    public ArrayList<MultiServerThread> getList() { return list; }
 
-    public ArrayList<CrypFileServerThread> getFstList() { return fstList; }
+    public ArrayList<FileServerThread> getFstList() { return fstList; }
 
     public ArrayList<String> getIdList() { return idList; }
 
     public ArrayList<String> getFileList() { return fileList; }
 
-    public String getEncryptedKey() { return encryptedKey; }
-
-    public String getFirstID() { return firstID; }
-
     public String getStreamUser() { return streamUser; }
 
     public void setStreamUser(String streamUser) { this.streamUser = streamUser; }
-
-    public void setEncryptedKey(String encryptedKey) { this.encryptedKey = encryptedKey; }
-
-    public void setFirstID(String firstID) { this.firstID = firstID; }
 
     public void setFileList(ArrayList<String> fileList) { this.fileList = fileList; }
 }

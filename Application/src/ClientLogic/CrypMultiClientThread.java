@@ -2,6 +2,7 @@ package ClientLogic;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CrypMultiClientThread implements Runnable {
     //Member
@@ -30,6 +31,8 @@ public class CrypMultiClientThread implements Runnable {
             }
             if(receive[1].equals("quit")) { //quit msg
                 if(receive[0].equals(mc.getId())) {
+                    mc.getIdarr().remove(receive[0]);
+                    updatePKList();
                     mc.getJf().setVisible(false);
                     System.exit(0);
                 }
@@ -65,12 +68,13 @@ public class CrypMultiClientThread implements Runnable {
                             String idAndKey = (String) mc.getOis().readObject();
                             String[] idKey = idAndKey.split("#");
                             mc.setFirstUser(idKey[0]);
-                            mc.setChatAESKey(mc.getCrsa().decode(idKey[1], mc.getCdb().getFUPublicKey(mc.getFirstUser())));
+                            String stringPublicKey = (String) mc.getOis().readObject();
+                            mc.setChatAESKey(mc.getCrsa().decode(idKey[1], stringPublicKey));
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
+                        System.out.println(mc.getId() + " " + mc.getChatAESKey());
                     }
-                    System.out.println(mc.getId() + " " + mc.getChatAESKey());
                 }
             }
             else {  //normal msg
@@ -96,10 +100,18 @@ public class CrypMultiClientThread implements Runnable {
 
     public void updatePKList() {
         String[] idarr = mc.getIdarr().toArray(new String[mc.getIdarr().size()]);
-        String[] pkList = mc.getCdb().getPublicKeyList(idarr);
-        for (int i=0;i<idarr.length;i++) {
-            mc.getPublicKeyList().put(idarr[i], pkList[i]);
-        }
+        mc.setPublicKeyList(new HashMap<String, String>());
+        try {
+            ArrayList<String> arr = new ArrayList<String>();
+            for(int i=0; i<idarr.length;i++) {
+                String pk = (String)mc.getOis().readObject();
+                arr.add(pk);
+            }
+            String[] pkList = arr.toArray(new String[arr.size()]);
+            for (int i=0;i<idarr.length;i++) {
+                mc.getPublicKeyList().put(idarr[i], pkList[i]);
+            }
+        } catch(ClassNotFoundException | IOException e) { e.printStackTrace(); }
     }
 
 }

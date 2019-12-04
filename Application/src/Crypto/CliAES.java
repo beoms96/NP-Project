@@ -29,7 +29,6 @@ public class CliAES {    //For Movie Encryption, AES256 - 키가 256bit, 32바�
     private String iv;
     private Key keySpec;
 
-    private String key;
     private Cipher cipher;
 
 
@@ -40,7 +39,6 @@ public class CliAES {    //For Movie Encryption, AES256 - 키가 256bit, 32바�
      */
 
     public void createKey(String key) throws UnsupportedEncodingException{
-        this.key = key;
         this.iv = key.substring(0,16);
         byte[] keyBytes = new byte[32];
         byte[] b = key.getBytes("UTF-8");

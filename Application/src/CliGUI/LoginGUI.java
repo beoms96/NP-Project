@@ -1,6 +1,6 @@
 package CliGUI;
 
-import ClientLogic.ClientDB;
+import ClientLogic.RequestLogin;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class LoginGUI implements ActionListener {
     //Member
-    private ClientDB cdb;
+    private RequestLogin rl;
 
     private JFrame jf;
     private JPanel idPanel, pwPanel, loginPanel;
@@ -23,11 +23,18 @@ public class LoginGUI implements ActionListener {
     private JLabel idLabel;
     private JLabel pwLabel;
 
+    private String ip;
+
     //Constructor
     public LoginGUI() {
         JFrame.setDefaultLookAndFeelDecorated(true);
-        cdb = new ClientDB();
         setForm();
+        ip = JOptionPane.showInputDialog(jf, "Input IP", "127.0.0.1");
+        if(ip==null) {
+            jf.setVisible(false);
+            System.exit(0);
+        }
+        rl = new RequestLogin(ip);
     }
 
     //Method
@@ -37,7 +44,7 @@ public class LoginGUI implements ActionListener {
         String inputPW = new String(pwt.getPassword());
 
         if(obj == pwt || obj == loginBt) {
-            if(!cdb.checkInfo(inputID, inputPW)) {
+            if(!rl.checkInfo(inputID, inputPW)) {
                 JOptionPane.showMessageDialog(jf, "Wrong ID or PW", "Warning", JOptionPane.WARNING_MESSAGE);
             }
             else {
@@ -45,23 +52,19 @@ public class LoginGUI implements ActionListener {
                 JOptionPane.showMessageDialog(jf, "Login Complete", "Success", JOptionPane.INFORMATION_MESSAGE);
                 String[] checks = {"Normal", "Crypto"};
                 int check = JOptionPane.showOptionDialog(jf, "Select Your Chatting Mode", "Check", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, checks, checks[0]);
-                String ip = JOptionPane.showInputDialog(jf, "Input IP", "127.0.0.1");
-                if(ip!=null) {
-                    jf.setVisible(false);
-                    if(check == 0 || check == 1) {
-                        try {
-                            new ChatGUI(inputID, check, ip);
-                        } catch(IOException ioe) { ioe.printStackTrace(); }
-                    }
-                    else if(check == JOptionPane.CLOSED_OPTION) {
-                        cdb.dbDisconnect();
-                        System.exit(0);
-                    }
+                jf.setVisible(false);
+                if(check == 0 || check == 1) {
+                    try {
+                        new ChatGUI(inputID, check, ip);
+                    } catch(IOException ioe) { ioe.printStackTrace(); }
+                }
+                else if(check == JOptionPane.CLOSED_OPTION) {
+                    System.exit(0);
                 }
             }
         }
         else if(obj == signupBt) {
-            if(!cdb.insertInfo(inputID, inputPW)) {
+            if(!rl.insertInfo(inputID, inputPW)) {
                 JOptionPane.showMessageDialog(jf, "Sign Up Failed-ID Duplicate", "Warning", JOptionPane.WARNING_MESSAGE);
             }
             else {  //Stay Display
@@ -102,11 +105,6 @@ public class LoginGUI implements ActionListener {
         jf.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                try {
-                    cdb.dbDisconnect();
-                } catch(Exception e1) {
-                    e1.printStackTrace();
-                }
                 System.exit(0);
             }
 
@@ -125,3 +123,5 @@ public class LoginGUI implements ActionListener {
     }
 
 }
+
+

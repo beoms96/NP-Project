@@ -47,7 +47,6 @@ public class MultiClient {
     private CliAES caes;
     private CliRSA crsa;
 
-    private ClientDB cdb;
     private String chatAESKey;
     private String firstUser;
     private HashMap<String, String> publicKeyList;
@@ -64,12 +63,11 @@ public class MultiClient {
         idarr = new ArrayList<String>();
         filearr = new ArrayList<String>();
         streamUser = "";
-        isStop = false;
+        isStop = true;
 
         this.firstUser = "";
         caes = new CliAES();
         crsa = new CliRSA();
-        cdb = new ClientDB();
         publicKeyList = new HashMap<>();
     }
 
@@ -295,8 +293,6 @@ public class MultiClient {
 
     public DataOutputStream getDos() { return dos; }
 
-    public DataInputStream getStreamis() { return streamis; }
-
     public DataOutputStream getStreamos() { return streamos; }
 
     public DataInputStream getRcvstreamis() { return rcvstreamis; }
@@ -319,8 +315,6 @@ public class MultiClient {
 
     public CliRSA getCrsa() { return crsa; }
 
-    public ClientDB getCdb() { return cdb; }
-
     public void setFirstUser(String firstUser) { this.firstUser = firstUser; }
 
     public void setFilearr(ArrayList<String> filearr) { this.filearr = filearr; }
@@ -331,7 +325,7 @@ public class MultiClient {
 
     public void setIsStop(boolean isStop) { this.isStop = isStop; }
 
-    public void setRcvstreamis(DataInputStream rcvstreamis) { this.rcvstreamis = rcvstreamis; }
+    public void setPublicKeyList(HashMap<String, String> publicKeyList) { this.publicKeyList = publicKeyList; }
 
     public JFrame getJf() { return jf; }
 

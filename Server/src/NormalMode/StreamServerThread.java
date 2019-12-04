@@ -1,11 +1,13 @@
+package NormalMode;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-public class CrypStreamServerThread implements Runnable{
+public class StreamServerThread implements Runnable{
     //Member
-    private CrypMultiServer ms;
+    private MultiServer ms;
     private DataOutputStream dos;
     private DataInputStream dis;
     private DataOutputStream rcvdos;
@@ -15,7 +17,7 @@ public class CrypStreamServerThread implements Runnable{
 
     private boolean start;
 
-    public CrypStreamServerThread(CrypMultiServer ms) {
+    public StreamServerThread(MultiServer ms) {
         this.ms = ms;
         socket = ms.getVideoSocket();
         rcvSocket = ms.getRcvSocket();
@@ -61,13 +63,13 @@ public class CrypStreamServerThread implements Runnable{
                 else if(msg.equals("OwnerQuit")) {
                     int length = dis.readInt();
                     if(length == 0) {
-                        for (CrypStreamServerThread sst: ms.getSstList()) {
+                        for (StreamServerThread sst: ms.getSstList()) {
                             if(sst.getStart())
                                 sst.send(length);
                         }
                     }
                     ms.setStreamUser("");
-                    for(CrypStreamServerThread sst: ms.getSstList()) {
+                    for(StreamServerThread sst: ms.getSstList()) {
                         if(sst.getStart())
                             sst.setStart(false);
                     }
@@ -89,7 +91,7 @@ public class CrypStreamServerThread implements Runnable{
     }
 
     public void broadCasting(byte[] msg) throws IOException {
-        for (CrypStreamServerThread sst: ms.getSstList()) {
+        for (StreamServerThread sst: ms.getSstList()) {
             if(sst.getStart())
                 sst.send(msg);
         }
@@ -111,4 +113,3 @@ public class CrypStreamServerThread implements Runnable{
         this.start = start;
     }
 }
-

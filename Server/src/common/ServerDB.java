@@ -1,15 +1,10 @@
-package ClientLogic;
+package common;
 
-import Crypto.CliRSA;
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ClientDB {
+public class ServerDB {
     //mysql -u root -p
     //use user
     private Connection con = null;
@@ -20,12 +15,12 @@ public class ClientDB {
     private String user_name = "root";  //MysQL Server ID
     private String password = "123456";
 
-    private CliRSA crsa;
+    private ServerRSA srsa;
     private HashMap<String, String> rsaKeyPair;
-    private String publicKey;
+    private String privateKey;
     private String[] publicKeyList;
 
-    public ClientDB() {
+    public ServerDB() {
         // 1. Driver loading
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -64,9 +59,10 @@ public class ClientDB {
 
     public boolean insertInfo(String iid, String ipw) {
         dbConnect();
-        crsa = new CliRSA();
-        rsaKeyPair = crsa.createKeyPairAsString();
+        srsa = new ServerRSA();
+        rsaKeyPair = srsa.createKeyPairAsString();
         String publicKey = rsaKeyPair.get("publicKey");
+        privateKey = rsaKeyPair.get("privateKey");
         try {
             state = con.createStatement();
             String sql = "";
@@ -74,19 +70,9 @@ public class ClientDB {
             state.executeUpdate(sql);
             state.close();
             dbDisconnect();
+            return true;
         } catch (SQLException e) {
             dbDisconnect();
-            return false;
-        }
-
-        try {
-            BufferedWriter bw1 = new BufferedWriter(new FileWriter(iid + " " +"PrivateKey.txt"));
-            bw1.write(new String(rsaKeyPair.get("privateKey")));
-            bw1.newLine();
-            bw1.close();
-            return true;
-        } catch(IOException e) {
-            e.printStackTrace();
             return false;
         }
     }
@@ -96,12 +82,11 @@ public class ClientDB {
         try {
             state = con.createStatement();
             String sql = "";
-            sql = "SELECT ID, PW, PK FROM info";
+            sql = "SELECT ID, PW FROM info";
             ResultSet rs = state.executeQuery(sql);
             while (rs.next()) {
                 String getID = rs.getString("id");
                 String getPW = rs.getString("pw");
-                publicKey = rs.getString("pk");
                 if (iid.equals(getID) && ipw.equals(getPW)) {
                     rs.close();
                     state.close();
@@ -119,6 +104,10 @@ public class ClientDB {
             dbDisconnect();
             return false;
         }
+    }
+
+    public String getPrivateKey() {
+        return privateKey;
     }
 
     public String[] getPublicKeyList(String[] id) {
@@ -174,3 +163,4 @@ public class ClientDB {
         return result;
     }
 }
+

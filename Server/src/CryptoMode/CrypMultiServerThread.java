@@ -1,3 +1,7 @@
+package CryptoMode;
+
+import common.ServerDB;
+
 import java.io.*;
 import java.net.*;
 
@@ -8,11 +12,14 @@ public class CrypMultiServerThread implements Runnable {
     private ObjectOutputStream oos;
 
     private Socket socket;
+    private String id;
+    private ServerDB sdb;
 
     //Constructor
     public CrypMultiServerThread(CrypMultiServer ms) {
         this.ms = ms;
         socket = ms.getSocket();
+        sdb = new ServerDB();
         try {
             ois = new ObjectInputStream(socket.getInputStream());
             oos = new ObjectOutputStream(socket.getOutputStream());
@@ -32,11 +39,23 @@ public class CrypMultiServerThread implements Runnable {
                 if(str[1].equals("quit")) {
                     broadCasting(msg);
                     ms.getIdList().remove(str[0]);
+                    String[] arr = null;
+                    if(ms.getIdList().size()!=0) {
+                        arr = sdb.getPublicKeyList(ms.getIdList().toArray(new String[ms.getIdList().size()]));
+                        for (String s : arr) {
+                            broadCasting(s);
+                        }
+                    }
                     isStop = true;
                 }
                 else if(str[1].equals("Enter")) {
                     broadCasting(msg);
+                    this.id = str[0];
                     ms.getIdList().add(str[0]);
+                    String[] arr = sdb.getPublicKeyList(ms.getIdList().toArray(new String[ms.getIdList().size()]));
+                    for(String s: arr) {
+                        broadCasting(s);
+                    }
                     if(ms.getIdList().size() == 1) {
                         String idAndKey = (String)ois.readObject();
                         String[] idKey = idAndKey.split("#");
@@ -46,6 +65,7 @@ public class CrypMultiServerThread implements Runnable {
                     else {
                         String idAndKey = ms.getFirstID() + "#" + ms.getEncryptedKey();
                         oos.writeObject(idAndKey);
+                        oos.writeObject(sdb.getFUPublicKey(ms.getFirstID()));
                     }
                     System.out.println(ms.getEncryptedKey());
                 }

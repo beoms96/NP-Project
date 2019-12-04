@@ -134,38 +134,40 @@ public class ChatGUI implements ActionListener{
             msgField.requestFocus();
         }
         else if(obj == streamBt) {
-            String[] streamOption = {"Video", "Camera"};
-            int select = JOptionPane.showOptionDialog(jf, "Select Your Chatting Mode", "Check", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, streamOption, streamOption[0]);
-            if(select != JOptionPane.CLOSED_OPTION) {
-                JOptionPane.showMessageDialog(jf, "Streaming ->" + streamOption[select]);
-                if(select == 0) {   //Video File Streaming
-                    File f = null;
-                    String path = null;
-                    JFileChooser fc = new JFileChooser();
-                    FileNameExtensionFilter filter = new FileNameExtensionFilter(" ", "mp4");
-                    fc.setFileFilter(filter);
-                    int result = fc.showOpenDialog(jf);
-                    if(result == JFileChooser.APPROVE_OPTION) {
-                        f = fc.getSelectedFile();
-                        path = fc.getCurrentDirectory().getPath();
-                        if(check == 0)
-                            mc.streamVideoNormal(f, path);
-                        else if(check == 1){
-                            mc.streamVideoCrypto(f, path);
+            if(mc.getIsStop()){
+                String[] streamOption = {"Video", "Camera"};
+                int select = JOptionPane.showOptionDialog(jf, "Select Your Chatting Mode", "Check", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, streamOption, streamOption[0]);
+                if(select != JOptionPane.CLOSED_OPTION) {
+                    JOptionPane.showMessageDialog(jf, "Streaming ->" + streamOption[select]);
+                    if(select == 0) {   //Video File Streaming
+                        File f = null;
+                        String path = null;
+                        JFileChooser fc = new JFileChooser();
+                        FileNameExtensionFilter filter = new FileNameExtensionFilter(" ", "mp4");
+                        fc.setFileFilter(filter);
+                        int result = fc.showOpenDialog(jf);
+                        if(result == JFileChooser.APPROVE_OPTION) {
+                            f = fc.getSelectedFile();
+                            path = fc.getCurrentDirectory().getPath();
+                            if(check == 0)
+                                mc.streamVideoNormal(f, path);
+                            else if(check == 1){
+                                mc.streamVideoCrypto(f, path);
+                            }
                         }
                     }
-                }
-                else if(select==1) {    //WebCam Streaming
-                    if(check == 0)
-                        mc.streamWebCamNormal();
-                    else if(check == 1){
-                        String key = JOptionPane.showInputDialog(jf, "Input Key > 32","12345678901234567890123456789012");
-                        if(key!=null) {
-                            if(key.length()<32) {
-                                JOptionPane.showMessageDialog(jf, "Not Proper Key Size");
-                            }
-                            else {
-                                mc.streamWebCamCrypto(key);
+                    else if(select==1) {    //WebCam Streaming
+                        if(check == 0)
+                            mc.streamWebCamNormal();
+                        else if(check == 1){
+                            String key = JOptionPane.showInputDialog(jf, "Input Key > 32","12345678901234567890123456789012");
+                            if(key!=null) {
+                                if(key.length()<32) {
+                                    JOptionPane.showMessageDialog(jf, "Not Proper Key Size");
+                                }
+                                else {
+                                    mc.streamWebCamCrypto(key);
+                                }
                             }
                         }
                     }

@@ -45,6 +45,8 @@ public class ReceiveWebCam implements Runnable{
                 else {
                     try {
                         mc.getStreamos().writeUTF("ClientQuit");
+                        frame.setVisible(false);
+                        mc.setIsStop(true);
                     } catch(IOException ioe) { ioe.printStackTrace(); }
                 }
             }
@@ -66,6 +68,7 @@ public class ReceiveWebCam implements Runnable{
                 //Read current camera frame into matrix
                 image = receiveCam();
                 if(image == null) {
+                    frame.setVisible(false);
                     JOptionPane.showMessageDialog(mc.getJf(), "Terminate Streaming");
                 }
                 else {
@@ -73,11 +76,11 @@ public class ReceiveWebCam implements Runnable{
                         render(image);
                     }
                     else {
+                        frame.setVisible(false);
                         System.out.println("No captured frame -- camera disconnected");
                     }
                 }
             }
-            frame.setVisible(false);
         } catch(Exception e) {
             e.printStackTrace();
         }
