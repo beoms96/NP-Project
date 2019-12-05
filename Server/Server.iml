@@ -10,5 +10,7 @@
     <orderEntry type="library" name="mysql-connector-java-8.0.18" level="project" />
     <orderEntry type="library" name="commons-codec-1.10" level="project" />
     <orderEntry type="library" name="opencv-411" level="project" />
+    <orderEntry type="library" name="local_policy" level="project" />
+    <orderEntry type="library" name="US_export_policy" level="project" />
   </component>
 </module>

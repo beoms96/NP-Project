@@ -3,9 +3,11 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Server_jar</output-path>
     <root id="archive" name="Server.jar">
       <element id="module-output" name="Server" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../mysql-connector-java-8.0.18.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="C:/Program Files/opencv/build/java/opencv-411.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/commons-codec-1.10.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../mysql-connector-java-8.0.18.jar" path-in-jar="/" />
+      <element id="library" level="project" name="local_policy" />
+      <element id="extracted-dir" path="C:/Program Files/opencv/build/java/opencv-411.jar" path-in-jar="/" />
+      <element id="library" level="project" name="US_export_policy" />
     </root>
   </artifact>
 </component>

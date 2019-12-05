@@ -96,7 +96,10 @@ public class CrypMultiServer implements Runnable{
 
     public ArrayList<String> getIdList() { return idList; }
 
-    public ArrayList<String> getFileList() { return fileList; }
+    public ArrayList<String> getFileList() {
+        fileList = findFileList();
+        return fileList;
+    }
 
     public String getEncryptedKey() { return encryptedKey; }
 

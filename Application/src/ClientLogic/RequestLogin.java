@@ -1,5 +1,6 @@
 package ClientLogic;
 
+import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
 
@@ -14,7 +15,10 @@ public class RequestLogin {
             socket = new Socket(ip, 5000);
             dos = new DataOutputStream(socket.getOutputStream());
             dis = new DataInputStream(socket.getInputStream());
-        } catch(IOException ioe) { ioe.printStackTrace(); }
+        } catch(IOException ioe) {
+            JOptionPane.showMessageDialog(null, "Wrong IP");
+            System.exit(0);
+        }
     }
 
     public String receiveResult() {

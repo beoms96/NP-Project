@@ -92,7 +92,10 @@ public class MultiServer implements Runnable{
 
     public ArrayList<String> getIdList() { return idList; }
 
-    public ArrayList<String> getFileList() { return fileList; }
+    public ArrayList<String> getFileList() {
+        fileList= findFileList();
+        return fileList;
+    }
 
     public String getStreamUser() { return streamUser; }
 
