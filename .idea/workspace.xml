@@ -2,27 +2,35 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
+      <artifact name="Application:jar" />
       <artifact name="Server:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e54382f3-bcc6-4623-b2b5-846cbbe22f6b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/US_export_policy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/local_policy.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Application_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Application_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Server_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Server_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/src/Streaming/ReceiveVideo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/NormalMode/VideoSendThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StreamingExample/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/V-IDOL.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Application.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Application.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/ClientLogic/RequestLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/ClientLogic/RequestLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/src/CliGUI/ChatGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/CliGUI/ChatGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/src/ClientLogic/CrypMultiClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/ClientLogic/CrypMultiClientThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/src/ClientLogic/MultiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/ClientLogic/MultiClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/src/ClientLogic/MultiClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/ClientLogic/MultiClientThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/src/Streaming/ReceiveWebCam.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/Streaming/ReceiveWebCam.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/Server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Server.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/CryptoMode/CrypMultiServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/CryptoMode/CrypMultiServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/NormalMode/MultiServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/NormalMode/MultiServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/CryptoMode/CrypMultiServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/CryptoMode/CrypMultiServerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/NormalMode/StreamServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/NormalMode/StreamServerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/common/LoginCheckThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/common/LoginCheckThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StreamingExample/src/ProcMedia.java" beforeDir="false" afterPath="$PROJECT_DIR$/StreamingExample/src/ProcMedia.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Application_jar/Application.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Application_jar/Application.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Application_jar/새 압축.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Server_jar/Server.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Server_jar/Server.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Application/ClientLogic/RequestLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/ClientLogic/RequestLogin.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypMultiServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypMultiServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Server/NormalMode/MultiServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/NormalMode/MultiServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypMultiServerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypMultiServerThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Server/NormalMode/StreamServerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/NormalMode/StreamServerThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Server/common/LoginCheckThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/common/LoginCheckThread.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,20 +86,7 @@
       <recent name="ClientLogic" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MGUI">
-    <configuration name="CryptoTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="CryptoTest" />
-      <module name="CrytoExample" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value=".*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Main">
     <configuration name="MGUI" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="CliGUI.MGUI" />
       <module name="Application" />
@@ -101,6 +96,13 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="StreamingExample" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -140,18 +142,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.MGUI" />
-      <item itemvalue="Application.CryptoTest" />
       <item itemvalue="Application.OneServer" />
       <item itemvalue="Application.ProcMedia" />
       <item itemvalue="Application.MyWebCam" />
+      <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.MGUI" />
         <item itemvalue="Application.OneServer" />
         <item itemvalue="Application.MyWebCam" />
         <item itemvalue="Application.ProcMedia" />
-        <item itemvalue="Application.CryptoTest" />
       </list>
     </recent_temporary>
   </component>
@@ -234,7 +236,10 @@
       <workItem from="1575422914059" duration="2119000" />
       <workItem from="1575443156192" duration="11923000" />
       <workItem from="1575459172618" duration="10230000" />
-      <workItem from="1575506541833" duration="2677000" />
+      <workItem from="1575506541833" duration="2776000" />
+      <workItem from="1575517898989" duration="1094000" />
+      <workItem from="1575526978025" duration="2888000" />
+      <workItem from="1575531194184" duration="8289000" />
     </task>
     <task id="LOCAL-00001" summary="unicast">
       <created>1573544988285</created>
@@ -327,7 +332,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575478980880</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Update README">
+      <created>1575511160896</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1575511160896</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -361,7 +373,8 @@
     <MESSAGE value="Normal Web Camera Streaming Final" />
     <MESSAGE value="Crypto Web Camera Streaming Complete" />
     <MESSAGE value="Client DB delete &amp; Server DB Create - Change Login, Get Public Key Way" />
-    <option name="LAST_COMMIT_MESSAGE" value="Client DB delete &amp; Server DB Create - Change Login, Get Public Key Way" />
+    <MESSAGE value="Update README" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update README" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="73" key="#Project_Structure" timestamp="1575188440416">
@@ -372,10 +385,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="447" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1575423739764" />
-    <state x="263" y="119" key="#com.intellij.ide.util.MemberChooser" timestamp="1575454738719">
+    <state x="263" y="119" key="#com.intellij.ide.util.MemberChooser" timestamp="1575534448556">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="263" y="119" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1575454738719" />
+    <state x="263" y="119" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1575534448556" />
     <state x="499" y="195" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1575188770757">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -400,30 +413,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="169" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1536.824@0.0.1536.824" timestamp="1575269218140" />
-    <state x="358" y="9" key="CommitChangelistDialog2" timestamp="1575478979184">
+    <state x="358" y="9" key="CommitChangelistDialog2" timestamp="1575511158432">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="358" y="9" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1575478979184" />
+    <state x="358" y="9" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1575511158432" />
     <state x="582" y="167" key="FileChooserDialogImpl" timestamp="1575507458955">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="582" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1575507458955" />
-    <state width="1493" height="240" key="GridCell.Tab.0.bottom" timestamp="1575479004322">
+    <state width="1493" height="239" key="GridCell.Tab.0.bottom" timestamp="1575533619888">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="240" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1575479004322" />
-    <state width="1493" height="240" key="GridCell.Tab.0.center" timestamp="1575479004321">
+    <state width="1493" height="239" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1575533619888" />
+    <state width="1493" height="239" key="GridCell.Tab.0.center" timestamp="1575533619888">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="240" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1575479004321" />
-    <state width="1493" height="240" key="GridCell.Tab.0.left" timestamp="1575479004321">
+    <state width="1493" height="239" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1575533619888" />
+    <state width="1493" height="239" key="GridCell.Tab.0.left" timestamp="1575533619887">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="240" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1575479004321" />
-    <state width="1493" height="240" key="GridCell.Tab.0.right" timestamp="1575479004321">
+    <state width="1493" height="239" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1575533619887" />
+    <state width="1493" height="239" key="GridCell.Tab.0.right" timestamp="1575533619888">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="240" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1575479004321" />
+    <state width="1493" height="239" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1575533619888" />
     <state width="1493" height="260" key="GridCell.Tab.1.bottom" timestamp="1575273254247">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -444,18 +457,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="290" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1575508045646" />
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1575478986527">
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1575511172635">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1575478986527" />
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1575511172635" />
     <state x="571" y="195" key="chooseDestDirectoryDialog" timestamp="1575188835629">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="571" y="195" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1575188835629" />
-    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1575373689614">
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1575528603520">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1575373689614" />
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1575528603520" />
     <state x="572" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1575198114211">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

@@ -7,7 +7,7 @@ public class ProcMedia {    //Process Media data (Video)
     //Compulsory
     static{System.loadLibrary(Core.NATIVE_LIBRARY_NAME);}
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         System.out.println("Welcome to OpenCV" + Core.VERSION);
         Mat m = new Mat(5,10,CvType.CV_8UC1, new Scalar(0));
         System.out.println("OpenCV Mat: " + m);
@@ -16,5 +16,5 @@ public class ProcMedia {    //Process Media data (Video)
         Mat mc5 = m.col(5);
         mc5.setTo(new Scalar(5));
         System.out.println("OpenCv Mat data:\n" + m.dump());
-    }
+    }*/
 }

@@ -12,7 +12,6 @@ public class CrypMultiServerThread implements Runnable {
     private ObjectOutputStream oos;
 
     private Socket socket;
-    private String id;
     private ServerDB sdb;
 
     //Constructor
@@ -50,7 +49,6 @@ public class CrypMultiServerThread implements Runnable {
                 }
                 else if(str[1].equals("Enter")) {
                     broadCasting(msg);
-                    this.id = str[0];
                     ms.getIdList().add(str[0]);
                     String[] arr = sdb.getPublicKeyList(ms.getIdList().toArray(new String[ms.getIdList().size()]));
                     for(String s: arr) {

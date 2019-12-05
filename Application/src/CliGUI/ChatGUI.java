@@ -140,19 +140,35 @@ public class ChatGUI implements ActionListener{
                 if(select != JOptionPane.CLOSED_OPTION) {
                     JOptionPane.showMessageDialog(jf, "Streaming ->" + streamOption[select]);
                     if(select == 0) {   //Video File Streaming
-                        File f = null;
-                        String path = null;
-                        JFileChooser fc = new JFileChooser();
-                        FileNameExtensionFilter filter = new FileNameExtensionFilter(" ", "mp4");
-                        fc.setFileFilter(filter);
-                        int result = fc.showOpenDialog(jf);
-                        if(result == JFileChooser.APPROVE_OPTION) {
-                            f = fc.getSelectedFile();
-                            path = fc.getCurrentDirectory().getPath();
-                            if(check == 0)
-                                mc.streamVideoNormal(f, path);
-                            else if(check == 1){
-                                mc.streamVideoCrypto(f, path);
+                        if(check == 0) {
+                            String[] fileList = mc.getFilearr().toArray(new String[mc.getFilearr().size()]);
+                            Object selected = JOptionPane.showInputDialog(jf, "What do yot want to download?", "download", JOptionPane.QUESTION_MESSAGE, null, fileList, fileList[0]);
+                            if(selected == null)
+                                JOptionPane.showMessageDialog(jf, "Not Download!");
+                            else {
+                                mc.streamVideoNormal((String) selected);
+                            }
+                        }
+                        else if(check == 1){
+                            if(mc.getCryptFiles().size() != 0) {
+                                String[] fileList = mc.getCryptFiles().toArray(new String[mc.getCryptFiles().size()]);
+                                Object selected = JOptionPane.showInputDialog(jf, "What do yot want to Streaming?", "download", JOptionPane.QUESTION_MESSAGE, null, fileList, fileList[0]);
+                                if(selected == null)
+                                    JOptionPane.showMessageDialog(jf, "Not Download!");
+                                else {
+                                    String key = JOptionPane.showInputDialog(jf, "Input Key for Decrypted > 32","12345678901234567890123456789012");
+                                    if(key!=null) {
+                                        if(key.length()<32) {
+                                            JOptionPane.showMessageDialog(jf, "Not Proper Key Size");
+                                        }
+                                        else {
+                                            mc.streamVideoCrypto((String) selected, key);
+                                        }
+                                    }
+                                }
+                            }
+                            else {
+                                JOptionPane.showMessageDialog(jf, "No .cipher file!");
                             }
                         }
                     }

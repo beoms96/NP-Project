@@ -2,10 +2,7 @@ package ClientLogic;
 
 import Crypto.CliAES;
 import Crypto.CliRSA;
-import Streaming.CrypRcvWebCam;
-import Streaming.CrypWebCam;
-import Streaming.MyWebCam;
-import Streaming.ReceiveWebCam;
+import Streaming.*;
 
 import javax.swing.*;
 import java.io.*;
@@ -140,8 +137,17 @@ public class MultiClient {
         }catch(IOException ioe) { ioe.printStackTrace(); }
     }
 
-    public void streamVideoNormal(File f, String path) {
-
+    public void streamVideoNormal(String filename) {
+        try {
+            streamis = new DataInputStream(videoSocket.getInputStream());
+            isStop = false;
+            streamos.writeUTF("Video");
+            streamos.writeUTF(filename);
+            rcvstreamis = new DataInputStream(rcvSocket.getInputStream());
+            ReceiveVideo rv = new ReceiveVideo(this, filename);
+            Thread rvt = new Thread(rv);
+            rvt.start();
+        }catch(IOException ioe) {ioe.printStackTrace();}
     }
 
     public void streamWebCamNormal() {
@@ -204,7 +210,7 @@ public class MultiClient {
         }catch(IOException ioe) { ioe.printStackTrace(); }
     }
 
-    public void streamVideoCrypto(File f, String path) {
+    public void streamVideoCrypto(String filename, String key) {
 
     }
 

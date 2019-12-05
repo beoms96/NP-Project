@@ -16,12 +16,14 @@ public class StreamServerThread implements Runnable{
     private Socket rcvSocket;
 
     private boolean start;
+    private boolean videostart;
 
     public StreamServerThread(MultiServer ms) {
         this.ms = ms;
         socket = ms.getVideoSocket();
         rcvSocket = ms.getRcvSocket();
         this.start = false;
+        this.videostart = false;
         try {
             dis = new DataInputStream(socket.getInputStream());
             dos = new DataOutputStream(socket.getOutputStream());
@@ -77,6 +79,15 @@ public class StreamServerThread implements Runnable{
                 else if(msg.equals("ClientQuit")) {
                     if(start)
                         start = false;
+                    if(videostart)
+                        videostart = false;
+                }
+                else if(msg.equals("Video")) {
+                    videostart = true;
+                    String requestFile = dis.readUTF();
+                    VideoSendThread vst = new VideoSendThread(this, requestFile);
+                    Thread vt = new Thread(vst);
+                    vt.start();
                 }
             }
             ms.getSstList().remove(this);
@@ -111,5 +122,17 @@ public class StreamServerThread implements Runnable{
 
     public void setStart(boolean start) {
         this.start = start;
+    }
+
+    public boolean getVideostart() {
+        return videostart;
+    }
+
+    public void setVideostart(boolean videostart) {
+        this.videostart = videostart;
+    }
+
+    public DataOutputStream getRcvdos() {
+        return rcvdos;
     }
 }
