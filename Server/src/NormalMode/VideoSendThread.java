@@ -37,11 +37,16 @@ public class VideoSendThread implements Runnable{
         VideoCapture cap = new VideoCapture();
 
         System.out.println(filename);
+        cap.set(Videoio.CAP_PROP_FRAME_WIDTH, 1280);
+        cap.set(Videoio.CAP_PROP_FRAME_HEIGHT, 720);
+        cap.set(Videoio.CAP_PROP_FPS, 29.97);
         cap.open(filename);
 
         int video_length = (int) cap.get(Videoio.CAP_PROP_FRAME_COUNT);
 
         Mat frame = new Mat();
+
+        boolean sendZero = false;
 
         if(cap.isOpened()) {
             System.out.println("Video is opened");
@@ -51,6 +56,7 @@ public class VideoSendThread implements Runnable{
                 if(!cap.read(frame)) { //last frame
                     try {
                         sst.getRcvdos().writeInt(0);
+                        sendZero = true;
                     }catch(IOException ioe) { ioe.printStackTrace(); }
                     sst.setVideostart(false);
                     break;
@@ -61,17 +67,27 @@ public class VideoSendThread implements Runnable{
                     else {
                         try {
                             sst.getRcvdos().writeInt(0);
+                            sendZero = true;
                         }catch(IOException ioe) { ioe.printStackTrace(); }
                         sst.setVideostart(false);
                         System.out.println("No captured frame -- frame nothing");
                     }
                 }
             }
+
+            if(!sendZero) { //client terminate
+                try{
+                    sst.getRcvdos().writeInt(0);
+                }catch(IOException ioe) { ioe.printStackTrace(); }
+            }
+
             cap.release();
             System.out.println(video_length + " Frames extracted");
         }
         else {
             try {
+                System.out.println("cap is not opened");
+                sst.setVideostart(false);
                 sst.getRcvdos().writeInt(0);
             }catch(IOException ioe) { ioe.printStackTrace(); }
         }
@@ -81,7 +97,17 @@ public class VideoSendThread implements Runnable{
         BufferedImage bimg = toBufferI(toBufferedImage(image));
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try {
-            ImageIO.write(bimg, "jpg", baos);
+            ImageWriter iw = ImageIO.getImageWritersByFormatName("jpeg").next();
+            JPEGImageWriteParam iwp = (JPEGImageWriteParam) iw.getDefaultWriteParam();
+            iwp.setOptimizeHuffmanTables(false);
+            iwp.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+            iwp.setProgressiveMode(ImageWriteParam.MODE_DISABLED);
+            iwp.setCompressionQuality(0.1f);
+            iw.setOutput(new MemoryCacheImageOutputStream(baos));
+            IIOImage outputImage = new IIOImage(bimg, null, null);
+            iw.write(null, outputImage, iwp);
+            iw.dispose();
+            baos.flush();
             byte[] imageInByte = baos.toByteArray();
             sst.getRcvdos().writeInt(imageInByte.length);
             sst.getRcvdos().write(imageInByte);

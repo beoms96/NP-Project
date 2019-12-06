@@ -36,7 +36,6 @@ public class ReceiveVideo implements Runnable{
                 frame.setVisible(false);
                 try {
                     mc.getStreamos().writeUTF("ClientQuit");
-                    mc.setIsStop(true);
                 } catch(IOException ioe) { ioe.printStackTrace(); }
             }
         });

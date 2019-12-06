@@ -210,7 +210,18 @@ public class MultiClient {
         }catch(IOException ioe) { ioe.printStackTrace(); }
     }
 
-    public void streamVideoCrypto(String filename, String key) {
+    public void streamVideoCrypto(String filename, String key){
+        try {
+            streamis = new DataInputStream(videoSocket.getInputStream());
+            isStop = false;
+            streamos.writeUTF("Video");
+            streamos.writeUTF(filename);
+            streamos.writeUTF(key);
+            rcvstreamis = new DataInputStream(rcvSocket.getInputStream());
+            ReceiveVideo rv = new ReceiveVideo(this, filename);
+            Thread rvt = new Thread(rv);
+            rvt.start();
+        }catch(IOException ioe) {ioe.printStackTrace();}
 
     }
 
@@ -281,6 +292,17 @@ public class MultiClient {
         }
         return cryptFiles;
     }
+
+    public ArrayList<String> getMp4Files(String[] files) {
+        ArrayList<String> mp4Files = new ArrayList<String>();
+        for(String fname: files) {
+            if(fname.contains(".mp4")) {
+                mp4Files.add(fname);
+            }
+        }
+        return mp4Files;
+    }
+
     public void useJf(JFrame jf) { this.jf = jf;}
 
     public void useJta(JTextArea jta) { this.jta = jta; }

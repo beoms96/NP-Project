@@ -3,7 +3,6 @@ package CliGUI;
 import ClientLogic.MultiClient;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -142,7 +141,8 @@ public class ChatGUI implements ActionListener{
                     if(select == 0) {   //Video File Streaming
                         if(check == 0) {
                             String[] fileList = mc.getFilearr().toArray(new String[mc.getFilearr().size()]);
-                            Object selected = JOptionPane.showInputDialog(jf, "What do yot want to download?", "download", JOptionPane.QUESTION_MESSAGE, null, fileList, fileList[0]);
+                            String[] mp4FileList = mc.getMp4Files(fileList).toArray(new String[mc.getMp4Files(fileList).size()]);
+                            Object selected = JOptionPane.showInputDialog(jf, "What do yot want to download?", "download", JOptionPane.QUESTION_MESSAGE, null, mp4FileList, mp4FileList[0]);
                             if(selected == null)
                                 JOptionPane.showMessageDialog(jf, "Not Download!");
                             else {
@@ -152,7 +152,8 @@ public class ChatGUI implements ActionListener{
                         else if(check == 1){
                             if(mc.getCryptFiles().size() != 0) {
                                 String[] fileList = mc.getCryptFiles().toArray(new String[mc.getCryptFiles().size()]);
-                                Object selected = JOptionPane.showInputDialog(jf, "What do yot want to Streaming?", "download", JOptionPane.QUESTION_MESSAGE, null, fileList, fileList[0]);
+                                String[] mp4FileList = mc.getMp4Files(fileList).toArray(new String[mc.getMp4Files(fileList).size()]);
+                                Object selected = JOptionPane.showInputDialog(jf, "What do yot want to Streaming?", "download", JOptionPane.QUESTION_MESSAGE, null, mp4FileList, mp4FileList[0]);
                                 if(selected == null)
                                     JOptionPane.showMessageDialog(jf, "Not Download!");
                                 else {
