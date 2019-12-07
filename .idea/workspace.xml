@@ -7,7 +7,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e54382f3-bcc6-4623-b2b5-846cbbe22f6b" name="Default Changelist" comment="" />
+    <list default="true" id="e54382f3-bcc6-4623-b2b5-846cbbe22f6b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -216,7 +218,8 @@
       <workItem from="1575517898989" duration="1094000" />
       <workItem from="1575526978025" duration="2888000" />
       <workItem from="1575531194184" duration="8620000" />
-      <workItem from="1575612700054" duration="16496000" />
+      <workItem from="1575612700054" duration="16662000" />
+      <workItem from="1575733355451" duration="5733000" />
     </task>
     <task id="LOCAL-00001" summary="unicast">
       <created>1573544988285</created>
@@ -344,7 +347,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575632449060</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Add Crypto Video Streaming">
+      <created>1575632722098</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1575632722098</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -383,7 +393,8 @@
     <MESSAGE value="Add Crypto Video Streaming Mode" />
     <MESSAGE value="Update Video Mode" />
     <MESSAGE value="Large File Delete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Large File Delete" />
+    <MESSAGE value="Add Crypto Video Streaming" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Crypto Video Streaming" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="73" key="#Notifications" timestamp="1575632155604">
@@ -418,18 +429,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="565" y="278" width="405" height="274" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1575269038926" />
-    <state x="883" y="161" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1575455149304">
+    <state x="883" y="161" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1575738920290">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="883" y="161" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1575455149304" />
+    <state x="883" y="161" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1575738920290" />
     <state x="499" y="169" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1575269218140">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="169" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1536.824@0.0.1536.824" timestamp="1575269218140" />
-    <state x="358" y="9" key="CommitChangelistDialog2" timestamp="1575632446650">
+    <state x="358" y="9" key="CommitChangelistDialog2" timestamp="1575632719893">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="358" y="9" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1575632446650" />
+    <state x="358" y="9" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1575632719893" />
     <state x="582" y="167" key="FileChooserDialogImpl" timestamp="1575507458955">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -470,10 +481,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="290" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1575508045646" />
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1575632513566">
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1575632731128">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1575632513566" />
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1575632731128" />
     <state x="571" y="195" key="chooseDestDirectoryDialog" timestamp="1575188835629">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
