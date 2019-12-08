@@ -25,12 +25,14 @@ public class CrypVideoSendThread implements Runnable{
     private String decryptFilename;
     private CrypStreamServerThread sst;
     private String key;
+    private String id;
 
     //Constructor
-    public CrypVideoSendThread(CrypStreamServerThread sst, String filename, String key) {
+    public CrypVideoSendThread(CrypStreamServerThread sst, String filename, String key, String id) {
         this.filename = filename;
         this.sst = sst;
         this.key = key;
+        this.id = id;
     }
 
     //Method
@@ -146,7 +148,7 @@ public class CrypVideoSendThread implements Runnable{
         String path = System.getProperty("user.dir");
         File file = new File(path + "/" + filename);
         int index = filename.lastIndexOf(".");
-        decryptFilename = filename.substring(0, index);
+        decryptFilename = id + filename.substring(0, index);
         File Dfile = new File(path + "/" + decryptFilename);
         FileInputStream fis = null;
         BufferedInputStream bis = null;

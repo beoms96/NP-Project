@@ -214,7 +214,7 @@ public class MultiClient {
         try {
             streamis = new DataInputStream(videoSocket.getInputStream());
             isStop = false;
-            streamos.writeUTF("Video");
+            streamos.writeUTF(id + "#Video");
             streamos.writeUTF(filename);
             streamos.writeUTF(key);
             rcvstreamis = new DataInputStream(rcvSocket.getInputStream());

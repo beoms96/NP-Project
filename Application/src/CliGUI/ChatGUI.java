@@ -142,9 +142,9 @@ public class ChatGUI implements ActionListener{
                         if(check == 0) {
                             String[] fileList = mc.getFilearr().toArray(new String[mc.getFilearr().size()]);
                             String[] mp4FileList = mc.getMp4Files(fileList).toArray(new String[mc.getMp4Files(fileList).size()]);
-                            Object selected = JOptionPane.showInputDialog(jf, "What do yot want to download?", "download", JOptionPane.QUESTION_MESSAGE, null, mp4FileList, mp4FileList[0]);
+                            Object selected = JOptionPane.showInputDialog(jf, "What do yot want to Streaming?", "streaming", JOptionPane.QUESTION_MESSAGE, null, mp4FileList, mp4FileList[0]);
                             if(selected == null)
-                                JOptionPane.showMessageDialog(jf, "Not Download!");
+                                JOptionPane.showMessageDialog(jf, "Not Streaming!");
                             else {
                                 mc.streamVideoNormal((String) selected);
                             }
@@ -153,9 +153,9 @@ public class ChatGUI implements ActionListener{
                             if(mc.getCryptFiles().size() != 0) {
                                 String[] fileList = mc.getCryptFiles().toArray(new String[mc.getCryptFiles().size()]);
                                 String[] mp4FileList = mc.getMp4Files(fileList).toArray(new String[mc.getMp4Files(fileList).size()]);
-                                Object selected = JOptionPane.showInputDialog(jf, "What do yot want to Streaming?", "download", JOptionPane.QUESTION_MESSAGE, null, mp4FileList, mp4FileList[0]);
+                                Object selected = JOptionPane.showInputDialog(jf, "What do yot want to Streaming?", "streaming", JOptionPane.QUESTION_MESSAGE, null, mp4FileList, mp4FileList[0]);
                                 if(selected == null)
-                                    JOptionPane.showMessageDialog(jf, "Not Download!");
+                                    JOptionPane.showMessageDialog(jf, "Not Streaming!");
                                 else {
                                     String key = JOptionPane.showInputDialog(jf, "Input Key for Decrypted > 32","12345678901234567890123456789012");
                                     if(key!=null) {

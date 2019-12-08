@@ -83,11 +83,12 @@ public class CrypStreamServerThread implements Runnable{
                     if(videostart)
                         videostart = false;
                 }
-                else if(msg.equals("Video")) {
+                else if(msg.contains("#Video")) {
+                    String[] idAndMsg = msg.split("#");
                     videostart = true;
                     String requestFile = dis.readUTF();
                     String key = dis.readUTF();
-                    CrypVideoSendThread vst = new CrypVideoSendThread(this, requestFile, key);
+                    CrypVideoSendThread vst = new CrypVideoSendThread(this, requestFile, key, idAndMsg[0]);
                     Thread vt = new Thread(vst);
                     vt.start();
                 }
