@@ -61,6 +61,7 @@ public class StreamServerThread implements Runnable{
                 else if(msg.contains("#quit")) {
                     isStop = true;
                     start = false;
+                    videostart = false;
                 }
                 else if(msg.equals("OwnerQuit")) {
                     int length = dis.readInt();

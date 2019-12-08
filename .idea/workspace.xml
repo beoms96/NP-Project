@@ -8,7 +8,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e54382f3-bcc6-4623-b2b5-846cbbe22f6b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Application/src/Crypto/CliRSA2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/src/ClientLogic/MultiClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/ClientLogic/MultiClientThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/NormalMode/StreamServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/NormalMode/StreamServerThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +222,8 @@
       <workItem from="1575526978025" duration="2888000" />
       <workItem from="1575531194184" duration="8620000" />
       <workItem from="1575612700054" duration="16662000" />
-      <workItem from="1575733355451" duration="5733000" />
+      <workItem from="1575733355451" duration="5984000" />
+      <workItem from="1575807942050" duration="2599000" />
     </task>
     <task id="LOCAL-00001" summary="unicast">
       <created>1573544988285</created>
@@ -354,7 +358,21 @@
       <option name="project" value="LOCAL" />
       <updated>1575632722098</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Change Check...">
+      <created>1575739241465</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1575739241465</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Add File that Miss while Committing">
+      <created>1575739435216</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1575739435216</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,7 +412,9 @@
     <MESSAGE value="Update Video Mode" />
     <MESSAGE value="Large File Delete" />
     <MESSAGE value="Add Crypto Video Streaming" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Crypto Video Streaming" />
+    <MESSAGE value="Change Check..." />
+    <MESSAGE value="Add File that Miss while Committing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add File that Miss while Committing" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="73" key="#Notifications" timestamp="1575632155604">
@@ -437,10 +457,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="169" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1536.824@0.0.1536.824" timestamp="1575269218140" />
-    <state x="358" y="9" key="CommitChangelistDialog2" timestamp="1575739239761">
+    <state x="358" y="9" key="CommitChangelistDialog2" timestamp="1575739432286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="358" y="9" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1575739239761" />
+    <state x="358" y="9" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1575739432286" />
     <state x="582" y="167" key="FileChooserDialogImpl" timestamp="1575507458955">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -481,10 +501,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="290" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1575508045646" />
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1575739250887">
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1575739444110">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1575739250887" />
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1575739444110" />
     <state x="571" y="195" key="chooseDestDirectoryDialog" timestamp="1575188835629">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

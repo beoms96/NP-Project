@@ -54,7 +54,6 @@ public class CrypRcvWebCam implements Runnable{
                 else {
                     try {
                         mc.getStreamos().writeUTF("ClientQuit");
-                        frame.setVisible(false);
                         mc.setIsStop(true);
                     } catch(IOException ioe) { ioe.printStackTrace(); }
                 }
