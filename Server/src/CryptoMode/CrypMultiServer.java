@@ -16,9 +16,6 @@ public class CrypMultiServer implements Runnable{
     private ArrayList<String> idList;
     private ArrayList<String> fileList;
 
-    private String encryptedKey;
-    private String firstID;
-
     private String streamUser;
 
     //Constructor
@@ -99,17 +96,9 @@ public class CrypMultiServer implements Runnable{
         return fileList;
     }
 
-    public String getEncryptedKey() { return encryptedKey; }
-
-    public String getFirstID() { return firstID; }
-
     public String getStreamUser() { return streamUser; }
 
     public void setStreamUser(String streamUser) { this.streamUser = streamUser; }
-
-    public void setEncryptedKey(String encryptedKey) { this.encryptedKey = encryptedKey; }
-
-    public void setFirstID(String firstID) { this.firstID = firstID; }
 
     public void setFileList(ArrayList<String> fileList) { this.fileList = fileList; }
 }

@@ -57,7 +57,8 @@ public class ChatGUI implements ActionListener{
                     mc.sendNormal(msg);
                 else if (check == 1) {
                     try {
-                        mc.sendCrypto(msg);
+                        if(mc.getChatSet())
+                            mc.sendCrypto(msg);
                     }
                     catch(Exception exc) { exc.printStackTrace();}
                 }
@@ -96,7 +97,7 @@ public class ChatGUI implements ActionListener{
         }
         else if(obj == downloadBt) {
             if(check == 0) {
-                String[] fileList = mc.getFilearr().toArray(new String[mc.getFilearr().size()]);
+                String[] fileList = mc.getNormalFiles().toArray(new String[mc.getFilearr().size()]);
                 Object selected = JOptionPane.showInputDialog(jf, "What do yot want to download?", "download", JOptionPane.QUESTION_MESSAGE, null, fileList, fileList[0]);
                 if(selected == null)
                     JOptionPane.showMessageDialog(jf, "Not Download!");
@@ -140,7 +141,7 @@ public class ChatGUI implements ActionListener{
                     JOptionPane.showMessageDialog(jf, "Streaming ->" + streamOption[select]);
                     if(select == 0) {   //Video File Streaming
                         if(check == 0) {
-                            String[] fileList = mc.getFilearr().toArray(new String[mc.getFilearr().size()]);
+                            String[] fileList = mc.getNormalFiles().toArray(new String[mc.getFilearr().size()]);
                             String[] mp4FileList = mc.getMp4Files(fileList).toArray(new String[mc.getMp4Files(fileList).size()]);
                             Object selected = JOptionPane.showInputDialog(jf, "What do yot want to Streaming?", "streaming", JOptionPane.QUESTION_MESSAGE, null, mp4FileList, mp4FileList[0]);
                             if(selected == null)

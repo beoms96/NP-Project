@@ -51,30 +51,25 @@ public class CrypMultiClientThread implements Runnable {
                 mc.getIdarr().add(receive[0]);
                 updateIDList();
                 updatePKList();
-                if (mc.getIdarr().size() == 1) {
-                    String key = mc.getCaes().createRandomKey();    //Create AES Key
-                    String encryptedKey = mc.getCrsa().encode(key, mc.getPrivateKey()); //RSA Encrypt AES Key
+                if(mc.getIdarr().size() == 1) {
+                    String key = mc.getCaes().createRandomKey();    //Create AES Random Key
                     mc.setChatAESKey(key);
-                    mc.setFirstUser(mc.getId());
-                    try {
-                        mc.getOos().writeObject(mc.getId() + "#" + encryptedKey);
-                    } catch (IOException ioe) {
-                        ioe.printStackTrace();
-                    }
-                    System.out.println(mc.getId() + " " + mc.getChatAESKey());
+                    mc.setChatSet(true);
                 }
                 else {
-                    if (mc.getFirstUser().equals("")) {
+                    if(mc.getIdarr().get(0).equals(mc.getId())) {   //Send Key Client, Already set key
+                        String encryptedKey = mc.getCrsa().encode(mc.getChatAESKey(), mc.getPublicKeyList().get(receive[0]));
                         try {
-                            String idAndKey = (String) mc.getOis().readObject();
-                            String[] idKey = idAndKey.split("#");
-                            mc.setFirstUser(idKey[0]);
-                            String stringPublicKey = (String) mc.getOis().readObject();
-                            mc.setChatAESKey(mc.getCrsa().decode(idKey[1], stringPublicKey));
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        System.out.println(mc.getId() + " " + mc.getChatAESKey());
+                            mc.getOos().writeObject(mc.getId()+"#SendKey");
+                            mc.getOos().writeObject(receive[0] + "#" + encryptedKey);
+                        } catch(IOException ioe) { ioe.printStackTrace(); }
+                    }
+                    else if(receive[0].equals(mc.getId())){  //Receive Key Client, Not set key yet
+                        try {
+                            String encryptedKey = (String)mc.getOis().readObject();
+                            mc.setChatAESKey(mc.getCrsa().decode(encryptedKey, mc.getPrivateKey()));
+                            mc.setChatSet(true);
+                        }catch(IOException | ClassNotFoundException ioe) { ioe.printStackTrace(); }
                     }
                 }
             }
@@ -100,17 +95,20 @@ public class CrypMultiClientThread implements Runnable {
     }
 
     public void updatePKList() {
-        String[] idarr = mc.getIdarr().toArray(new String[mc.getIdarr().size()]);
         mc.setPublicKeyList(new HashMap<String, String>());
         try {
-            ArrayList<String> arr = new ArrayList<String>();
-            for(int i=0; i<idarr.length;i++) {
+            ArrayList<String> idarr = new ArrayList<String>();
+            ArrayList<String> pkarr = new ArrayList<String>();
+            for(int i=0; i<mc.getIdarr().size();i++) {
+                String id = (String)mc.getOis().readObject();
                 String pk = (String)mc.getOis().readObject();
-                arr.add(pk);
+                idarr.add(id);
+                pkarr.add(pk);
             }
-            String[] pkList = arr.toArray(new String[arr.size()]);
-            for (int i=0;i<idarr.length;i++) {
-                mc.getPublicKeyList().put(idarr[i], pkList[i]);
+            String[] idList = idarr.toArray(new String[idarr.size()]);
+            String[] pkList = pkarr.toArray(new String[pkarr.size()]);
+            for (int i=0;i<idList.length;i++) {
+                mc.getPublicKeyList().put(idList[i], pkList[i]);
             }
         } catch(ClassNotFoundException | IOException e) { e.printStackTrace(); }
     }

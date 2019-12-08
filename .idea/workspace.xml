@@ -8,24 +8,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e54382f3-bcc6-4623-b2b5-846cbbe22f6b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/out/artifacts/Server_jar/Chaplin Modern Times 'non-sense song'.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/Server_jar/bm1478Chaplin Modern Times 'non-sense song'.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/Server_jar/bm1580Chaplin Modern Times 'non-sense song'.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Application/Crypto/CliRSA2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/src/CliGUI/ChatGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/CliGUI/ChatGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/src/ClientLogic/CrypFileClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/ClientLogic/CrypFileClientThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/src/ClientLogic/CrypMultiClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/ClientLogic/CrypMultiClientThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/src/ClientLogic/FileClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/ClientLogic/FileClientThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/src/ClientLogic/MultiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/ClientLogic/MultiClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/CryptoMode/CrypStreamServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/CryptoMode/CrypStreamServerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/CryptoMode/CrypVideoSendThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/CryptoMode/CrypVideoSendThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/src/Crypto/CliRSA.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/Crypto/CliRSA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/src/Crypto/CliRSA2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/CryptoMode/CrypMultiServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/CryptoMode/CrypMultiServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/CryptoMode/CrypMultiServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/CryptoMode/CrypMultiServerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/common/ServerDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/common/ServerDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/V-IDOL.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a PrivateKey.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/b PrivateKey.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Application_jar/01. Euphoria.mp3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Application_jar/Application.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Application_jar/Application.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Application_jar/a PrivateKey.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Application_jar/a PrivateKey.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Server_jar/Server.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Server_jar/Server.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Application/CliGUI/ChatGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/CliGUI/ChatGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Server_jar/bm1478Chaplin Modern Times 'non-sense song'.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Server_jar/bm1580Chaplin Modern Times 'non-sense song'.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Application/ClientLogic/CrypFileClientThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/ClientLogic/CrypFileClientThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Application/ClientLogic/CrypMultiClientThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/ClientLogic/CrypMultiClientThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Application/ClientLogic/MultiClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/ClientLogic/MultiClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Application/ClientLogic/MultiClientThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/ClientLogic/MultiClientThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Application/Streaming/CrypRcvWebCam$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/Streaming/CrypRcvWebCam$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Application/Streaming/CrypRcvWebCam.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/Streaming/CrypRcvWebCam.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypStreamServerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypStreamServerThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypVideoSendThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypVideoSendThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Application/Crypto/CliRSA2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypMultiServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypMultiServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypMultiServerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypMultiServerThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Server/common/ServerDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/common/ServerDB.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +246,8 @@
       <workItem from="1575531194184" duration="8620000" />
       <workItem from="1575612700054" duration="16662000" />
       <workItem from="1575733355451" duration="5984000" />
-      <workItem from="1575807942050" duration="4564000" />
+      <workItem from="1575807942050" duration="4616000" />
+      <workItem from="1575819496267" duration="7699000" />
     </task>
     <task id="LOCAL-00001" summary="unicast">
       <created>1573544988285</created>
@@ -393,7 +403,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575810871177</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="before change key exchange way">
+      <created>1575812671857</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1575812671857</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -436,7 +453,8 @@
     <MESSAGE value="Change Check..." />
     <MESSAGE value="Add File that Miss while Committing" />
     <MESSAGE value="Data consistency" />
-    <option name="LAST_COMMIT_MESSAGE" value="Data consistency" />
+    <MESSAGE value="before change key exchange way" />
+    <option name="LAST_COMMIT_MESSAGE" value="before change key exchange way" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="73" key="#Notifications" timestamp="1575632155604">
@@ -451,10 +469,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="447" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1575423739764" />
-    <state x="263" y="119" key="#com.intellij.ide.util.MemberChooser" timestamp="1575534448556">
+    <state x="263" y="119" key="#com.intellij.ide.util.MemberChooser" timestamp="1575826958201">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="263" y="119" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1575534448556" />
+    <state x="263" y="119" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1575826958201" />
     <state x="499" y="195" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1575188770757">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -471,18 +489,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="565" y="278" width="405" height="274" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1575269038926" />
-    <state x="883" y="161" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1575738920290">
+    <state x="883" y="161" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1575825117157">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="883" y="161" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1575738920290" />
+    <state x="883" y="161" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1575825117157" />
     <state x="499" y="169" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1575269218140">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="169" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1536.824@0.0.1536.824" timestamp="1575269218140" />
-    <state x="358" y="9" key="CommitChangelistDialog2" timestamp="1575810868735">
+    <state x="358" y="9" key="CommitChangelistDialog2" timestamp="1575812669519">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="358" y="9" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1575810868735" />
+    <state x="358" y="9" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1575812669519" />
     <state x="582" y="167" key="FileChooserDialogImpl" timestamp="1575507458955">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -523,10 +541,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="290" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1575508045646" />
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1575810887038">
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1575812677097">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1575810887038" />
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1575812677097" />
     <state x="571" y="195" key="chooseDestDirectoryDialog" timestamp="1575188835629">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

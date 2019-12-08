@@ -13,6 +13,7 @@ public class CrypMultiServerThread implements Runnable {
 
     private Socket socket;
     private ServerDB sdb;
+    private String id;
 
     //Constructor
     public CrypMultiServerThread(CrypMultiServer ms) {
@@ -38,34 +39,35 @@ public class CrypMultiServerThread implements Runnable {
                 if(str[1].equals("quit")) {
                     broadCasting(msg);
                     ms.getIdList().remove(str[0]);
-                    String[] arr = null;
-                    if(ms.getIdList().size()!=0) {
-                        arr = sdb.getPublicKeyList(ms.getIdList().toArray(new String[ms.getIdList().size()]));
-                        for (String s : arr) {
-                            broadCasting(s);
-                        }
+                    sdb.updateIdAndPublicKeyList(ms.getIdList().toArray(new String[ms.getIdList().size()]));
+                    String[] idArr = sdb.getIdListFromDB();
+                    String[] pkArr = sdb.getPublicKeyListFromDB();
+                    for(int i=0; i<idArr.length; i++) {
+                        broadCasting(idArr[i]);
+                        broadCasting(pkArr[i]);
                     }
                     isStop = true;
                 }
                 else if(str[1].equals("Enter")) {
+                    this.id = str[0];
                     broadCasting(msg);
                     ms.getIdList().add(str[0]);
-                    String[] arr = sdb.getPublicKeyList(ms.getIdList().toArray(new String[ms.getIdList().size()]));
-                    for(String s: arr) {
-                        broadCasting(s);
+                    sdb.updateIdAndPublicKeyList(ms.getIdList().toArray(new String[ms.getIdList().size()]));
+                    String[] idArr = sdb.getIdListFromDB();
+                    String[] pkArr = sdb.getPublicKeyListFromDB();
+                    for(int i=0; i<idArr.length; i++) {
+                        broadCasting(idArr[i]);
+                        broadCasting(pkArr[i]);
                     }
-                    if(ms.getIdList().size() == 1) {
-                        String idAndKey = (String)ois.readObject();
-                        String[] idKey = idAndKey.split("#");
-                        ms.setFirstID(idKey[0]);        //First User -> Public Key
-                        ms.setEncryptedKey(idKey[1]);   //RSA Encrypt AES Key
+                }
+                else if(str[1].equals("SendKey")) { //Key Send Client
+                    String idAndEKey = (String)ois.readObject();
+                    String[] idEKey = idAndEKey.split("#");
+                    for(CrypMultiServerThread sst: ms.getList()) {
+                        if(sst.getId().equals(idEKey[0])) {
+                            sst.send(idEKey[1]);
+                        }
                     }
-                    else {
-                        String idAndKey = ms.getFirstID() + "#" + ms.getEncryptedKey();
-                        oos.writeObject(idAndKey);
-                        oos.writeObject(sdb.getFUPublicKey(ms.getFirstID()));
-                    }
-                    System.out.println(ms.getEncryptedKey());
                 }
                 else {
                     broadCasting(msg);
@@ -97,5 +99,7 @@ public class CrypMultiServerThread implements Runnable {
     public void send(String msg) throws IOException {
         oos.writeObject(msg);   //---6 Send Real Msg
     }
+
+    public String getId() { return id; }
 }
 

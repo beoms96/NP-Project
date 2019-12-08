@@ -18,7 +18,8 @@ public class ServerDB {
     private ServerRSA srsa;
     private HashMap<String, String> rsaKeyPair;
     private String privateKey;
-    private String[] publicKeyList;
+    private String[] idListFromDB;
+    private String[] publicKeyListFromDB;
 
     public ServerDB() {
         // 1. Driver loading
@@ -110,24 +111,31 @@ public class ServerDB {
         return privateKey;
     }
 
-    public String[] getPublicKeyList(String[] id) {
+    public void updateIdAndPublicKeyList(String[] iid) {
         dbConnect();
-        ArrayList<String> arr = new ArrayList<String>();
+        ArrayList<String> idArr = new ArrayList<String>();
+        ArrayList<String> pkArr = new ArrayList<String>();
         try {
             state = con.createStatement();
             String sql = "";
             String str = "";
-            for (int i=0;i<id.length;i++) {
-                if(i != id.length-1)
-                    str = str.concat("'" + id[i] + "', ");
+            for (int i=0;i<iid.length;i++) {
+                if(i != iid.length-1)
+                    str = str.concat("'" + iid[i] + "', ");
                 else
-                    str = str.concat("'" + id[i] + "'");
+                    str = str.concat("'" + iid[i] + "'");
             }
-            sql = "SELECT PK FROM info Where id in (" + str + ")";
+            if(iid.length==0) {
+                str = "''";
+            }
+
+            sql = "SELECT id, PK FROM info Where id in (" + str + ")";
             ResultSet rs = state.executeQuery(sql);
             while(rs.next()) {
+                String getId = rs.getString("id");
                 String getPK = rs.getString("pk");
-                arr.add(getPK);
+                idArr.add(getId);
+                pkArr.add(getPK);
             }
             rs.close();
             state.close();
@@ -136,31 +144,17 @@ public class ServerDB {
             e.printStackTrace();
             dbDisconnect();
         }
-        publicKeyList = arr.toArray(new String[arr.size()]);
-        return publicKeyList;
+
+        idListFromDB = idArr.toArray(new String[idArr.size()]);
+        publicKeyListFromDB = pkArr.toArray(new String[pkArr.size()]);
     }
 
-    public String getFUPublicKey(String firstUser) {
-        dbConnect();
-        String result = "";
-        try {
-            state = con.createStatement();
-            String sql = "";
-            sql = "SELECT PK FROM info Where id = '" + firstUser + "'";
-            ResultSet rs = state.executeQuery(sql);
-            while(rs.next()) {
-                String getPK = rs.getString("pk");
-                result = getPK;
-            }
-            rs.close();
-            state.close();
-            dbDisconnect();
-        } catch(SQLException e) {
-            e.printStackTrace();
-            dbDisconnect();
-            result = null;
-        }
-        return result;
+    public String[] getIdListFromDB() {
+        return idListFromDB;
+    }
+
+    public String[] getPublicKeyListFromDB() {
+        return publicKeyListFromDB;
     }
 }
 

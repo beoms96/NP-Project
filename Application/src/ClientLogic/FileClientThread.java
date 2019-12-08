@@ -137,7 +137,8 @@ public class FileClientThread implements Runnable{
         String s = null;
         try {
             while (!(s = mc.getDis().readUTF()).equals("")) {
-                arr.add(s);
+                if(!s.contains(".cipher"))
+                    arr.add(s);
             }
             mc.setFilearr(arr);
             mc.getServerList().setText(" Server File List ");

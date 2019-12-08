@@ -45,8 +45,8 @@ public class MultiClient {
     private CliRSA crsa;
 
     private String chatAESKey;
-    private String firstUser;
     private HashMap<String, String> publicKeyList;
+    private boolean chatSet;
 
     private String streamUser;
     private boolean isStop;
@@ -62,10 +62,10 @@ public class MultiClient {
         streamUser = "";
         isStop = true;
 
-        this.firstUser = "";
         caes = new CliAES();
         crsa = new CliRSA();
         publicKeyList = new HashMap<>();
+        chatSet = false;
     }
 
     public void connect() throws IOException {
@@ -293,6 +293,16 @@ public class MultiClient {
         return cryptFiles;
     }
 
+    public ArrayList<String> getNormalFiles() {
+        ArrayList<String> normalFiles = new ArrayList<String>();
+        for(String fname: filearr) {
+            if(!fname.contains(".cipher")) {
+                normalFiles.add(fname);
+            }
+        }
+        return normalFiles;
+    }
+
     public ArrayList<String> getMp4Files(String[] files) {
         ArrayList<String> mp4Files = new ArrayList<String>();
         for(String fname: files) {
@@ -333,17 +343,15 @@ public class MultiClient {
 
     public String getChatAESKey() { return chatAESKey; }
 
-    public String getFirstUser() { return firstUser; }
-
     public boolean getIsStop() { return isStop; }
+
+    public boolean getChatSet() { return chatSet; }
 
     public String getStreamUser() { return streamUser; }
 
     public CliAES getCaes() { return caes; }
 
     public CliRSA getCrsa() { return crsa; }
-
-    public void setFirstUser(String firstUser) { this.firstUser = firstUser; }
 
     public void setFilearr(ArrayList<String> filearr) { this.filearr = filearr; }
 
@@ -354,6 +362,8 @@ public class MultiClient {
     public void setIsStop(boolean isStop) { this.isStop = isStop; }
 
     public void setPublicKeyList(HashMap<String, String> publicKeyList) { this.publicKeyList = publicKeyList; }
+
+    public void setChatSet(boolean chatSet) { this.chatSet = chatSet; }
 
     public JFrame getJf() { return jf; }
 
