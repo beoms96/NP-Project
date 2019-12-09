@@ -3,6 +3,8 @@ package CryptoMode;
 import common.ServerAES;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
+import org.opencv.core.Size;
+import org.opencv.imgproc.Imgproc;
 import org.opencv.videoio.VideoCapture;
 import org.opencv.videoio.Videoio;
 
@@ -69,8 +71,12 @@ public class CrypVideoSendThread implements Runnable{
                         break;
                     }
                     else {
-                        if(!frame.empty())
-                            sendFrame(frame);
+                        if(!frame.empty()) {
+                            Mat resizeimage = new Mat();
+                            Size scaleSize = new Size(1280,720);
+                            Imgproc.resize(frame, resizeimage, scaleSize);
+                            sendFrame(resizeimage);
+                        }
                         else {
                             try {
                                 sst.getRcvdos().writeInt(0);
@@ -119,7 +125,7 @@ public class CrypVideoSendThread implements Runnable{
             iwp.setOptimizeHuffmanTables(false);
             iwp.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
             iwp.setProgressiveMode(ImageWriteParam.MODE_DISABLED);
-            iwp.setCompressionQuality(0.1f);
+            iwp.setCompressionQuality(0.7f);
             iw.setOutput(new MemoryCacheImageOutputStream(baos));
             IIOImage outputImage = new IIOImage(bimg, null, null);
             iw.write(null, outputImage, iwp);

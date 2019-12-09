@@ -51,6 +51,7 @@ public class MultiClient {
     private String streamUser;
     private boolean isStop;
 
+    private boolean isFTP;
 
     //Constructor
     public MultiClient(String id, String ip, int check) {
@@ -66,6 +67,8 @@ public class MultiClient {
         crsa = new CliRSA();
         publicKeyList = new HashMap<>();
         chatSet = false;
+
+        isFTP = false;
     }
 
     public void connect() throws IOException {
@@ -283,26 +286,6 @@ public class MultiClient {
         return sPrivateKey;
     }
 
-    public ArrayList<String> getCryptFiles() {
-        ArrayList<String> cryptFiles = new ArrayList<String>();
-        for(String fname: filearr) {
-            if(fname.contains(".cipher")) {
-                cryptFiles.add(fname);
-            }
-        }
-        return cryptFiles;
-    }
-
-    public ArrayList<String> getNormalFiles() {
-        ArrayList<String> normalFiles = new ArrayList<String>();
-        for(String fname: filearr) {
-            if(!fname.contains(".cipher")) {
-                normalFiles.add(fname);
-            }
-        }
-        return normalFiles;
-    }
-
     public ArrayList<String> getMp4Files(String[] files) {
         ArrayList<String> mp4Files = new ArrayList<String>();
         for(String fname: files) {
@@ -353,6 +336,8 @@ public class MultiClient {
 
     public CliRSA getCrsa() { return crsa; }
 
+    public boolean getIsFTP() { return isFTP; }
+
     public void setFilearr(ArrayList<String> filearr) { this.filearr = filearr; }
 
     public void setIdarr(ArrayList<String> idarr) { this.idarr = idarr; }
@@ -364,6 +349,8 @@ public class MultiClient {
     public void setPublicKeyList(HashMap<String, String> publicKeyList) { this.publicKeyList = publicKeyList; }
 
     public void setChatSet(boolean chatSet) { this.chatSet = chatSet; }
+
+    public void setIsFTP(boolean isFTP) { this.isFTP = isFTP; }
 
     public JFrame getJf() { return jf; }
 

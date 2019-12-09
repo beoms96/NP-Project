@@ -32,7 +32,8 @@ public class FileClientThread implements Runnable{
                 result = mc.getDis().readUTF();
                 System.out.println(result);
                 if(result.equals("normal")) {
-                    if(loadVersion == 0) {
+                    mc.setIsFTP(true);
+                    if(loadVersion == 0) {  //upload
                         try{
                             mc.getDos().writeInt(fileList.size());
                             for (int i=0; i<fileList.size(); i++) {
@@ -42,20 +43,23 @@ public class FileClientThread implements Runnable{
                             mc.getDos().writeUTF("List");
                         } catch(IOException ioe) { ioe.printStackTrace(); }
                     }
-                    else if(loadVersion == 1) {
+                    else if(loadVersion == 1) { //download
                         try{
                             mc.getDos().writeUTF(fileName);
                             mc.getDos().flush();
                             result = fileWrite(mc.getDis());
                             JOptionPane.showMessageDialog(mc.getJf(), result);
+                            mc.setIsFTP(false);
                         } catch(IOException ioe) { ioe.printStackTrace(); }
                     }
                 }
                 else if(result.equals("update")) {
                     updateFileList();
+                    mc.setIsFTP(false);
                 }
                 else if(result.equals("quit")) {
                     isStop = true;
+                    mc.setIsFTP(false);
                 }
             }
         }catch(IOException ioe) { ioe.printStackTrace(); }

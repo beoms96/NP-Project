@@ -68,67 +68,71 @@ public class ChatGUI implements ActionListener{
             msgField.requestFocus();
         }
         else if(obj == uploadBt) {
-            File[] f = null;
-            String path = null;
-            JFileChooser fc = new JFileChooser();
-            fc.setMultiSelectionEnabled(true);
-            fc.setAcceptAllFileFilterUsed(true);
-            int result = fc.showOpenDialog(jf);
-            if(result == JFileChooser.APPROVE_OPTION) {
-                f = fc.getSelectedFiles();
-                path = fc.getCurrentDirectory().getPath();
-                if(check == 0)
-                    mc.uploadNormal(f, path);
-                else if(check == 1){
-                    String key = JOptionPane.showInputDialog(jf, "Input Key For Encrypted > 32","12345678901234567890123456789012");
-                    try {
-                        if (key != null) {
-                            if(key.length()<32) {
-                                JOptionPane.showMessageDialog(jf, "Not Proper Key Size");
+            if(!mc.getIsFTP()) {
+                File[] f = null;
+                String path = null;
+                JFileChooser fc = new JFileChooser();
+                fc.setMultiSelectionEnabled(true);
+                fc.setAcceptAllFileFilterUsed(true);
+                int result = fc.showOpenDialog(jf);
+                if(result == JFileChooser.APPROVE_OPTION) {
+                    f = fc.getSelectedFiles();
+                    path = fc.getCurrentDirectory().getPath();
+                    if(check == 0)
+                        mc.uploadNormal(f, path);
+                    else if(check == 1){
+                        String key = JOptionPane.showInputDialog(jf, "Input Key For Encrypted > 32","12345678901234567890123456789012");
+                        try {
+                            if (key != null) {
+                                if(key.length()<32) {
+                                    JOptionPane.showMessageDialog(jf, "Not Proper Key Size");
+                                }
+                                else {
+                                    mc.uploadCrypto(f, path, key);
+                                }
                             }
-                            else {
-                                mc.uploadCrypto(f, path, key);
-                            }
-                        }
-                    } catch(UnsupportedEncodingException u) { u.printStackTrace(); }
+                        } catch(UnsupportedEncodingException u) { u.printStackTrace(); }
+                    }
                 }
             }
             msgField.requestFocus();
         }
         else if(obj == downloadBt) {
-            if(check == 0) {
-                String[] fileList = mc.getNormalFiles().toArray(new String[mc.getFilearr().size()]);
-                Object selected = JOptionPane.showInputDialog(jf, "What do yot want to download?", "download", JOptionPane.QUESTION_MESSAGE, null, fileList, fileList[0]);
-                if(selected == null)
-                    JOptionPane.showMessageDialog(jf, "Not Download!");
-                else {
-                    mc.downloadNormal((String) selected);
-                }
-            }
-            else if(check == 1) {
-                if(mc.getCryptFiles().size() != 0) {
-                    String[] fileList = mc.getCryptFiles().toArray(new String[mc.getCryptFiles().size()]);
+            if(!mc.getIsFTP()) {
+                if(check == 0) {
+                    String[] fileList = mc.getFilearr().toArray(new String[mc.getFilearr().size()]);
                     Object selected = JOptionPane.showInputDialog(jf, "What do yot want to download?", "download", JOptionPane.QUESTION_MESSAGE, null, fileList, fileList[0]);
                     if(selected == null)
                         JOptionPane.showMessageDialog(jf, "Not Download!");
                     else {
-                        String key = JOptionPane.showInputDialog(jf, "Input Key for Decrypted > 32","12345678901234567890123456789012");
-                        if(key!=null) {
-                            if(key.length()<32) {
-                                JOptionPane.showMessageDialog(jf, "Not Proper Key Size");
-                            }
-                            else {
-                                try {
-                                    mc.downloadCrypto((String) selected, key);
-                                } catch (UnsupportedEncodingException u) {
-                                    u.printStackTrace();
+                        mc.downloadNormal((String) selected);
+                    }
+                }
+                else if(check == 1) {
+                    if(mc.getFilearr().size() != 0) {
+                        String[] fileList = mc.getFilearr().toArray(new String[mc.getFilearr().size()]);
+                        Object selected = JOptionPane.showInputDialog(jf, "What do yot want to download?", "download", JOptionPane.QUESTION_MESSAGE, null, fileList, fileList[0]);
+                        if(selected == null)
+                            JOptionPane.showMessageDialog(jf, "Not Download!");
+                        else {
+                            String key = JOptionPane.showInputDialog(jf, "Input Key for Decrypted > 32","12345678901234567890123456789012");
+                            if(key!=null) {
+                                if(key.length()<32) {
+                                    JOptionPane.showMessageDialog(jf, "Not Proper Key Size");
+                                }
+                                else {
+                                    try {
+                                        mc.downloadCrypto((String) selected, key);
+                                    } catch (UnsupportedEncodingException u) {
+                                        u.printStackTrace();
+                                    }
                                 }
                             }
                         }
                     }
-                }
-                else {
-                    JOptionPane.showMessageDialog(jf, "No .cipher file!");
+                    else {
+                        JOptionPane.showMessageDialog(jf, "No .cipher file!");
+                    }
                 }
             }
             msgField.requestFocus();
@@ -141,7 +145,7 @@ public class ChatGUI implements ActionListener{
                     JOptionPane.showMessageDialog(jf, "Streaming ->" + streamOption[select]);
                     if(select == 0) {   //Video File Streaming
                         if(check == 0) {
-                            String[] fileList = mc.getNormalFiles().toArray(new String[mc.getFilearr().size()]);
+                            String[] fileList = mc.getFilearr().toArray(new String[mc.getFilearr().size()]);
                             String[] mp4FileList = mc.getMp4Files(fileList).toArray(new String[mc.getMp4Files(fileList).size()]);
                             Object selected = JOptionPane.showInputDialog(jf, "What do yot want to Streaming?", "streaming", JOptionPane.QUESTION_MESSAGE, null, mp4FileList, mp4FileList[0]);
                             if(selected == null)
@@ -151,8 +155,8 @@ public class ChatGUI implements ActionListener{
                             }
                         }
                         else if(check == 1){
-                            if(mc.getCryptFiles().size() != 0) {
-                                String[] fileList = mc.getCryptFiles().toArray(new String[mc.getCryptFiles().size()]);
+                            if(mc.getFilearr().size() != 0) {
+                                String[] fileList = mc.getFilearr().toArray(new String[mc.getFilearr().size()]);
                                 String[] mp4FileList = mc.getMp4Files(fileList).toArray(new String[mc.getMp4Files(fileList).size()]);
                                 Object selected = JOptionPane.showInputDialog(jf, "What do yot want to Streaming?", "streaming", JOptionPane.QUESTION_MESSAGE, null, mp4FileList, mp4FileList[0]);
                                 if(selected == null)

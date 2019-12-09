@@ -36,6 +36,7 @@ public class CrypFileClientThread implements Runnable {
                 result = mc.getDis().readUTF();
                 System.out.println(result);
                 if (result.equals("normal")) {
+                    mc.setIsFTP(true);
                     if (loadVersion == 0) {
                         try {
                             mc.getDos().writeInt(fileList.size());
@@ -66,14 +67,17 @@ public class CrypFileClientThread implements Runnable {
                             }catch (GeneralSecurityException gse) { gse.printStackTrace(); }
                             result = fileWrite(mc.getDis());
                             JOptionPane.showMessageDialog(mc.getJf(), result);
+                            mc.setIsFTP(false);
                         } catch (IOException ioe) {
                             ioe.printStackTrace();
                         }
                     }
                 } else if (result.equals("update")) {
                     updateFileList();
+                    mc.setIsFTP(false);
                 } else if (result.equals("quit")) {
                     isStop = true;
+                    mc.setIsFTP(false);
                 }
             }
         } catch (IOException ioe) {
