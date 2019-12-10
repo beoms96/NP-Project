@@ -10,6 +10,7 @@ public class MultiServer implements Runnable{
     private Socket fileSocket;
     private Socket videoSocket;
     private Socket rcvSocket;
+    private Socket audioSocket;
     private ArrayList<MultiServerThread> list;
     private ArrayList<FileServerThread> fstList;
     private ArrayList<StreamServerThread> sstList;
@@ -38,6 +39,7 @@ public class MultiServer implements Runnable{
             ServerSocket fss = new ServerSocket(9000);
             ServerSocket vss = new ServerSocket(12000);
             ServerSocket rss = new ServerSocket(14000);
+            ServerSocket audioss = new ServerSocket(16000);
             MultiServerThread mst = null;
             FileServerThread fst = null;
             StreamServerThread sst = null;
@@ -47,6 +49,7 @@ public class MultiServer implements Runnable{
                 fileSocket = fss.accept();
                 videoSocket = vss.accept();
                 rcvSocket = rss.accept();
+                audioSocket = audioss.accept();
                 mst = new MultiServerThread(this);
                 fst = new FileServerThread(this);
                 sst = new StreamServerThread(this);
@@ -83,6 +86,8 @@ public class MultiServer implements Runnable{
     public Socket getVideoSocket() { return videoSocket; }
 
     public Socket getRcvSocket() { return rcvSocket; }
+
+    public Socket getAudioSocket() { return audioSocket; }
 
     public ArrayList<StreamServerThread> getSstList() { return sstList; }
 

@@ -1,8 +1,6 @@
 package NormalMode;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 
 public class StreamServerThread implements Runnable{
@@ -11,23 +9,30 @@ public class StreamServerThread implements Runnable{
     private DataOutputStream dos;
     private DataInputStream dis;
     private DataOutputStream rcvdos;
+    private InputStream audiois;
+    private OutputStream audioos;
 
     private Socket socket;
     private Socket rcvSocket;
+    private Socket audioSocket;
 
     private boolean start;
     private boolean videostart;
+    private String clientId;
 
     public StreamServerThread(MultiServer ms) {
         this.ms = ms;
         socket = ms.getVideoSocket();
         rcvSocket = ms.getRcvSocket();
+        audioSocket = ms.getAudioSocket();
         this.start = false;
         this.videostart = false;
         try {
             dis = new DataInputStream(socket.getInputStream());
             dos = new DataOutputStream(socket.getOutputStream());
             rcvdos = new DataOutputStream(rcvSocket.getOutputStream());
+            audiois = new BufferedInputStream(audioSocket.getInputStream());
+            audioos = new BufferedOutputStream(audioSocket.getOutputStream());
         } catch(IOException ioe) { ioe.printStackTrace(); }
     }
 
@@ -38,10 +43,14 @@ public class StreamServerThread implements Runnable{
             String msg = null;
             while(!isStop) {
                 msg = dis.readUTF();
-                if(msg.equals("Enter")) {
+                if(msg.contains("#Enter")) {
+                    String[] idAndMsg = msg.split("#");
+                    this.clientId = idAndMsg[0];
                     dos.writeUTF(ms.getStreamUser());
                     if(ms.getStreamUser().equals("")) { //Streaming owner
                         ms.setStreamUser(dis.readUTF());
+                        Thread captureThread = new CaptureThread(clientId);
+                        captureThread.start();
                     }
                     else {  //Streaming Client
                         dos.writeUTF(ms.getStreamUser());
@@ -102,12 +111,38 @@ public class StreamServerThread implements Runnable{
         }
     }
 
+    class CaptureThread extends Thread {
+        byte[] tempBuffer = new byte[10000];
+        String id;
+        public CaptureThread(String id) {
+            this.id = id;
+        }
+
+        @Override
+        public void run() {
+            try {
+                while (start) {
+                    int cnt = audiois.read(tempBuffer);
+                    for(StreamServerThread sst: ms.getSstList()) {
+                        if(sst.getStart() && !sst.getClientId().equals(id))
+                            sst.getAudioos().write(tempBuffer);
+                    }
+                    audioos.flush();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void broadCasting(byte[] msg) throws IOException {
         for (StreamServerThread sst: ms.getSstList()) {
             if(sst.getStart())
                 sst.send(msg);
         }
     }
+
     public void send(byte[] msg) throws IOException {
         rcvdos.writeInt(msg.length);
         rcvdos.write(msg);
@@ -121,19 +156,24 @@ public class StreamServerThread implements Runnable{
         return start;
     }
 
-    public void setStart(boolean start) {
-        this.start = start;
-    }
-
     public boolean getVideostart() {
         return videostart;
+    }
+
+    public String getClientId() { return clientId; }
+
+    public DataOutputStream getRcvdos() {
+        return rcvdos;
+    }
+
+    public OutputStream getAudioos() { return audioos; }
+
+    public void setStart(boolean start) {
+        this.start = start;
     }
 
     public void setVideostart(boolean videostart) {
         this.videostart = videostart;
     }
 
-    public DataOutputStream getRcvdos() {
-        return rcvdos;
-    }
 }

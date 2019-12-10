@@ -17,6 +17,7 @@ public class MultiClient {
     private Socket fileSocket;
     private Socket videoSocket;
     private Socket rcvSocket;
+    private Socket audioSocket;
     private ObjectInputStream ois;
     private ObjectOutputStream oos;
     private DataInputStream dis;
@@ -24,6 +25,8 @@ public class MultiClient {
     private DataInputStream streamis;
     private DataOutputStream streamos;
     private DataInputStream rcvstreamis;
+    private BufferedOutputStream audioos;
+    private BufferedInputStream audiois;
 
     private MultiClientThread ct;
     private FileClientThread fct;
@@ -77,12 +80,14 @@ public class MultiClient {
             fileSocket = new Socket(ip, 9000);
             videoSocket = new Socket(ip, 12000);
             rcvSocket = new Socket(ip, 14000);
+            audioSocket = new Socket(ip, 16000);
         }
         else if(check==1) {
             socket = new Socket(ip, 10000);
             fileSocket = new Socket(ip, 11000);
             videoSocket = new Socket(ip, 13000);
             rcvSocket = new Socket(ip, 15000);
+            audioSocket = new Socket(ip, 17000);
         }
         jta.setText("Connect Success" + System.getProperty("line.separator"));
         oos = new ObjectOutputStream(socket.getOutputStream());
@@ -90,6 +95,7 @@ public class MultiClient {
         dos = new DataOutputStream(fileSocket.getOutputStream());
         dis = new DataInputStream(fileSocket.getInputStream());
         streamos = new DataOutputStream(videoSocket.getOutputStream());
+        audioos = new BufferedOutputStream(audioSocket.getOutputStream());
 
         if(check == 0) {
             ct = new MultiClientThread(this);
@@ -157,22 +163,29 @@ public class MultiClient {
         try {
             streamis = new DataInputStream(videoSocket.getInputStream());
             isStop = false;
-            streamos.writeUTF("Enter");
+            streamos.writeUTF(id+"#Enter");
             streamUser = streamis.readUTF();
             if(streamUser.equals("")) { //become Streaming Owner
                 streamUser = id;
                 streamos.writeUTF(streamUser);
                 MyWebCam mwc = new MyWebCam(this);
+                MyAudio ma = new MyAudio(this);
                 Thread mwct = new Thread(mwc);
+                Thread mat = new Thread(ma);
                 mwct.start();
+                mat.start();
             }
             else {  //become Streaming Client
                 streamUser = streamis.readUTF();
             }
             rcvstreamis = new DataInputStream(rcvSocket.getInputStream());
+            audiois = new BufferedInputStream(audioSocket.getInputStream());
             ReceiveWebCam rwc = new ReceiveWebCam(this);
+            ReceiveAudio ra = new ReceiveAudio(this);
             Thread rwct = new Thread(rwc);
+            Thread rat = new Thread(ra);
             rwct.start();
+            rat.start();
 
         }catch(IOException ioe) { ioe.printStackTrace(); }
     }
@@ -317,6 +330,10 @@ public class MultiClient {
     public DataOutputStream getStreamos() { return streamos; }
 
     public DataInputStream getRcvstreamis() { return rcvstreamis; }
+
+    public BufferedOutputStream getAudioos() { return audioos; }
+
+    public BufferedInputStream getAudiois() { return audiois; }
 
     public ArrayList<String> getFilearr() { return filearr; }
 
