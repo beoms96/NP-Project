@@ -1,20 +1,29 @@
 package Streaming;
 
 import ClientLogic.MultiClient;
+import Crypto.CliAES;
 
 import javax.sound.sampled.*;
+import java.io.UnsupportedEncodingException;
+import java.security.GeneralSecurityException;
 
-public class MyAudio implements Runnable {
+public class CrypAudio implements Runnable{
     //Member
     private AudioFormat audioFormat;
     private TargetDataLine targetDataLine;  //microphone
 
     private MultiClient mc;
+    private CliAES caes3;
 
     //Constructor
-    public MyAudio(MultiClient mc) {
+    public CrypAudio(MultiClient mc, String key) {
         System.out.println(mc.getId() + " Audio Streaming Start");
         this.mc = mc;
+        caes3 = new CliAES();
+        try {
+            caes3.createKey(key);
+            caes3.modeEncrypt();
+        } catch (UnsupportedEncodingException | GeneralSecurityException ue) { ue.printStackTrace(); }
     }
 
     //Method
@@ -22,7 +31,6 @@ public class MyAudio implements Runnable {
     public void run() {
         try {
             Mixer.Info[] mixerInfo = AudioSystem.getMixerInfo();
-            System.out.println(mixerInfo.length);
             for(int cnt = 0; cnt < mixerInfo.length; cnt++) {
                 System.out.println(mixerInfo[cnt].getName());
             }
@@ -34,12 +42,16 @@ public class MyAudio implements Runnable {
             targetDataLine.start();
 
             byte[] tempBuffer = new byte[10000];
-
+            byte[] encryptBuffer = null;
             while (!mc.getIsStop()) {
                 int cnt = targetDataLine.read(tempBuffer, 0, tempBuffer.length);
-                mc.getAudioos().write(tempBuffer);
+                try {
+                    encryptBuffer = caes3.getCipher().doFinal(tempBuffer);
+                } catch(GeneralSecurityException gse) { gse.printStackTrace(); }
+                mc.getAudioos().writeInt(encryptBuffer.length);
+                mc.getAudioos().write(encryptBuffer);
             }
-            mc.getAudioos().write(0);
+            mc.getAudioos().writeInt(0);
             targetDataLine.drain();
             targetDataLine.stop();
             targetDataLine.close();

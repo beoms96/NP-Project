@@ -107,7 +107,7 @@ public class VideoSendThread implements Runnable{
             iwp.setOptimizeHuffmanTables(false);
             iwp.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
             iwp.setProgressiveMode(ImageWriteParam.MODE_DISABLED);
-            iwp.setCompressionQuality(0.7f);
+            iwp.setCompressionQuality(0.3f);
             iw.setOutput(new MemoryCacheImageOutputStream(baos));
             IIOImage outputImage = new IIOImage(bimg, null, null);
             iw.write(null, outputImage, iwp);

@@ -68,7 +68,7 @@ public class ChatGUI implements ActionListener{
             msgField.requestFocus();
         }
         else if(obj == uploadBt) {
-            if(!mc.getIsFTP()) {
+            if(!mc.getIsFTP()) {    //Current FTPing Check
                 File[] f = null;
                 String path = null;
                 JFileChooser fc = new JFileChooser();

@@ -25,8 +25,8 @@ public class MultiClient {
     private DataInputStream streamis;
     private DataOutputStream streamos;
     private DataInputStream rcvstreamis;
-    private BufferedOutputStream audioos;
-    private BufferedInputStream audiois;
+    private DataOutputStream audioos;
+    private DataInputStream audiois;
 
     private MultiClientThread ct;
     private FileClientThread fct;
@@ -95,7 +95,7 @@ public class MultiClient {
         dos = new DataOutputStream(fileSocket.getOutputStream());
         dis = new DataInputStream(fileSocket.getInputStream());
         streamos = new DataOutputStream(videoSocket.getOutputStream());
-        audioos = new BufferedOutputStream(audioSocket.getOutputStream());
+        audioos = new DataOutputStream(audioSocket.getOutputStream());
 
         if(check == 0) {
             ct = new MultiClientThread(this);
@@ -179,7 +179,7 @@ public class MultiClient {
                 streamUser = streamis.readUTF();
             }
             rcvstreamis = new DataInputStream(rcvSocket.getInputStream());
-            audiois = new BufferedInputStream(audioSocket.getInputStream());
+            audiois = new DataInputStream(audioSocket.getInputStream());
             ReceiveWebCam rwc = new ReceiveWebCam(this);
             ReceiveAudio ra = new ReceiveAudio(this);
             Thread rwct = new Thread(rwc);
@@ -245,22 +245,29 @@ public class MultiClient {
         try {
             streamis = new DataInputStream(videoSocket.getInputStream());
             isStop = false;
-            streamos.writeUTF("Enter");
+            streamos.writeUTF(id+"#Enter");
             streamUser = streamis.readUTF();
             if(streamUser.equals("")) { //become Streaming Owner
                 streamUser = id;
                 streamos.writeUTF(streamUser);
                 CrypWebCam mwc = new CrypWebCam(this, key);
+                CrypAudio cma = new CrypAudio(this, key);
                 Thread mwct = new Thread(mwc);
+                Thread mat = new Thread(cma);
                 mwct.start();
+                mat.start();
             }
             else {  //become Streaming Client
                 streamUser = streamis.readUTF();
             }
             rcvstreamis = new DataInputStream(rcvSocket.getInputStream());
+            audiois = new DataInputStream(audioSocket.getInputStream());
             CrypRcvWebCam rwc = new CrypRcvWebCam(this, key);
+            CrypRcvAudio cra = new CrypRcvAudio(this, key);
             Thread rwct = new Thread(rwc);
+            Thread rat = new Thread(cra);
             rwct.start();
+            rat.start();
 
         }catch(IOException ioe) { ioe.printStackTrace(); }
     }
@@ -331,9 +338,9 @@ public class MultiClient {
 
     public DataInputStream getRcvstreamis() { return rcvstreamis; }
 
-    public BufferedOutputStream getAudioos() { return audioos; }
+    public DataOutputStream getAudioos() { return audioos; }
 
-    public BufferedInputStream getAudiois() { return audiois; }
+    public DataInputStream getAudiois() { return audiois; }
 
     public ArrayList<String> getFilearr() { return filearr; }
 

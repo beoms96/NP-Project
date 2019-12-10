@@ -10,6 +10,7 @@ public class CrypMultiServer implements Runnable{
     private Socket fileSocket;
     private Socket videoSocket;
     private Socket rcvSocket;
+    private Socket audioSocket;
     private ArrayList<CrypMultiServerThread> list;
     private ArrayList<CrypFileServerThread> fstList;
     private ArrayList<CrypStreamServerThread> sstList;
@@ -38,6 +39,7 @@ public class CrypMultiServer implements Runnable{
             ServerSocket fss = new ServerSocket(11000);
             ServerSocket vss = new ServerSocket(13000);
             ServerSocket rss = new ServerSocket(15000);
+            ServerSocket audioss = new ServerSocket(17000);
             CrypMultiServerThread mst = null;
             CrypFileServerThread fst = null;
             CrypStreamServerThread sst = null;
@@ -47,6 +49,7 @@ public class CrypMultiServer implements Runnable{
                 fileSocket = fss.accept();
                 videoSocket = vss.accept();
                 rcvSocket = rss.accept();
+                audioSocket = audioss.accept();
                 mst = new CrypMultiServerThread(this);
                 fst = new CrypFileServerThread(this);
                 sst = new CrypStreamServerThread(this);
@@ -82,6 +85,8 @@ public class CrypMultiServer implements Runnable{
     public Socket getVideoSocket() { return videoSocket; }
 
     public Socket getRcvSocket() { return rcvSocket; }
+
+    public Socket getAudioSocket() { return audioSocket; }
 
     public ArrayList<CrypStreamServerThread> getSstList() { return sstList; }
 

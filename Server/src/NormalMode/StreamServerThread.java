@@ -9,8 +9,8 @@ public class StreamServerThread implements Runnable{
     private DataOutputStream dos;
     private DataInputStream dis;
     private DataOutputStream rcvdos;
-    private InputStream audiois;
-    private OutputStream audioos;
+    private DataInputStream audiois;
+    private DataOutputStream audioos;
 
     private Socket socket;
     private Socket rcvSocket;
@@ -31,8 +31,8 @@ public class StreamServerThread implements Runnable{
             dis = new DataInputStream(socket.getInputStream());
             dos = new DataOutputStream(socket.getOutputStream());
             rcvdos = new DataOutputStream(rcvSocket.getOutputStream());
-            audiois = new BufferedInputStream(audioSocket.getInputStream());
-            audioos = new BufferedOutputStream(audioSocket.getOutputStream());
+            audiois = new DataInputStream(audioSocket.getInputStream());
+            audioos = new DataOutputStream(audioSocket.getOutputStream());
         } catch(IOException ioe) { ioe.printStackTrace(); }
     }
 
@@ -166,7 +166,7 @@ public class StreamServerThread implements Runnable{
         return rcvdos;
     }
 
-    public OutputStream getAudioos() { return audioos; }
+    public DataOutputStream getAudioos() { return audioos; }
 
     public void setStart(boolean start) {
         this.start = start;
