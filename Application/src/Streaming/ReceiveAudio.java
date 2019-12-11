@@ -15,7 +15,7 @@ public class ReceiveAudio implements Runnable{
 
     //Constructor
     public ReceiveAudio(MultiClient mc) {
-        System.out.println(mc.getId() + "Audio Receiving Start");
+        System.out.println(mc.getId() + " Audio Receiving Start");
         this.mc = mc;
     }
 
@@ -31,12 +31,17 @@ public class ReceiveAudio implements Runnable{
 
             byte[] tempBuffer = new byte[10000];
 
-            while (!mc.getIsStop()) {
-                int cnt = mc.getAudiois().read(tempBuffer);
-                System.out.println("My Audio: " + cnt);
-                if(tempBuffer.equals(0))
+            while (true) {
+                int length = mc.getAudiois().readInt();
+                System.out.println("L: " + length);
+                if(length==0) {
+                    System.out.println("Receive Audio Terminate");
                     break;
-                sourceDataLine.write(tempBuffer, 0, 10000);
+                }
+                else {
+                    int cnt = mc.getAudiois().read(tempBuffer);
+                    sourceDataLine.write(tempBuffer, 0, 10000);
+                }
             }
             sourceDataLine.drain();
             sourceDataLine.stop();

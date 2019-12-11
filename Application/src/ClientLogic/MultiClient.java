@@ -177,15 +177,15 @@ public class MultiClient {
             }
             else {  //become Streaming Client
                 streamUser = streamis.readUTF();
+                ReceiveAudio ra = new ReceiveAudio(this);
+                Thread rat = new Thread(ra);
+                rat.start();
             }
             rcvstreamis = new DataInputStream(rcvSocket.getInputStream());
             audiois = new DataInputStream(audioSocket.getInputStream());
             ReceiveWebCam rwc = new ReceiveWebCam(this);
-            ReceiveAudio ra = new ReceiveAudio(this);
             Thread rwct = new Thread(rwc);
-            Thread rat = new Thread(ra);
             rwct.start();
-            rat.start();
 
         }catch(IOException ioe) { ioe.printStackTrace(); }
     }

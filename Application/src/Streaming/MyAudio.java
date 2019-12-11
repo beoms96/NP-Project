@@ -3,6 +3,7 @@ package Streaming;
 import ClientLogic.MultiClient;
 
 import javax.sound.sampled.*;
+import java.io.IOException;
 
 public class MyAudio implements Runnable {
     //Member
@@ -22,10 +23,6 @@ public class MyAudio implements Runnable {
     public void run() {
         try {
             Mixer.Info[] mixerInfo = AudioSystem.getMixerInfo();
-            System.out.println(mixerInfo.length);
-            for(int cnt = 0; cnt < mixerInfo.length; cnt++) {
-                System.out.println(mixerInfo[cnt].getName());
-            }
             audioFormat = getAudioFormat();
             DataLine.Info dataLineInfo = new DataLine.Info(TargetDataLine.class, audioFormat);
             Mixer mixer = AudioSystem.getMixer(mixerInfo[2]);
@@ -37,15 +34,23 @@ public class MyAudio implements Runnable {
 
             while (!mc.getIsStop()) {
                 int cnt = targetDataLine.read(tempBuffer, 0, tempBuffer.length);
+                System.out.println(cnt);
+                mc.getAudioos().writeInt(tempBuffer.length);
                 mc.getAudioos().write(tempBuffer);
+                mc.getAudioos().flush();
             }
-            mc.getAudioos().write(0);
+            mc.getAudioos().writeInt(0);
+            System.out.println("Audio Terminate");
             targetDataLine.drain();
             targetDataLine.stop();
             targetDataLine.close();
 
         } catch (Exception e) {
             e.printStackTrace();
+            try {
+                mc.getAudioos().writeInt(0);
+            } catch (IOException ioe) { ioe.printStackTrace(); }
+            System.out.println("Audio Terminate");
         }
     }
 

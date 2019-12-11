@@ -43,32 +43,37 @@ public class LoginGUI implements ActionListener {
         String inputID = idt.getText();
         String inputPW = new String(pwt.getPassword());
 
-        if(obj == pwt || obj == loginBt) {
-            if(!rl.checkInfo(inputID, inputPW)) {
-                JOptionPane.showMessageDialog(jf, "Wrong ID or PW", "Warning", JOptionPane.WARNING_MESSAGE);
-            }
-            else {
-                //Login Complete chatting GUI (chat service + FTP Button + Real Video Button)
-                JOptionPane.showMessageDialog(jf, "Login Complete", "Success", JOptionPane.INFORMATION_MESSAGE);
-                String[] checks = {"Normal", "Crypto"};
-                int check = JOptionPane.showOptionDialog(jf, "Select Your Chatting Mode", "Check", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, checks, checks[0]);
-                jf.setVisible(false);
-                if(check == 0 || check == 1) {
-                    try {
-                        new ChatGUI(inputID, check, ip);
-                    } catch(IOException ioe) { ioe.printStackTrace(); }
-                }
-                else if(check == JOptionPane.CLOSED_OPTION) {
-                    System.exit(0);
-                }
-            }
+        if(inputID.equals("") || inputPW.equals("")) {
+            JOptionPane.showMessageDialog(jf, "Input Your ID or PW!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
-        else if(obj == signupBt) {
-            if(!rl.insertInfo(inputID, inputPW)) {
-                JOptionPane.showMessageDialog(jf, "Sign Up Failed-ID Duplicate", "Warning", JOptionPane.WARNING_MESSAGE);
+        else {
+            if(obj == pwt || obj == loginBt) {
+                if(!rl.checkInfo(inputID, inputPW)) {
+                    JOptionPane.showMessageDialog(jf, "Wrong ID or PW", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
+                else {
+                    //Login Complete chatting GUI (chat service + FTP Button + Real Video Button)
+                    JOptionPane.showMessageDialog(jf, "Login Complete", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    String[] checks = {"Normal", "Crypto"};
+                    int check = JOptionPane.showOptionDialog(jf, "Select Your Chatting Mode", "Check", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, checks, checks[0]);
+                    jf.setVisible(false);
+                    if(check == 0 || check == 1) {
+                        try {
+                            new ChatGUI(inputID, check, ip);
+                        } catch(IOException ioe) { ioe.printStackTrace(); }
+                    }
+                    else if(check == JOptionPane.CLOSED_OPTION) {
+                        System.exit(0);
+                    }
+                }
             }
-            else {  //Stay Display
-                JOptionPane.showMessageDialog(jf,"Sign Up Complete", "Success", JOptionPane.INFORMATION_MESSAGE);
+            else if(obj == signupBt) {
+                if(!rl.insertInfo(inputID, inputPW)) {
+                    JOptionPane.showMessageDialog(jf, "Sign Up Failed-ID Duplicate", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
+                else {  //Stay Display
+                    JOptionPane.showMessageDialog(jf,"Sign Up Complete", "Success", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         }
     }

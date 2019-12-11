@@ -31,9 +31,6 @@ public class CrypAudio implements Runnable{
     public void run() {
         try {
             Mixer.Info[] mixerInfo = AudioSystem.getMixerInfo();
-            for(int cnt = 0; cnt < mixerInfo.length; cnt++) {
-                System.out.println(mixerInfo[cnt].getName());
-            }
             audioFormat = getAudioFormat();
             DataLine.Info dataLineInfo = new DataLine.Info(TargetDataLine.class, audioFormat);
             Mixer mixer = AudioSystem.getMixer(mixerInfo[2]);
@@ -43,6 +40,7 @@ public class CrypAudio implements Runnable{
 
             byte[] tempBuffer = new byte[10000];
             byte[] encryptBuffer = null;
+
             while (!mc.getIsStop()) {
                 int cnt = targetDataLine.read(tempBuffer, 0, tempBuffer.length);
                 try {
@@ -50,8 +48,10 @@ public class CrypAudio implements Runnable{
                 } catch(GeneralSecurityException gse) { gse.printStackTrace(); }
                 mc.getAudioos().writeInt(encryptBuffer.length);
                 mc.getAudioos().write(encryptBuffer);
+                mc.getAudioos().flush();
             }
             mc.getAudioos().writeInt(0);
+            System.out.println("Audio Terminate");
             targetDataLine.drain();
             targetDataLine.stop();
             targetDataLine.close();

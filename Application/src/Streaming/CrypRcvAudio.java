@@ -19,7 +19,7 @@ public class CrypRcvAudio implements Runnable{
 
     //Constructor
     public CrypRcvAudio(MultiClient mc, String key) {
-        System.out.println(mc.getId() + "Audio Receiving Start");
+        System.out.println(mc.getId() + " Audio Receiving Start");
         this.mc = mc;
         rcvcaes2 = new CliAES();
         try {
@@ -40,16 +40,16 @@ public class CrypRcvAudio implements Runnable{
 
             byte[] tempBuffer = null;
             byte[] decryptedData =null;
-            while (!mc.getIsStop()) {
+            while (true) {
                 int Dlength = mc.getAudiois().readInt();
-                System.out.println(Dlength);
+                System.out.println("L: " + Dlength);
                 if(Dlength == 0) {
+                    System.out.println("Receive Audio Terminate");
                     break;
                 }
                 else {
                     tempBuffer = new byte[Dlength];
                     int cnt = mc.getAudiois().read(tempBuffer, 0, Dlength);
-                    System.out.println("My Audio: " + cnt);
                     decryptedData = new byte[Dlength];
                     try {
                         decryptedData = rcvcaes2.getCipher().doFinal(tempBuffer);
