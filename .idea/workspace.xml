@@ -7,31 +7,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e54382f3-bcc6-4623-b2b5-846cbbe22f6b" name="Default Changelist" comment="Speaking">
-      <change afterPath="$PROJECT_DIR$/out/artifacts/Application_jar/01. 마음.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/Application_jar/04. DNA.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/Application_jar/04. 고민보다 Go.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/Application_jar/08. FAKE LOVE (Rocking Vibe Mix).mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/Application_jar/b PrivateKey.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/Server_jar/01. 마음.mp3.cipher" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/Server_jar/04. DNA.mp3.cipher" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/Server_jar/04. 고민보다 Go.mp3.cipher" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/Server_jar/05. Anpanman.mp3.cipher" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/Server_jar/08. FAKE LOVE (Rocking Vibe Mix).mp3.cipher" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/Server_jar/BTS - Air Plane pt 2 Dance Performance mir..mp4.cipher" afterDir="false" />
+    <list default="true" id="e54382f3-bcc6-4623-b2b5-846cbbe22f6b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/ClientLogic/MultiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/ClientLogic/MultiClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/Streaming/CrypAudio.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/Streaming/CrypAudio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/Streaming/CrypRcvAudio.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/Streaming/CrypRcvAudio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/CryptoMode/CrypStreamServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/CryptoMode/CrypStreamServerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Application_jar/Application.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Application_jar/Application.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Server_jar/Server.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Server_jar/Server.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Application/ClientLogic/MultiClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/ClientLogic/MultiClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Application/Streaming/CrypAudio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/Streaming/CrypAudio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Application/Streaming/CrypRcvAudio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/Streaming/CrypRcvAudio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Application/Streaming/MyAudio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/Streaming/MyAudio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypStreamServerThread$CaptureThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypStreamServerThread$CaptureThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypStreamServerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypStreamServerThread.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +185,7 @@
       <workItem from="1576023724245" duration="886000" />
       <workItem from="1576025249591" duration="3549000" />
       <workItem from="1576029265887" duration="1167000" />
-      <workItem from="1576030863429" duration="3180000" />
+      <workItem from="1576030863429" duration="3672000" />
     </task>
     <task id="LOCAL-00001" summary="unicast">
       <created>1573544988285</created>
