@@ -7,35 +7,36 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e54382f3-bcc6-4623-b2b5-846cbbe22f6b" name="Default Changelist" comment="Add Semi voice">
-      <change afterPath="$PROJECT_DIR$/Application/src/Streaming/CrypAudio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/src/Streaming/CrypRcvAudio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/Application_jar/새 압축.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Application/Streaming/CrypAudio.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Application/Streaming/CrypRcvAudio.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypStreamServerThread$CaptureThread.class" afterDir="false" />
+    <list default="true" id="e54382f3-bcc6-4623-b2b5-846cbbe22f6b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/out/artifacts/Application_jar/03. Airplane pt.2.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/Application_jar/BTS - Anpanman Dance Performance mir..mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/Server_jar/03. Airplane pt.2.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/Server_jar/03. Serendipity (Full Length Edition).mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/Server_jar/BTS - Anpanman Dance Performance mir..mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/CliGUI/ChatGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/CliGUI/ChatGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/ClientLogic/MultiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/ClientLogic/MultiClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/Streaming/MyAudio.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/Streaming/MyAudio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/Streaming/ReceiveAudio.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application/src/Streaming/ReceiveAudio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/CryptoMode/CrypMultiServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/CryptoMode/CrypMultiServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/CryptoMode/CrypStreamServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/CryptoMode/CrypStreamServerThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/CryptoMode/CrypVideoSendThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/CryptoMode/CrypVideoSendThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/NormalMode/MultiServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/NormalMode/MultiServerThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/NormalMode/StreamServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/NormalMode/StreamServerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/NormalMode/VideoSendThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/NormalMode/VideoSendThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/a PrivateKey.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bm1478 PrivateKey.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bm1580 PrivateKey.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/common/ServerAES.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/common/ServerAES.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Application_jar/Application.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Application_jar/Application.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Application_jar/새 압축.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Server_jar/Server.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Server_jar/Server.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Application/CliGUI/LoginGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/CliGUI/LoginGUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Application/CliGUI/LoginGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/CliGUI/LoginGUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Application/ClientLogic/MultiClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/ClientLogic/MultiClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Application/Streaming/CrypAudio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/Streaming/CrypAudio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Application/Streaming/CrypRcvAudio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/Streaming/CrypRcvAudio.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Application/Streaming/MyAudio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/Streaming/MyAudio.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Application/Streaming/ReceiveAudio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Application/Streaming/ReceiveAudio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypMultiServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypMultiServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypStreamServerThread$CaptureThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypStreamServerThread$CaptureThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypStreamServerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypStreamServerThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypVideoSendThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/CryptoMode/CrypVideoSendThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Server/NormalMode/MultiServerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/NormalMode/MultiServerThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Server/NormalMode/StreamServerThread$CaptureThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/NormalMode/StreamServerThread$CaptureThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Server/NormalMode/StreamServerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/NormalMode/StreamServerThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Server/NormalMode/VideoSendThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/NormalMode/VideoSendThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Server/common/ServerAES.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/common/ServerAES.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +207,12 @@
       <workItem from="1575966966374" duration="977000" />
       <workItem from="1575971055317" duration="2893000" />
       <workItem from="1575974169486" duration="2577000" />
-      <workItem from="1575976993570" duration="5623000" />
+      <workItem from="1575976993570" duration="5834000" />
+      <workItem from="1575988919490" duration="6866000" />
+      <workItem from="1575997346864" duration="3274000" />
+      <workItem from="1576023724245" duration="886000" />
+      <workItem from="1576025249591" duration="3549000" />
+      <workItem from="1576029265887" duration="964000" />
     </task>
     <task id="LOCAL-00001" summary="unicast">
       <created>1573544988285</created>
@@ -390,7 +396,21 @@
       <option name="project" value="LOCAL" />
       <updated>1575975670810</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Add Cryptography Voice Webcam">
+      <created>1575982817865</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1575982817865</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Voice Webcam update">
+      <created>1576028766761</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1576028766762</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -411,8 +431,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Multicast" />
-    <MESSAGE value="login not complete" />
     <MESSAGE value="login complete &amp; AES cryptography Test" />
     <MESSAGE value="RSA CryptoTest" />
     <MESSAGE value="Chat GUI Complete" />
@@ -436,7 +454,9 @@
     <MESSAGE value="change key exchange way" />
     <MESSAGE value="Test1" />
     <MESSAGE value="Add Semi voice" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Semi voice" />
+    <MESSAGE value="Add Cryptography Voice Webcam" />
+    <MESSAGE value="Voice Webcam update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Voice Webcam update" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="73" key="#Notifications" timestamp="1575632155604">
@@ -479,10 +499,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="169" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1536.824@0.0.1536.824" timestamp="1575269218140" />
-    <state x="358" y="9" key="CommitChangelistDialog2" timestamp="1575982670002">
+    <state x="358" y="9" key="CommitChangelistDialog2" timestamp="1576028764537">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="358" y="9" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1575982670002" />
+    <state x="358" y="9" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1576028764537" />
     <state x="582" y="167" key="FileChooserDialogImpl" timestamp="1575507458955">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -523,10 +543,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="290" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1575508045646" />
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1575975686649">
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1576028784651">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1575975686649" />
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1576028784651" />
     <state x="571" y="195" key="chooseDestDirectoryDialog" timestamp="1575188835629">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

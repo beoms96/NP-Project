@@ -95,7 +95,6 @@ public class CrypVideoSendThread implements Runnable{
                 }
 
                 cap.release();
-
                 removedecryptFile(decryptFilename);
                 System.out.println(video_length + " Frames extracted");
             }

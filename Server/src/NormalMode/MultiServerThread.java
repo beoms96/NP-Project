@@ -55,6 +55,9 @@ public class MultiServerThread implements Runnable {
             ms.getList().remove(this);
             System.out.println(socket.getInetAddress() + " Abnormally Terminate.");
             System.out.println("Current Normal Client: " + ms.getList().size());
+            if(ms.getList().size()==0) {
+                ms.setStreamUser("");
+            }
         }
 
     }   //end run

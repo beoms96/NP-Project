@@ -76,8 +76,12 @@ public class StreamServerThread implements Runnable{
                     int length = dis.readInt();
                     if(length == 0) {
                         for (StreamServerThread sst: ms.getSstList()) {
-                            if(sst.getStart())
+                            if(sst.getStart()) {
                                 sst.send(length);
+                            }
+                            if(sst.getStart() && !sst.getClientId().equals(clientId)) {
+                                sst.getAudioos().writeInt(length);
+                            }
                         }
                     }
                     ms.setStreamUser("");
@@ -91,6 +95,7 @@ public class StreamServerThread implements Runnable{
                         start = false;
                     if(videostart)
                         videostart = false;
+                    audioos.writeInt(0);
                 }
                 else if(msg.equals("Video")) {
                     videostart = true;
@@ -121,11 +126,25 @@ public class StreamServerThread implements Runnable{
         @Override
         public void run() {
             try {
-                while (start) {
-                    int cnt = audiois.read(tempBuffer);
-                    for(StreamServerThread sst: ms.getSstList()) {
-                        if(sst.getStart() && !sst.getClientId().equals(id))
-                            sst.getAudioos().write(tempBuffer);
+                while (true) {
+                    int length = audiois.readInt();
+                    System.out.println("sst: " + length);
+                    if(length == 0) {
+                        for(StreamServerThread sst: ms.getSstList()) {
+                            if(sst.getStart() && !sst.getClientId().equals(id)) {
+                                sst.getAudioos().writeInt(length);
+                            }
+                        }
+                        break;
+                    }
+                    else {
+                        int cnt = audiois.read(tempBuffer);
+                        for(StreamServerThread sst: ms.getSstList()) {
+                            if(sst.getStart() && !sst.getClientId().equals(id)) {
+                                sst.getAudioos().writeInt(tempBuffer.length);
+                                sst.getAudioos().write(tempBuffer);
+                            }
+                        }
                     }
                     audioos.flush();
                 }

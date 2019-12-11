@@ -78,6 +78,9 @@ public class CrypStreamServerThread implements Runnable{
                         for (CrypStreamServerThread sst: ms.getSstList()) {
                             if(sst.getStart())
                                 sst.send(length);
+                            if(sst.getStart() && !sst.getClientId().equals(clientId)) {
+                                sst.getAudioos().writeInt(length);
+                            }
                         }
                     }
                     ms.setStreamUser("");
@@ -123,20 +126,19 @@ public class CrypStreamServerThread implements Runnable{
         @Override
         public void run() {
             try {
-                while (start) {
+                while (true) {
                     int Elength = audiois.readInt();
-                    System.out.println(Elength);
                     if(Elength==0) {
                         for(CrypStreamServerThread sst: ms.getSstList()) {
                             if(sst.getStart() && !sst.getClientId().equals(id)) {
                                 sst.getAudioos().writeInt(Elength);
                             }
                         }
+                        break;
                     }
                     else {
                         tempBuffer = new byte[Elength];
                         int cnt = audiois.read(tempBuffer, 0, Elength);
-                        System.out.println("Server Audio: " + cnt);
                         for(CrypStreamServerThread sst: ms.getSstList()) {
                             if(sst.getStart() && !sst.getClientId().equals(id)) {
                                 sst.getAudioos().writeInt(Elength);
