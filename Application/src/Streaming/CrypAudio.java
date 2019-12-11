@@ -4,6 +4,7 @@ import ClientLogic.MultiClient;
 import Crypto.CliAES;
 
 import javax.sound.sampled.*;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 
@@ -58,6 +59,10 @@ public class CrypAudio implements Runnable{
 
         } catch (Exception e) {
             e.printStackTrace();
+            try {
+                mc.getAudioos().writeInt(0);
+            }catch(IOException ioe) {ioe.printStackTrace();}
+            System.out.println("Audio Terminate");
         }
     }
 

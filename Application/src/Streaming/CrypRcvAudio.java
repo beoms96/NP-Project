@@ -53,7 +53,9 @@ public class CrypRcvAudio implements Runnable{
                     decryptedData = new byte[Dlength];
                     try {
                         decryptedData = rcvcaes2.getCipher().doFinal(tempBuffer);
-                    } catch(GeneralSecurityException gse) {}
+                    } catch(GeneralSecurityException gse) {
+                        break;
+                    }
 
                     sourceDataLine.write(decryptedData, 0, decryptedData.length);
                 }

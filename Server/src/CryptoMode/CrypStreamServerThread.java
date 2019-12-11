@@ -94,6 +94,7 @@ public class CrypStreamServerThread implements Runnable{
                         start = false;
                     if(videostart)
                         videostart = false;
+                    audioos.writeInt(0);
                 }
                 else if(msg.contains("#Video")) {
                     String[] idAndMsg = msg.split("#");

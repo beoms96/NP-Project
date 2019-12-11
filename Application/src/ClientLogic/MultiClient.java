@@ -259,15 +259,15 @@ public class MultiClient {
             }
             else {  //become Streaming Client
                 streamUser = streamis.readUTF();
+                CrypRcvAudio cra = new CrypRcvAudio(this, key);
+                Thread rat = new Thread(cra);
+                rat.start();
             }
             rcvstreamis = new DataInputStream(rcvSocket.getInputStream());
             audiois = new DataInputStream(audioSocket.getInputStream());
             CrypRcvWebCam rwc = new CrypRcvWebCam(this, key);
-            CrypRcvAudio cra = new CrypRcvAudio(this, key);
             Thread rwct = new Thread(rwc);
-            Thread rat = new Thread(cra);
             rwct.start();
-            rat.start();
 
         }catch(IOException ioe) { ioe.printStackTrace(); }
     }
